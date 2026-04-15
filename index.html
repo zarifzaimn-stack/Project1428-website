@@ -6,10 +6,11 @@
 
 <title>Dinosaur World</title>
 
-<!-- Aesthetic Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Raleway:wght@300;500&display=swap" rel="stylesheet">
+<!-- Premium Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -17,51 +18,70 @@
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: white;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to right, #e6f0ff, #fdfbfb);
+    color: #222;
 }
 
-/* Header */
-header {
+/* Navbar */
+nav {
+    background: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+}
+
+nav h1 {
+    font-family: 'Playfair Display', serif;
+    color: #2c7a7b;
+}
+
+nav a {
+    text-decoration: none;
+    color: #444;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+/* Hero Section */
+.hero {
     text-align: center;
-    padding: 50px 20px;
+    padding: 80px 20px;
 }
 
-header h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 3.5em;
-    letter-spacing: 2px;
-    color: #f5c542;
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    color: #2c7a7b;
 }
 
-header p {
-    opacity: 0.8;
+.hero p {
     margin-top: 10px;
+    color: #555;
 }
 
 /* Container */
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px;
 }
 
 /* Cards */
 .card {
-    background: rgba(255,255,255,0.08);
-    border-radius: 20px;
-    margin: 20px;
-    width: 280px;
+    background: white;
+    border-radius: 15px;
     overflow: hidden;
-    transition: 0.4s;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-10px);
 }
 
 .card img {
@@ -70,101 +90,98 @@ header p {
     object-fit: cover;
 }
 
-.card h2 {
+.card h3 {
     margin: 15px;
-    font-family: 'Cinzel', serif;
-    color: #f5c542;
+    font-family: 'Playfair Display', serif;
+    color: #2c7a7b;
 }
 
 .card p {
     margin: 0 15px 20px;
     font-size: 0.95em;
-    line-height: 1.4;
-}
-
-/* Section Titles */
-.section-title {
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-    font-family: 'Cinzel', serif;
-    color: #00d4ff;
+    color: #555;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
-    opacity: 0.6;
+    padding: 30px;
+    color: #777;
 }
+
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Dinosaur World 🦖</h1>
-    <p>Discover the giants that once ruled Earth</p>
-</header>
+<nav>
+    <h1>DinoWorld</h1>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">Dinosaurs</a>
+        <a href="#">About</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h2>Explore the Age of Dinosaurs 🦖</h2>
+    <p>Discover fascinating creatures that ruled Earth millions of years ago</p>
+</section>
 
 <div class="container">
 
-<h2 class="section-title">Carnivores 🥩</h2>
-
 <div class="card">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg">
-    <h2>T-Rex</h2>
-    <p>A powerful predator with strong jaws and sharp teeth.</p>
+    <h3>Tyrannosaurus Rex</h3>
+    <p>A massive predator with one of the strongest bites ever.</p>
 </div>
 
 <div class="card">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png">
-    <h2>Velociraptor</h2>
-    <p>A fast and intelligent hunter that worked in groups.</p>
+    <h3>Velociraptor</h3>
+    <p>Small, fast, and very intelligent hunters.</p>
 </div>
 
 <div class="card">
     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png">
-    <h2>Spinosaurus</h2>
-    <p>A giant predator with a sail on its back.</p>
+    <h3>Spinosaurus</h3>
+    <p>The largest carnivorous dinosaur with a sail on its back.</p>
 </div>
-
-<div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Allosaurus_fragilis_restoration.jpg">
-    <h2>Allosaurus</h2>
-    <p>A fierce meat-eater that lived before T-Rex.</p>
-</div>
-
-<h2 class="section-title">Herbivores 🌿</h2>
 
 <div class="card">
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Triceratops_prorsus_skull.jpg">
-    <h2>Triceratops</h2>
-    <p>Three horns and a large frill for defense.</p>
+    <h3>Triceratops</h3>
+    <p>A plant-eater with three horns and a large frill.</p>
 </div>
 
 <div class="card">
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Brachiosaurus_DB.jpg">
-    <h2>Brachiosaurus</h2>
-    <p>A tall dinosaur that ate leaves from high trees.</p>
+    <h3>Brachiosaurus</h3>
+    <p>A tall dinosaur that reached treetops for food.</p>
 </div>
 
 <div class="card">
     <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Stegosaurus_stenops_DB.jpg">
-    <h2>Stegosaurus</h2>
-    <p>Plates on its back and spikes on its tail.</p>
+    <h3>Stegosaurus</h3>
+    <p>Recognized by its back plates and spiked tail.</p>
 </div>
 
 <div class="card">
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Ankylosaurus_magniventris_DB.jpg">
-    <h2>Ankylosaurus</h2>
-    <p>Armored body with a strong club tail.</p>
+    <h3>Ankylosaurus</h3>
+    <p>A heavily armored dinosaur with a powerful tail club.</p>
+</div>
+
+<div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Allosaurus_fragilis_restoration.jpg">
+    <h3>Allosaurus</h3>
+    <p>A top predator before the T-Rex existed.</p>
 </div>
 
 </div>
 
 <footer>
-    <p>Created by a Dinosaur Explorer 🦕</p>
+    <p>© 2026 DinoWorld | Designed by You 🦕</p>
 </footer>
 
 </body>
