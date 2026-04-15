@@ -1,79 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinosaur World</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinosaur World</title>
 
-        header {
-            background-color: #2e8b57;
-            color: white;
-            padding: 20px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-        section {
-            padding: 20px;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .dino {
-            background: white;
-            margin: 20px auto;
-            padding: 15px;
-            border-radius: 10px;
-            width: 80%;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8') no-repeat center/cover;
+    color: white;
+}
 
-        img {
-            width: 250px;
-            border-radius: 10px;
-        }
+/* Overlay for readability */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
 
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-        }
-    </style>
+/* Header */
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-size: 3em;
+    color: #00ff9f;
+    text-shadow: 0 0 15px #00ff9f;
+}
+
+header p {
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+/* Cards */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin: 20px;
+    width: 300px;
+    overflow: hidden;
+    transition: 0.4s;
+    box-shadow: 0 0 20px rgba(0,255,159,0.3);
+}
+
+.card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(0,255,159,0.7);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h2 {
+    margin: 15px;
+    color: #00ff9f;
+}
+
+.card p {
+    margin: 0 15px 20px;
+    font-size: 0.95em;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    opacity: 0.7;
+}
+</style>
+
 </head>
+
 <body>
 
 <header>
-    <h1>Welcome to Dinosaur World 🦖</h1>
-    <p>Learn amazing facts about dinosaurs!</p>
+    <h1>Dinosaur World 🦖</h1>
+    <p>Explore the ancient giants of Earth</p>
 </header>
 
-<section>
+<div class="container">
 
-    <div class="dino">
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg">
         <h2>Tyrannosaurus Rex</h2>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg" alt="T-Rex">
-        <p>The T-Rex was one of the largest meat-eating dinosaurs. It had strong jaws and sharp teeth.</p>
+        <p>A powerful predator with massive jaws and sharp teeth.</p>
     </div>
 
-    <div class="dino">
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Triceratops_prorsus_skull.jpg">
         <h2>Triceratops</h2>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Triceratops_prorsus_skull.jpg" alt="Triceratops">
-        <p>Triceratops had three horns and a large frill. It was a plant-eater.</p>
+        <p>A plant-eater with three horns and a large protective frill.</p>
     </div>
 
-    <div class="dino">
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png">
         <h2>Velociraptor</h2>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png" alt="Velociraptor">
-        <p>Velociraptors were small but fast and intelligent hunters.</p>
+        <p>A fast and intelligent hunter that moved in packs.</p>
     </div>
 
-</section>
+</div>
 
 <footer>
-    <p>Made by a Dinosaur Fan 🦕</p>
+    <p>Made by a Dinosaur Explorer 🦕</p>
 </footer>
 
 </body>
