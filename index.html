@@ -4,51 +4,80 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DinoWorld</title>
+<title>DinoVerse</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #e0f7ff, #ffffff);
-    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    background: radial-gradient(circle at top, #0f2027, #000);
+    color: white;
 }
 
-/* TOP TITLE */
+/* Neon Header */
 header {
     text-align: center;
-    padding: 40px 20px;
+    padding: 60px 20px;
 }
 
 header h1 {
-    font-size: 2.5em;
-    color: #1a8cff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5em;
+    color: #00fff7;
+    text-shadow: 0 0 20px #00fff7;
 }
 
-/* EMOJIS */
+/* Grid */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+/* Glass Cards */
+.card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0,255,255,0.2);
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #00fff7;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 15px;
+    color: #00fff7;
+}
+
+.card p {
+    margin: 0 15px 20px;
+    font-size: 0.9em;
+}
+
+/* Floating emojis */
 .emoji {
     position: fixed;
-    font-size: 60px;
-    text-decoration: none;
-    animation: float 10s linear infinite;
+    font-size: 25px;
+    animation: float 8s linear infinite;
 }
 
-/* FLOAT ANIMATION */
 @keyframes float {
-    from {
-        transform: translateY(100vh) rotate(0deg);
-    }
-    to {
-        transform: translateY(-120vh) rotate(360deg);
-    }
-}
-
-/* OPTIONAL CARD AREA (simple landing look) */
-.info {
-    text-align: center;
-    margin-top: 50px;
-    color: #444;
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-100vh); }
 }
 
 </style>
@@ -56,22 +85,35 @@ header h1 {
 
 <body>
 
-<!-- CLICKABLE BIG DINOSAUR EMOJIS -->
-<a href="facts.html" class="emoji" style="left:10%; animation-delay:0s;">🦖</a>
-<a href="facts.html" class="emoji" style="left:25%; animation-delay:2s;">🦖</a>
-<a href="facts.html" class="emoji" style="left:40%; animation-delay:4s;">🦖</a>
-<a href="facts.html" class="emoji" style="left:65%; animation-delay:1s;">🦖</a>
-<a href="facts.html" class="emoji" style="left:85%; animation-delay:3s;">🦖</a>
+<!-- Flying dinos -->
+<div class="emoji" style="left:10%">🦖</div>
+<div class="emoji" style="left:40%; animation-delay:2s;">🦖</div>
+<div class="emoji" style="left:70%; animation-delay:4s;">🦖</div>
 
-<!-- TITLE -->
 <header>
-    <h1>Try clicking the dinosaur emojis 🦖</h1>
+    <h1>DinoVerse 🦖</h1>
 </header>
 
-<!-- SIMPLE INFO -->
-<div class="info">
-    <p>Welcome to DinoWorld 🌍</p>
-    <p>Click the flying dinosaurs to explore fun facts!</p>
+<div class="container">
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg">
+<h3>T-Rex</h3>
+<p>King of dinosaurs.</p>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png">
+<h3>Spinosaurus</h3>
+<p>Largest predator.</p>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png">
+<h3>Velociraptor</h3>
+<p>Fast and smart.</p>
+</div>
+
 </div>
 
 </body>
