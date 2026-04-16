@@ -6,7 +6,6 @@
 
 <title>DinoVerse</title>
 
-<!-- New aesthetic fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
@@ -14,7 +13,7 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #ffffff; /* white background */
+    background: #ffffff;
     color: #2e3d2f;
 }
 
@@ -27,7 +26,7 @@ header {
 header h1 {
     font-family: 'Playfair Display', serif;
     font-size: 3em;
-    color: #2e7d32; /* green */
+    color: #2e7d32;
 }
 
 /* Grid */
@@ -59,7 +58,7 @@ header h1 {
 
 .card h3 {
     margin: 15px;
-    color: #2e7d32; /* green titles */
+    color: #2e7d32;
     font-family: 'Playfair Display', serif;
 }
 
@@ -68,16 +67,21 @@ header h1 {
     font-size: 0.9em;
 }
 
-/* Floating emojis */
+/* Falling emojis */
 .emoji {
     position: fixed;
-    font-size: 35px;
-    animation: float 8s linear infinite;
+    top: -80px; /* start above screen */
+    font-size: 45px; /* slightly bigger */
+    animation: fall 8s linear infinite;
 }
 
-@keyframes float {
-    from { transform: translateY(100vh); }
-    to { transform: translateY(-100vh); }
+@keyframes fall {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(120vh);
+    }
 }
 
 </style>
@@ -85,7 +89,7 @@ header h1 {
 
 <body>
 
-<!-- Flying dinos -->
+<!-- Falling dinosaurs -->
 <div class="emoji" style="left:10%">🦖</div>
 <div class="emoji" style="left:40%; animation-delay:2s;">🦖</div>
 <div class="emoji" style="left:70%; animation-delay:4s;">🦖</div>
@@ -96,10 +100,9 @@ header h1 {
 
 <div class="container">
 
-<!-- Existing -->
 <div class="card">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg">
-<h3>T-Rex</h3>
+<h3>Tyrannosaurus Rex</h3>
 <p>King of dinosaurs.</p>
 </div>
 
@@ -112,26 +115,25 @@ header h1 {
 <div class="card">
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png">
 <h3>Velociraptor</h3>
-<p>Fast and smart.</p>
+<p>Fast and intelligent hunter.</p>
 </div>
 
-<!-- NEW DINOSAURS -->
 <div class="card">
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Triceratops_prorsus_skull.jpg">
 <h3>Triceratops</h3>
-<p>Three horns for defense.</p>
+<p>Three horns for protection.</p>
 </div>
 
 <div class="card">
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Brachiosaurus_DB.jpg">
 <h3>Brachiosaurus</h3>
-<p>Long neck herbivore.</p>
+<p>Long-neck plant eater.</p>
 </div>
 
 <div class="card">
 <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Stegosaurus_stenops_DB.jpg">
 <h3>Stegosaurus</h3>
-<p>Back plates and spikes.</p>
+<p>Plates on its back.</p>
 </div>
 
 <div class="card">
@@ -147,9 +149,21 @@ header h1 {
 </div>
 
 <div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png">
-<h3>Carnotaurus</h3>
-<p>Fast horned predator.</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Diplodocus_carnegii.jpg">
+<h3>Diplodocus</h3>
+<p>Very long tail dinosaur.</p>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Iguanodon_bernissartensis.jpg">
+<h3>Iguanodon</h3>
+<p>Thumb spike defense.</p>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Pachycephalosaurus.jpg">
+<h3>Pachycephalosaurus</h3>
+<p>Thick skull head.</p>
 </div>
 
 </div>
