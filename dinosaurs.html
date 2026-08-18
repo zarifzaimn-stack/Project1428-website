@@ -112,9 +112,7 @@ body {
 
 <body class="bg-prehistoric text-slate-100 font-body min-h-screen">
 
-<!-- =====================================================
-     FALLING DINOSAURS — ONLY ON THE SIDES
-===================================================== -->
+<!-- FALLING DINOSAURS — ONLY ON THE SIDES -->
 
 <div class="falling-dino" style="left: 2%; animation-duration: 7s;">
 🦖
@@ -158,7 +156,6 @@ body {
 
 </nav>
 
-
 <!-- HEADER -->
 
 <header class="text-center py-16 px-6">
@@ -184,7 +181,6 @@ body {
 
 </header>
 
-
 <!-- DINOSAUR LIST -->
 
 <main class="max-w-4xl mx-auto px-6 pb-20">
@@ -199,7 +195,6 @@ body {
     </div>
 
   </div>
-
 
   <!-- POP QUIZ -->
 
@@ -246,7 +241,6 @@ body {
   </section>
 
 </main>
-
 
 <!-- DINOSAUR INFORMATION MODAL -->
 
@@ -304,7 +298,6 @@ body {
 
 </div>
 
-
 <!-- FOOTER -->
 
 <footer class="bg-slate-950 border-t border-slate-900 py-8 text-center text-slate-500 text-sm">
@@ -315,12 +308,9 @@ body {
 
 </footer>
 
-
 <script>
 
-/* =====================================================
-   DINOSAUR DATA
-===================================================== */
+/* DINOSAUR DATA */
 
 const dinos = [
 
@@ -434,9 +424,7 @@ const dinos = [
 ];
 
 
-/* =====================================================
-   CREATE DINOSAUR LIST
-===================================================== */
+/* CREATE DINOSAUR LIST */
 
 const dinoList = document.getElementById("dino-list");
 
@@ -490,9 +478,7 @@ function renderDinos() {
 renderDinos();
 
 
-/* =====================================================
-   OPEN DINOSAUR
-===================================================== */
+/* OPEN DINOSAUR */
 
 function openDino(index) {
 
@@ -511,11 +497,6 @@ function openDino(index) {
   document.getElementById("modal-fact").innerText = dino.fact;
 
   document.getElementById("dino-modal").classList.add("show");
-
-  /*
-    Once 5 different dinosaurs have been clicked,
-    reveal the quiz.
-  */
 
   if (clickedDinos.size >= 5) {
 
@@ -538,9 +519,7 @@ function openDino(index) {
 }
 
 
-/* =====================================================
-   CLOSE MODAL
-===================================================== */
+/* CLOSE MODAL */
 
 function closeModal() {
 
@@ -549,9 +528,7 @@ function closeModal() {
 }
 
 
-/* =====================================================
-   15 QUESTION POP QUIZ
-===================================================== */
+/* 15 QUESTION QUIZ */
 
 const questions = [
 
@@ -723,9 +700,7 @@ const questions = [
 ];
 
 
-/* =====================================================
-   CREATE QUIZ
-===================================================== */
+/* CREATE QUIZ */
 
 function createQuiz() {
 
@@ -771,9 +746,7 @@ function createQuiz() {
 }
 
 
-/* =====================================================
-   QUIZ ANSWERS
-===================================================== */
+/* QUIZ ANSWERS */
 
 let score = 0;
 let answered = 0;
@@ -860,9 +833,7 @@ function answerQuestion(questionIndex, optionIndex, button) {
 }
 
 
-/* =====================================================
-   RESTART QUIZ
-===================================================== */
+/* RESTART QUIZ */
 
 function restartQuiz() {
 
