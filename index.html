@@ -27,10 +27,7 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-
-/* =========================
-   NAVBAR
-========================= */
+/* ================= NAVBAR ================= */
 
 nav {
     position: fixed;
@@ -38,7 +35,6 @@ nav {
     left: 0;
     width: 100%;
     height: 78px;
-
     z-index: 100;
 
     display: flex;
@@ -47,10 +43,10 @@ nav {
 
     padding: 0 5%;
 
-    background: rgba(5, 15, 9, 0.78);
-    backdrop-filter: blur(14px);
+    background: rgba(5, 15, 9, 0.75);
+    backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(150, 190, 145, 0.18);
+    border-bottom: 1px solid rgba(160, 195, 145, 0.15);
 }
 
 .logo {
@@ -58,7 +54,6 @@ nav {
     text-decoration: none;
 
     font-family: 'Cinzel', serif;
-
     font-size: 23px;
     font-weight: 700;
 
@@ -72,7 +67,6 @@ nav {
 
 .nav-links a {
     color: #c6d7c0;
-
     text-decoration: none;
 
     font-size: 13px;
@@ -88,10 +82,7 @@ nav {
     color: #b5d99e;
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* ================= HERO ================= */
 
 .hero {
     height: 100vh;
@@ -109,8 +100,8 @@ nav {
 
     background:
         linear-gradient(
-            rgba(3, 12, 6, 0.35),
-            rgba(3, 12, 6, 0.9)
+            rgba(3, 12, 6, 0.3),
+            rgba(3, 12, 6, 0.88)
         ),
         url("https://images.unsplash.com/photo-1551073179-0be7b3d1a4f4?auto=format&fit=crop&w=2000&q=85");
 
@@ -128,7 +119,7 @@ nav {
         radial-gradient(
             circle at center,
             transparent 10%,
-            rgba(0,0,0,0.65) 100%
+            rgba(0,0,0,0.7) 100%
         );
 
     pointer-events: none;
@@ -136,7 +127,6 @@ nav {
 
 .hero-content {
     position: relative;
-
     z-index: 3;
 
     max-width: 1000px;
@@ -174,7 +164,6 @@ nav {
 
 .hero h1 span {
     display: block;
-
     color: #a7cf8e;
 }
 
@@ -186,14 +175,10 @@ nav {
     color: #d3ddd0;
 
     font-size: 17px;
-
     line-height: 1.8;
 }
 
-
-/* =========================
-   BUTTON
-========================= */
+/* ================= BUTTON ================= */
 
 .quiz-button {
     display: inline-block;
@@ -219,16 +204,12 @@ nav {
 
 .quiz-button:hover {
     background: #8eb879;
-
     color: #07110b;
 
     transform: translateY(-4px);
 }
 
-
-/* =========================
-   DINOSAUR SECTION
-========================= */
+/* ================= DINOSAUR SECTION ================= */
 
 .dinosaur-section {
     padding: 100px 4%;
@@ -268,10 +249,7 @@ nav {
     letter-spacing: 1px;
 }
 
-
-/* =========================
-   CARD GRID
-========================= */
+/* ================= CARD GRID ================= */
 
 .dino-grid {
     max-width: 1450px;
@@ -286,10 +264,7 @@ nav {
     gap: 18px;
 }
 
-
-/* =========================
-   DINOSAUR CARD
-========================= */
+/* ================= CARD ================= */
 
 .dino-card {
     position: relative;
@@ -304,16 +279,9 @@ nav {
 
     color: white;
 
-    background:
-        radial-gradient(
-            circle at center,
-            #294b31,
-            #08120c
-        );
+    background: #111;
 
     border: 1px solid rgba(170, 200, 160, 0.15);
-
-    border-radius: 5px;
 
     transition:
         transform 0.5s ease,
@@ -328,70 +296,44 @@ nav {
     z-index: 5;
 }
 
-
-/* =========================
-   IMAGE
-========================= */
+/* ================= IMAGE ================= */
 
 .dino-image {
     position: absolute;
 
-    top: 0;
-    left: 0;
+    inset: 0;
 
     width: 100%;
     height: 100%;
 
     /*
-       CONTAIN SHOWS THE ENTIRE
-       DINOSAUR IMAGE.
+       CONTAIN keeps the whole dinosaur picture visible.
+       No cropping.
     */
 
     object-fit: contain;
 
-    object-position: center;
-
-    padding: 25px 25px 100px;
-
-    z-index: 1;
+    padding: 20px;
 
     transition:
         transform 0.8s ease,
         filter 0.8s ease;
-}
-
-.dino-card:hover .dino-image {
-    transform: scale(1.04);
-
-    filter: brightness(1.1);
-}
-
-
-/* =========================
-   CARD BACKGROUND
-========================= */
-
-.dino-card::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(65, 105, 67, 0.3),
-            rgba(4, 12, 7, 0.8)
+            circle,
+            #203b27,
+            #09140c 80%
         );
-
-    z-index: 0;
 }
 
+.dino-card:hover .dino-image {
+    transform: scale(1.05);
 
-/* =========================
-   CINEMATIC OVERLAY
-========================= */
+    filter: brightness(1.08);
+}
+
+/* ================= CARD OVERLAY ================= */
 
 .dino-card::after {
     content: "";
@@ -403,17 +345,16 @@ nav {
     background:
         linear-gradient(
             transparent 25%,
-            rgba(3, 12, 6, 0.1) 45%,
+            rgba(3, 12, 6, 0.15) 45%,
             rgba(3, 12, 6, 0.96) 100%
         );
 
-    z-index: 2;
+    z-index: 1;
+
+    pointer-events: none;
 }
 
-
-/* =========================
-   NUMBER
-========================= */
+/* ================= NUMBER ================= */
 
 .dino-number {
     position: absolute;
@@ -421,7 +362,7 @@ nav {
     top: 25px;
     left: 25px;
 
-    z-index: 4;
+    z-index: 3;
 
     color: rgba(255,255,255,0.8);
 
@@ -432,10 +373,7 @@ nav {
     letter-spacing: 3px;
 }
 
-
-/* =========================
-   CARD CONTENT
-========================= */
+/* ================= CONTENT ================= */
 
 .dino-content {
     position: absolute;
@@ -447,7 +385,7 @@ nav {
 
     padding: 32px;
 
-    z-index: 4;
+    z-index: 3;
 }
 
 .dino-label {
@@ -503,10 +441,7 @@ nav {
     transform: translateY(0);
 }
 
-
-/* =========================
-   QUIZ SECTION
-========================= */
+/* ================= QUIZ ================= */
 
 .quiz-section {
     padding: 130px 20px;
@@ -537,10 +472,7 @@ nav {
     margin-bottom: 35px;
 }
 
-
-/* =========================
-   FALLING DINOSAURS
-========================= */
+/* ================= FALLING DINOS ================= */
 
 .falling-dino {
     position: fixed;
@@ -553,7 +485,7 @@ nav {
 
     pointer-events: none;
 
-    opacity: 0.55;
+    opacity: 0.5;
 
     animation: fall linear infinite;
 }
@@ -571,13 +503,9 @@ nav {
             translateY(110vh)
             rotate(360deg);
     }
-
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 
 footer {
     padding: 35px;
@@ -593,10 +521,7 @@ footer {
     letter-spacing: 1px;
 }
 
-
-/* =========================
-   TABLET
-========================= */
+/* ================= TABLET ================= */
 
 @media (max-width: 1000px) {
 
@@ -607,10 +532,7 @@ footer {
 
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* ================= MOBILE ================= */
 
 @media (max-width: 650px) {
 
@@ -654,13 +576,6 @@ footer {
         height: 470px;
     }
 
-    .dino-image {
-        padding:
-            25px
-            20px
-            100px;
-    }
-
     .dino-content {
         padding: 25px;
     }
@@ -671,13 +586,10 @@ footer {
 
 </head>
 
-
 <body>
 
 
-<!-- =========================
-     FALLING DINOSAURS
-========================= -->
+<!-- ================= FALLING DINOSAURS ================= -->
 
 <div class="falling-dino"
      style="left:1%; animation-duration:8s;">
@@ -700,9 +612,7 @@ footer {
 </div>
 
 
-<!-- =========================
-     NAV
-========================= -->
+<!-- ================= NAVIGATION ================= -->
 
 <nav>
 
@@ -725,9 +635,7 @@ footer {
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- ================= HERO ================= -->
 
 <header class="hero">
 
@@ -756,9 +664,7 @@ footer {
 </header>
 
 
-<!-- =========================
-     DINOSAURS
-========================= -->
+<!-- ================= DINOSAURS ================= -->
 
 <section id="dinosaurs" class="dinosaur-section">
 
@@ -778,16 +684,14 @@ footer {
     <div class="dino-grid">
 
 
-        <!-- =========================
-             01 T-REX
-        ========================= -->
+        <!-- 01 T-REX -->
 
         <a href="dinosaurs.html?dino=trex"
            class="dino-card">
 
             <img
                 class="dino-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Tyrannosaurus%20Rex%20Holotype.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg"
                 alt="Tyrannosaurus Rex">
 
             <div class="dino-number">
@@ -813,16 +717,14 @@ footer {
         </a>
 
 
-        <!-- =========================
-             02 TRICERATOPS
-        ========================= -->
+        <!-- 02 TRICERATOPS -->
 
         <a href="dinosaurs.html?dino=triceratops"
            class="dino-card">
 
             <img
                 class="dino-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Triceratops%20BW.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/4/44/Triceratops_BW.jpg"
                 alt="Triceratops">
 
             <div class="dino-number">
@@ -848,16 +750,14 @@ footer {
         </a>
 
 
-        <!-- =========================
-             03 VELOCIRAPTOR
-        ========================= -->
+        <!-- 03 VELOCIRAPTOR -->
 
         <a href="dinosaurs.html?dino=velociraptor"
            class="dino-card">
 
             <img
                 class="dino-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Velociraptor%20Restoration.png"
+                src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png"
                 alt="Velociraptor">
 
             <div class="dino-number">
@@ -883,16 +783,14 @@ footer {
         </a>
 
 
-        <!-- =========================
-             04 SPINOSAURUS
-        ========================= -->
+        <!-- 04 SPINOSAURUS -->
 
         <a href="dinosaurs.html?dino=spinosaurus"
            class="dino-card">
 
             <img
                 class="dino-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Spinosaurus_aegyptiacus.png"
+                src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png"
                 alt="Spinosaurus">
 
             <div class="dino-number">
@@ -918,16 +816,14 @@ footer {
         </a>
 
 
-        <!-- =========================
-             05 STEGOSAURUS
-        ========================= -->
+        <!-- 05 STEGOSAURUS -->
 
         <a href="dinosaurs.html?dino=stegosaurus"
            class="dino-card">
 
             <img
                 class="dino-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Stegosaurus%20BW.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/0/08/Stegosaurus_BW.jpg"
                 alt="Stegosaurus">
 
             <div class="dino-number">
@@ -953,16 +849,14 @@ footer {
         </a>
 
 
-        <!-- =========================
-             06 BRACHIOSAURUS
-        ========================= -->
+        <!-- 06 BRACHIOSAURUS -->
 
         <a href="dinosaurs.html?dino=brachiosaurus"
            class="dino-card">
 
             <img
                 class="dino-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Brachiosaurus%20BW.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Brachiosaurus_BW.jpg"
                 alt="Brachiosaurus">
 
             <div class="dino-number">
@@ -988,16 +882,14 @@ footer {
         </a>
 
 
-        <!-- =========================
-             07 ANKYLOSAURUS
-        ========================= -->
+        <!-- 07 ANKYLOSAURUS -->
 
         <a href="dinosaurs.html?dino=ankylosaurus"
            class="dino-card">
 
             <img
                 class="dino-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Ankylosaurus%20dinosaur.png"
+                src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Ankylosaurus_dinosaur.png"
                 alt="Ankylosaurus">
 
             <div class="dino-number">
@@ -1023,16 +915,14 @@ footer {
         </a>
 
 
-        <!-- =========================
-             08 ALLOSAURUS
-        ========================= -->
+        <!-- 08 ALLOSAURUS -->
 
         <a href="dinosaurs.html?dino=allosaurus"
            class="dino-card">
 
             <img
                 class="dino-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Allosaurus%20BW.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Allosaurus_BW.jpg"
                 alt="Allosaurus">
 
             <div class="dino-number">
@@ -1058,16 +948,14 @@ footer {
         </a>
 
 
-        <!-- =========================
-             09 DIPLODOCUS
-        ========================= -->
+        <!-- 09 DIPLODOCUS -->
 
         <a href="dinosaurs.html?dino=diplodocus"
            class="dino-card">
 
             <img
                 class="dino-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Diplodocus%20carnegii.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Diplodocus_carnegii.jpg"
                 alt="Diplodocus">
 
             <div class="dino-number">
@@ -1098,9 +986,7 @@ footer {
 </section>
 
 
-<!-- =========================
-     QUIZ
-========================= -->
+<!-- ================= QUIZ ================= -->
 
 <section class="quiz-section">
 
@@ -1119,9 +1005,7 @@ footer {
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
