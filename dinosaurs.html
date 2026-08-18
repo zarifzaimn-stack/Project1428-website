@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dinosaur | Dino Explorer</title>
+<title>Dino Explorer | Dinosaur</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -27,9 +27,7 @@ body {
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* NAV */
 
 nav {
     position: fixed;
@@ -45,10 +43,10 @@ nav {
 
     padding: 0 5%;
 
-    background: rgba(5, 15, 9, 0.78);
+    background: rgba(5,15,9,0.8);
     backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(160, 195, 145, 0.15);
+    border-bottom: 1px solid rgba(160,195,145,0.15);
 }
 
 .logo {
@@ -58,6 +56,7 @@ nav {
     font-family: 'Cinzel', serif;
     font-size: 22px;
     font-weight: 700;
+
     letter-spacing: 2px;
 }
 
@@ -67,6 +66,7 @@ nav {
 
     font-size: 13px;
     font-weight: 600;
+
     letter-spacing: 1px;
 
     transition: 0.3s;
@@ -77,43 +77,34 @@ nav {
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
-    min-height: 480px;
+    min-height: 460px;
 
     padding: 150px 25px 80px;
-
-    position: relative;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     text-align: center;
-    overflow: hidden;
 
     background:
         radial-gradient(
             circle at center,
             #193522,
-            #07110b 72%
+            #07110b 70%
         );
-}
-
-.hero-content {
-    max-width: 900px;
-    position: relative;
-    z-index: 3;
 }
 
 .hero-small {
     color: #9fc78c;
 
     font-size: 12px;
+
     letter-spacing: 5px;
+
     font-weight: 600;
 
     margin-bottom: 20px;
@@ -122,14 +113,15 @@ nav {
 .hero h1 {
     font-family: 'Cinzel', serif;
 
-    font-size: clamp(48px, 8vw, 85px);
+    font-size: clamp(45px, 8vw, 85px);
+
+    line-height: 1;
 
     margin: 0;
 
     color: #e2eddd;
 
     letter-spacing: 2px;
-    line-height: 1;
 }
 
 .hero p {
@@ -145,9 +137,7 @@ nav {
 }
 
 
-/* =========================
-   PROFILE
-========================= */
+/* MAIN */
 
 .archive {
     max-width: 1250px;
@@ -156,6 +146,9 @@ nav {
 
     padding: 80px 25px 120px;
 }
+
+
+/* CARD */
 
 .dino-profile {
     display: grid;
@@ -168,7 +161,7 @@ nav {
 
     background: #0d1911;
 
-    border: 1px solid rgba(155, 190, 140, 0.18);
+    border: 1px solid rgba(155,190,140,0.2);
 
     box-shadow:
         0 25px 70px rgba(0,0,0,0.45);
@@ -191,30 +184,34 @@ nav {
 }
 
 
-/* =========================
-   IMAGE
-========================= */
+/* IMAGE */
+
+.image-box {
+    width: 100%;
+    height: 570px;
+
+    overflow: hidden;
+
+    background: #132318;
+}
 
 .dino-photo {
     width: 100%;
     height: 100%;
-    min-height: 570px;
 
     object-fit: cover;
 
     display: block;
 
-    transition: 0.6s;
+    transition: transform 0.7s ease;
 }
 
-.dino-photo:hover {
-    transform: scale(1.03);
+.image-box:hover .dino-photo {
+    transform: scale(1.04);
 }
 
 
-/* =========================
-   INFO
-========================= */
+/* INFO */
 
 .dino-info {
     padding: 55px;
@@ -259,9 +256,7 @@ nav {
 }
 
 
-/* =========================
-   STATS
-========================= */
+/* STATS */
 
 .stats {
     display: grid;
@@ -312,9 +307,7 @@ nav {
 }
 
 
-/* =========================
-   FACT
-========================= */
+/* FACT */
 
 .fact {
     border-left: 2px solid #8fb67e;
@@ -329,48 +322,7 @@ nav {
 }
 
 
-/* =========================
-   ERROR MESSAGE
-========================= */
-
-.error {
-    text-align: center;
-
-    padding: 100px 20px;
-
-    color: #b8c7b4;
-}
-
-.error h2 {
-    font-family: 'Cinzel', serif;
-
-    color: #dcebd4;
-
-    font-size: 40px;
-}
-
-.error a {
-    display: inline-block;
-
-    margin-top: 20px;
-
-    padding: 13px 25px;
-
-    background: #8fb67e;
-
-    color: #07110b;
-
-    text-decoration: none;
-
-    font-weight: 700;
-
-    border-radius: 4px;
-}
-
-
-/* =========================
-   FALLING DINOSAURS
-========================= */
+/* FALLING DINOS */
 
 .falling-dino {
     position: fixed;
@@ -404,9 +356,40 @@ nav {
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* ERROR */
+
+.error {
+    text-align: center;
+
+    padding: 100px 20px;
+}
+
+.error h2 {
+    font-family: 'Cinzel', serif;
+
+    font-size: 45px;
+
+    color: #dcebd4;
+}
+
+.error a {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 14px 25px;
+
+    background: #8fb67e;
+
+    color: #07110b;
+
+    text-decoration: none;
+
+    font-weight: 700;
+}
+
+
+/* FOOTER */
 
 footer {
     padding: 35px;
@@ -423,9 +406,7 @@ footer {
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 850px) {
 
@@ -433,9 +414,8 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .dino-photo {
-        min-height: 380px;
-        height: 380px;
+    .image-box {
+        height: 400px;
     }
 
     .dino-info {
@@ -456,19 +436,15 @@ footer {
     }
 
     .hero {
-        min-height: 420px;
+        min-height: 400px;
     }
 
     .hero h1 {
-        font-size: 45px;
+        font-size: 43px;
     }
 
     .stats {
         grid-template-columns: 1fr;
-    }
-
-    .dino-info h2 {
-        font-size: 38px;
     }
 
 }
@@ -481,9 +457,7 @@ footer {
 <body>
 
 
-<!-- =========================
-     FALLING DINOSAURS
-========================= -->
+<!-- FALLING DINOSAURS -->
 
 <div class="falling-dino"
      style="left:1%; animation-duration:8s;">
@@ -506,9 +480,7 @@ footer {
 </div>
 
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<!-- NAV -->
 
 <nav>
 
@@ -523,25 +495,22 @@ footer {
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <header class="hero">
 
-    <div class="hero-content">
+    <div>
 
         <div class="hero-small">
             PREHISTORIC ARCHIVE
         </div>
 
         <h1 id="heroTitle">
-            THE DINOSAURS
+            DINOSAUR
         </h1>
 
         <p id="heroSubtitle">
-            Discover the creature that ruled Earth
-            millions of years before us.
+            Discover a prehistoric giant.
         </p>
 
     </div>
@@ -549,9 +518,7 @@ footer {
 </header>
 
 
-<!-- =========================
-     DINOSAUR PROFILE
-========================= -->
+<!-- DINOSAUR -->
 
 <main class="archive">
 
@@ -560,9 +527,7 @@ footer {
 </main>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -592,24 +557,17 @@ const dinosaurs = {
         period: "LATE CRETACEOUS",
 
         image:
-        "https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg",
-
-        alt: "Tyrannosaurus Rex",
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tyrannosaurus_Rex_Holotype.jpg",
 
         stats: [
-
             ["Diet", "Carnivore"],
-
             ["Length", "Around 12 m"],
-
             ["Period", "Cretaceous"],
-
             ["Type", "Theropod"]
-
         ],
 
         fact:
-        "One of the most famous dinosaurs ever discovered, T. rex had enormous jaws, powerful teeth, and a massive skull built for hunting."
+        "T. rex was one of the most famous predators of the dinosaur age, with enormous jaws and powerful teeth."
 
     },
 
@@ -623,24 +581,17 @@ const dinosaurs = {
         period: "LATE CRETACEOUS",
 
         image:
-        "https://upload.wikimedia.org/wikipedia/commons/4/44/Triceratops_BW.jpg",
-
-        alt: "Triceratops",
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Triceratops_BW.jpg",
 
         stats: [
-
             ["Diet", "Herbivore"],
-
             ["Length", "Around 9 m"],
-
             ["Defense", "Three horns"],
-
             ["Type", "Ceratopsian"]
-
         ],
 
         fact:
-        "Triceratops had a huge skull, a protective frill, and three distinctive horns. It lived near the end of the Cretaceous Period."
+        "Triceratops had three horns and a huge bony frill that protected the back of its skull."
 
     },
 
@@ -654,24 +605,17 @@ const dinosaurs = {
         period: "LATE CRETACEOUS",
 
         image:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png",
-
-        alt: "Velociraptor",
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Velociraptor_restoration.png",
 
         stats: [
-
             ["Diet", "Carnivore"],
-
             ["Length", "Around 2 m"],
-
             ["Feature", "Curved claw"],
-
             ["Type", "Dromaeosaur"]
-
         ],
 
         fact:
-        "Real Velociraptors were much smaller than their movie versions. Fossil evidence indicates they had feathers."
+        "Real Velociraptors were much smaller than the dinosaurs shown in many movies, and fossil evidence indicates they had feathers."
 
     },
 
@@ -685,24 +629,17 @@ const dinosaurs = {
         period: "CRETACEOUS",
 
         image:
-        "https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png",
-
-        alt: "Spinosaurus",
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Spinosaurus_aegyptiacus.png",
 
         stats: [
-
             ["Diet", "Carnivore"],
-
             ["Feature", "Large sail"],
-
             ["Habitat", "Near water"],
-
             ["Type", "Theropod"]
-
         ],
 
         fact:
-        "Spinosaurus had a long, narrow skull and a distinctive sail-like structure along its back. Evidence suggests it was strongly adapted to life around water."
+        "Spinosaurus had a long narrow skull and a distinctive sail-like structure along its back."
 
     },
 
@@ -716,24 +653,17 @@ const dinosaurs = {
         period: "LATE JURASSIC",
 
         image:
-        "https://upload.wikimedia.org/wikipedia/commons/0/08/Stegosaurus_BW.jpg",
-
-        alt: "Stegosaurus",
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Stegosaurus_BW.jpg",
 
         stats: [
-
             ["Diet", "Herbivore"],
-
             ["Length", "Around 9 m"],
-
             ["Defense", "Tail spikes"],
-
             ["Type", "Thyreophoran"]
-
         ],
 
         fact:
-        "Stegosaurus is famous for the large plates along its back and the four spikes at the end of its tail."
+        "Stegosaurus is famous for the large plates along its back and the spikes at the end of its tail."
 
     },
 
@@ -747,24 +677,17 @@ const dinosaurs = {
         period: "LATE JURASSIC",
 
         image:
-        "https://upload.wikimedia.org/wikipedia/commons/3/3b/Brachiosaurus_BW.jpg",
-
-        alt: "Brachiosaurus",
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Brachiosaurus_BW.jpg",
 
         stats: [
-
             ["Diet", "Herbivore"],
-
             ["Length", "Around 23 m"],
-
             ["Feature", "Long neck"],
-
             ["Type", "Sauropod"]
-
         ],
 
         fact:
-        "Brachiosaurus had unusually long front legs and a very long neck, allowing it to reach vegetation high above the ground."
+        "Brachiosaurus had long front legs and a very long neck, allowing it to reach vegetation high above the ground."
 
     },
 
@@ -778,24 +701,17 @@ const dinosaurs = {
         period: "LATE CRETACEOUS",
 
         image:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5e/Ankylosaurus_dinosaur.png",
-
-        alt: "Ankylosaurus",
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ankylosaurus_dinosaur.png",
 
         stats: [
-
             ["Diet", "Herbivore"],
-
             ["Length", "Around 8 m"],
-
             ["Defense", "Tail club"],
-
             ["Type", "Armored dinosaur"]
-
         ],
 
         fact:
-        "Ankylosaurus was covered in bony armor and had a powerful tail club that could be used for defense."
+        "Ankylosaurus was covered in bony armor and had a powerful tail club for defense."
 
     },
 
@@ -809,24 +725,17 @@ const dinosaurs = {
         period: "LATE JURASSIC",
 
         image:
-        "https://upload.wikimedia.org/wikipedia/commons/b/b0/Allosaurus_BW.jpg",
-
-        alt: "Allosaurus",
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Allosaurus_BW.jpg",
 
         stats: [
-
             ["Diet", "Carnivore"],
-
             ["Length", "Around 9 m"],
-
             ["Feature", "Large jaws"],
-
             ["Type", "Theropod"]
-
         ],
 
         fact:
-        "Allosaurus was a major predator of the Late Jurassic and had a large skull filled with sharp teeth."
+        "Allosaurus was a major predator during the Late Jurassic and had a large skull filled with sharp teeth."
 
     },
 
@@ -840,24 +749,17 @@ const dinosaurs = {
         period: "LATE JURASSIC",
 
         image:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5b/Diplodocus_carnegii.jpg",
-
-        alt: "Diplodocus",
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Diplodocus_carnegii.jpg",
 
         stats: [
-
             ["Diet", "Herbivore"],
-
             ["Length", "Around 25 m"],
-
             ["Feature", "Whip-like tail"],
-
             ["Type", "Sauropod"]
-
         ],
 
         fact:
-        "Diplodocus had an extremely long neck and tail. Its whip-like tail made up a large portion of its overall length."
+        "Diplodocus had an extremely long neck and tail, with the tail making up a large part of its overall length."
 
     }
 
@@ -865,18 +767,21 @@ const dinosaurs = {
 
 
 /* =====================================================
-   GET DINOSAUR FROM URL
+   READ URL
 ===================================================== */
 
-const params = new URLSearchParams(window.location.search);
+const urlParams =
+    new URLSearchParams(window.location.search);
 
-const dinoKey = params.get("dino");
+const selectedDino =
+    urlParams.get("dino");
 
-const dino = dinosaurs[dinoKey];
+const dino =
+    dinosaurs[selectedDino];
 
 
 /* =====================================================
-   DISPLAY ONLY THE SELECTED DINOSAUR
+   DISPLAY DINOSAUR
 ===================================================== */
 
 const container =
@@ -888,31 +793,28 @@ if (dino) {
     document.title =
         dino.name + " | Dino Explorer";
 
-
     document.getElementById("heroTitle").textContent =
         dino.name.toUpperCase();
 
-
     document.getElementById("heroSubtitle").textContent =
-        "Enter the world of " + dino.name +
-        " and discover its prehistoric story.";
+        "Explore the prehistoric world of " +
+        dino.name + ".";
 
 
-    let statsHTML = "";
+    let stats = "";
 
+    dino.stats.forEach(item => {
 
-    dino.stats.forEach(stat => {
-
-        statsHTML += `
+        stats += `
 
             <div class="stat">
 
                 <span class="stat-label">
-                    ${stat[0]}
+                    ${item[0]}
                 </span>
 
                 <span class="stat-value">
-                    ${stat[1]}
+                    ${item[1]}
                 </span>
 
             </div>
@@ -926,11 +828,17 @@ if (dino) {
 
         <article class="dino-profile">
 
-            <img
-                class="dino-photo"
-                src="${dino.image}"
-                alt="${dino.alt}"
-            >
+            <div class="image-box">
+
+                <img
+                    class="dino-photo"
+                    src="${dino.image}"
+                    alt="${dino.name}"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'height:100%;display:flex;align-items:center;justify-content:center;font-size:70px;\\'>🦖</div>';"
+                >
+
+            </div>
+
 
             <div class="dino-info">
 
@@ -948,7 +856,7 @@ if (dino) {
 
                 <div class="stats">
 
-                    ${statsHTML}
+                    ${stats}
 
                 </div>
 
@@ -968,7 +876,7 @@ if (dino) {
 
 
 /* =====================================================
-   INVALID DINOSAUR
+   IF NO DINOSAUR WAS SELECTED
 ===================================================== */
 
 else {
@@ -992,7 +900,7 @@ else {
             </p>
 
             <a href="index.html">
-                ← BACK TO DINOSAURS
+                ← BACK TO EXPLORE
             </a>
 
         </div>
@@ -1002,7 +910,6 @@ else {
 }
 
 </script>
-
 
 </body>
 </html>
