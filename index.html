@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DinoExplorer | Prehistoric Giants</title>
-  <!-- Tailwind CSS CDN -->
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
+
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
   <script>
     tailwind.config = {
       theme: {
@@ -26,77 +27,78 @@
     }
   </script>
 </head>
+
 <body class="bg-prehistoric text-slate-100 font-body min-h-screen flex flex-col">
 
   <!-- Navigation -->
   <nav class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
       <div class="flex items-center gap-2">
         <span class="text-3xl">🦖</span>
-        <span class="font-display font-bold text-2xl tracking-wide text-amber">DINO EXPLORER</span>
+        <span class="font-display font-bold text-2xl tracking-wide text-amber">
+          DINO EXPLORER
+        </span>
       </div>
+
       <div class="flex gap-4">
-        <a href="#dinosaurs" class="text-sm font-semibold hover:text-amber transition-colors">Dinosaurs</a>
-        <a href="#quiz" class="text-sm font-semibold hover:text-amber transition-colors">Dino Quiz</a>
+        <a href="index.html"
+           class="text-sm font-semibold hover:text-amber transition-colors">
+          Home
+        </a>
+
+        <a href="dinosaurs.html"
+           class="text-sm font-semibold hover:text-amber transition-colors">
+          Dinosaurs
+        </a>
       </div>
+
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <header class="relative bg-gradient-to-b from-jungle/40 to-prehistoric py-20 px-6 text-center border-b border-slate-800">
+  <header class="relative bg-gradient-to-b from-jungle/40 to-prehistoric py-24 px-6 text-center border-b border-slate-800">
+
     <div class="max-w-3xl mx-auto space-y-6">
+
       <span class="inline-block bg-amber/20 text-amber font-display px-4 py-1.5 rounded-full text-sm font-semibold border border-amber/30">
         JURASSIC & CRETACEOUS ARCHIVE
       </span>
+
       <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white">
         MEET THE PREHISTORIC GIANTS
       </h1>
+
       <p class="text-slate-300 text-lg max-w-xl mx-auto leading-relaxed">
-        Step back millions of years. Explore roaring carnivores, towering herbivores, and fascinating fossil facts!
+        Step back millions of years. Explore roaring carnivores,
+        towering herbivores, and fascinating fossil facts!
       </p>
+
       <div class="pt-4">
-        <a href="#dinosaurs" class="inline-block bg-amber hover:bg-amber-600 text-slate-950 font-display font-bold px-8 py-4 rounded-full text-lg transition-transform hover:scale-105 shadow-lg shadow-amber/20">
+
+        <a href="dinosaurs.html"
+           class="inline-block bg-amber hover:bg-amber-600 text-slate-950 font-display font-bold px-8 py-4 rounded-full text-lg transition-transform hover:scale-105 shadow-lg shadow-amber/20">
           START EXPLORING 👇
         </a>
+
       </div>
     </div>
+
   </header>
 
-  <!-- Dinosaur Section -->
-  <main id="dinosaurs" class="max-w-6xl mx-auto px-6 py-16 flex-grow w-full">
-    
-    <!-- Filter Buttons -->
-    <div class="flex flex-wrap justify-center gap-3 mb-12">
-      <button onclick="filterDinos('all')" class="filter-btn active bg-slate-800 hover:bg-amber hover:text-slate-950 px-6 py-2.5 rounded-full font-display text-sm font-bold transition-all border border-slate-700">
-        All Dinosaurs
-      </button>
-      <button onclick="filterDinos('carnivore')" class="filter-btn bg-slate-800 hover:bg-amber hover:text-slate-950 px-6 py-2.5 rounded-full font-display text-sm font-bold transition-all border border-slate-700">
-        🥩 Carnivores
-      </button>
-      <button onclick="filterDinos('herbivore')" class="filter-btn bg-slate-800 hover:bg-amber hover:text-slate-950 px-6 py-2.5 rounded-full font-display text-sm font-bold transition-all border border-slate-700">
-        🌿 Herbivores
-      </button>
-    </div>
+  <!-- Welcome -->
+  <main class="max-w-5xl mx-auto px-6 py-16 text-center flex-grow">
 
-    <!-- Dino Grid -->
-    <div id="dino-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Cards dynamically injected via JavaScript -->
-    </div>
+    <h2 class="font-display text-4xl font-bold text-white mb-5">
+      Ready to Explore? 🦖
+    </h2>
 
-    <!-- Mini Quiz Section -->
-    <section id="quiz" class="mt-24 bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
-      <div class="max-w-xl mx-auto space-y-6 relative z-10">
-        <span class="text-4xl">🧠</span>
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">QUICK DINO TRIVIA</h2>
-        <p id="quiz-question" class="text-slate-300 text-lg font-medium">Which dinosaur had the strongest bite force?</p>
-        
-        <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-          <!-- Quiz options injected via JS -->
-        </div>
-        
-        <p id="quiz-result" class="font-display font-bold text-lg hidden"></p>
-      </div>
-    </section>
+    <p class="text-slate-300 max-w-2xl mx-auto leading-relaxed">
+      Discover some of the most fascinating dinosaurs that ever lived.
+      Learn about their size, diet, time period, and amazing abilities.
+      Click the button above to enter the Dinosaur Explorer.
+    </p>
+
   </main>
 
   <!-- Footer -->
@@ -104,188 +106,5 @@
     <p>Created for Dino Explorers | Powered by GitHub Pages</p>
   </footer>
 
-  <!-- Script for Interactive Data & Mechanics -->
-  <script>
-    const dinos = [
-      {
-        name: "Tyrannosaurus Rex",
-        type: "carnivore",
-        period: "Late Cretaceous",
-        length: "12 meters",
-        diet: "Meat 🥩",
-        icon: "🦖",
-        fact: "T-Rex had teeth up to 30 cm long and the strongest bite of any land animal ever!",
-        bgGradient: "from-rose-950/40 to-slate-900"
-      },
-      {
-        name: "Triceratops",
-        type: "herbivore",
-        period: "Late Cretaceous",
-        length: "9 meters",
-        diet: "Plants 🌿",
-        icon: "🦏",
-        fact: "Its skull was huge—making up nearly one-third of its entire body length!",
-        bgGradient: "from-emerald-950/40 to-slate-900"
-      },
-      {
-        name: "Velociraptor",
-        type: "carnivore",
-        period: "Late Cretaceous",
-        length: "2 meters",
-        diet: "Meat 🥩",
-        icon: "🦅",
-        fact: "Unlike in movies, real Velociraptors were about the size of a turkey and had feathers!",
-        bgGradient: "from-amber-950/40 to-slate-900"
-      },
-      {
-        name: "Brachiosaurus",
-        type: "herbivore",
-        period: "Late Jurassic",
-        length: "23 meters",
-        diet: "Plants 🌿",
-        icon: "🦕",
-        fact: "Its front legs were longer than its back legs, helping it reach high treetop leaves.",
-        bgGradient: "from-teal-950/40 to-slate-900"
-      },
-      {
-        name: "Stegosaurus",
-        type: "herbivore",
-        period: "Late Jurassic",
-        length: "9 meters",
-        diet: "Plants 🌿",
-        icon: "🐊",
-        fact: "Despite its large body size, a Stegosaurus had a brain no bigger than a walnut!",
-        bgGradient: "from-indigo-950/40 to-slate-900"
-      },
-      {
-        name: "Ankylosaurus",
-        type: "herbivore",
-        period: "Late Cretaceous",
-        length: "8 meters",
-        diet: "Plants 🌿",
-        icon: "🛡️",
-        fact: "It was a living tank covered in heavy bony armor with a massive tail club for defense.",
-        bgGradient: "from-orange-950/40 to-slate-900"
-      }
-    ];
-
-    // Render Dino Cards
-    function renderDinos(filter = 'all') {
-      const grid = document.getElementById('dino-grid');
-      grid.innerHTML = '';
-
-      const filtered = filter === 'all' ? dinos : dinos.filter(d => d.type === filter);
-
-      filtered.forEach(dino => {
-        const card = document.createElement('div');
-        card.className = `bg-gradient-to-b ${dino.bgGradient} border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber/50 transition-all hover:-translate-y-1 shadow-xl`;
-        
-        card.innerHTML = `
-          <div>
-            <div class="flex justify-between items-start mb-4">
-              <span class="text-5xl">${dino.icon}</span>
-              <span class="text-xs font-display font-semibold uppercase tracking-wider px-3 py-1 rounded-full ${dino.type === 'carnivore' ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30' : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'}">
-                ${dino.type}
-              </span>
-            </div>
-            <h3 class="font-display text-2xl font-bold text-white mb-1">${dino.name}</h3>
-            <p class="text-xs text-amber font-semibold mb-4">${dino.period}</p>
-            
-            <div class="space-y-2 text-sm text-slate-300 mb-6">
-              <div class="flex justify-between border-b border-slate-800/80 pb-1">
-                <span class="text-slate-400">Diet:</span>
-                <span class="font-semibold">${dino.diet}</span>
-              </div>
-              <div class="flex justify-between border-b border-slate-800/80 pb-1">
-                <span class="text-slate-400">Length:</span>
-                <span class="font-semibold">${dino.length}</span>
-              </div>
-            </div>
-
-            <p class="text-xs text-slate-400 leading-relaxed bg-slate-950/50 p-3 rounded-xl border border-slate-800">
-              💡 <strong>Fun Fact:</strong> ${dino.fact}
-            </p>
-          </div>
-          
-          <button onclick="playRoar('${dino.name}')" class="mt-6 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-display text-sm font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-2 border border-slate-700">
-            🔊 Hear Sound
-          </button>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    // Filter Logic
-    function filterDinos(type) {
-      renderDinos(type);
-    }
-
-    // Sound Simulator (Web Audio API synthesizer for a simple roar effect)
-    function playRoar(name) {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.8);
-
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.8);
-      } catch (e) {
-        console.log('Audio not supported on browser');
-      }
-    }
-
-    // Interactive Quiz Setup
-    const quizData = {
-      question: "Which dinosaur had the strongest bite force ever recorded?",
-      options: [
-        { text: "Stegosaurus", correct: false },
-        { text: "Tyrannosaurus Rex", correct: true },
-        { text: "Velociraptor", correct: false },
-        { text: "Triceratops", correct: false }
-      ]
-    };
-
-    function loadQuiz() {
-      const optionsContainer = document.getElementById('quiz-options');
-      optionsContainer.innerHTML = '';
-      
-      quizData.options.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.className = "bg-slate-800 hover:bg-slate-700 text-slate-200 font-display font-semibold p-4 rounded-xl border border-slate-700 transition-colors text-sm";
-        btn.innerText = opt.text;
-        btn.onclick = () => checkAnswer(opt.correct, btn);
-        optionsContainer.appendChild(btn);
-      });
-    }
-
-    function checkAnswer(isCorrect, btn) {
-      const result = document.getElementById('quiz-result');
-      result.classList.remove('hidden', 'text-emerald-400', 'text-rose-400');
-      
-      if (isCorrect) {
-        result.innerText = "🎯 Correct! T-Rex could crush bones with a bite force of over 12,000 pounds!";
-        result.classList.add('text-emerald-400');
-        btn.classList.add('bg-emerald-950', 'border-emerald-500');
-      } else {
-        result.innerText = "❌ Not quite! Give it another try!";
-        result.classList.add('text-rose-400');
-        btn.classList.add('bg-rose-950', 'border-rose-500');
-      }
-    }
-
-    // Initial Load
-    renderDinos();
-    loadQuiz();
-  </script>
 </body>
 </html>
