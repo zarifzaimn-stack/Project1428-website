@@ -36,10 +36,8 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 78px;
-
     z-index: 100;
 
     display: flex;
@@ -49,7 +47,6 @@ nav {
     padding: 0 5%;
 
     background: rgba(5, 15, 9, 0.78);
-
     backdrop-filter: blur(15px);
 
     border-bottom: 1px solid rgba(160, 195, 145, 0.15);
@@ -57,29 +54,19 @@ nav {
 
 .logo {
     color: #dcebd4;
-
     text-decoration: none;
-
     font-family: 'Cinzel', serif;
-
     font-size: 22px;
-
     font-weight: 700;
-
     letter-spacing: 2px;
 }
 
 .back {
     color: #b8d1ad;
-
     text-decoration: none;
-
     font-size: 13px;
-
     font-weight: 600;
-
     letter-spacing: 1px;
-
     transition: 0.3s;
 }
 
@@ -93,21 +80,16 @@ nav {
 ========================= */
 
 .hero {
-
-    min-height: 470px;
-
+    min-height: 520px;
     padding: 150px 25px 80px;
 
     position: relative;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
-
     overflow: hidden;
 
     background:
@@ -118,52 +100,48 @@ nav {
         );
 }
 
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(7,17,11,0.15),
+            rgba(7,17,11,0.7)
+        );
+
+    pointer-events: none;
+}
+
 .hero-content {
     max-width: 850px;
-
     position: relative;
-
     z-index: 3;
 }
 
 .hero-small {
-
     color: #9fc78c;
-
     font-size: 12px;
-
     letter-spacing: 5px;
-
     font-weight: 600;
-
     margin-bottom: 20px;
 }
 
 .hero h1 {
-
     font-family: 'Cinzel', serif;
-
-    font-size: clamp(48px, 8vw, 90px);
-
+    font-size: clamp(50px, 8vw, 90px);
     margin: 0;
-
     color: #e2eddd;
-
     letter-spacing: 2px;
-
     line-height: 1;
 }
 
 .hero p {
-
     max-width: 650px;
-
     margin: 25px auto 0;
-
     color: #91a393;
-
     line-height: 1.8;
-
     font-size: 15px;
 }
 
@@ -173,11 +151,8 @@ nav {
 ========================= */
 
 .archive {
-
     max-width: 1250px;
-
     margin: auto;
-
     padding: 80px 25px 120px;
 }
 
@@ -187,13 +162,11 @@ nav {
 ========================= */
 
 .dino-profile {
-
-    display: none;
-
-    grid-template-columns:
-        1.1fr 1fr;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
 
     min-height: 520px;
+    margin-bottom: 40px;
 
     overflow: hidden;
 
@@ -202,76 +175,120 @@ nav {
     border: 1px solid rgba(155, 190, 140, 0.15);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.3);
+        0 20px 60px rgba(0,0,0,0.35);
 
-    animation: profileIn 0.7s ease forwards;
+    transition: 0.45s;
+}
+
+.dino-profile:hover {
+    border-color: rgba(159,199,140,0.5);
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5);
 }
 
 
-/* Only selected dinosaur appears */
+/* =========================
+   IMAGE AREA
+========================= */
 
-.dino-profile.active {
-    display: grid;
+.photo-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
 }
-
-
-@keyframes profileIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-
-/* IMAGE */
 
 .dino-photo {
-
     width: 100%;
-
     height: 100%;
-
     min-height: 520px;
 
     object-fit: cover;
-
     display: block;
+
+    transition:
+        transform 0.8s ease,
+        filter 0.8s ease;
+}
+
+.dino-profile:hover .dino-photo {
+    transform: scale(1.07);
+
+    filter:
+        brightness(1.05)
+        contrast(1.08);
 }
 
 
-/* DETAILS */
+/* CINEMATIC OVERLAY */
+
+.photo-container::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7,17,11,0.05),
+            rgba(7,17,11,0.35)
+        );
+
+    pointer-events: none;
+}
+
+
+/* IMAGE NUMBER */
+
+.image-label {
+    position: absolute;
+
+    left: 25px;
+    bottom: 25px;
+
+    z-index: 2;
+
+    padding: 8px 14px;
+
+    background: rgba(5,15,9,0.65);
+
+    border: 1px solid rgba(190,220,175,0.25);
+
+    backdrop-filter: blur(10px);
+
+    color: #dcebd4;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   DETAILS
+========================= */
 
 .dino-info {
-
     padding: 55px;
 
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
 }
 
 .dino-number {
-
     color: #8fb67e;
-
     font-size: 11px;
-
     letter-spacing: 4px;
-
     margin-bottom: 12px;
 }
 
 .dino-info h2 {
-
     font-family: 'Cinzel', serif;
 
     font-size: clamp(32px, 4vw, 52px);
@@ -284,7 +301,6 @@ nav {
 }
 
 .period {
-
     color: #a5b5a0;
 
     font-size: 13px;
@@ -300,11 +316,8 @@ nav {
 ========================= */
 
 .stats {
-
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 12px;
 
@@ -312,16 +325,22 @@ nav {
 }
 
 .stat {
-
     padding: 16px;
 
     background: rgba(255,255,255,0.035);
 
     border: 1px solid rgba(255,255,255,0.07);
+
+    transition: 0.3s;
+}
+
+.stat:hover {
+    background: rgba(143,182,126,0.08);
+
+    border-color: rgba(143,182,126,0.25);
 }
 
 .stat-label {
-
     display: block;
 
     color: #71816f;
@@ -336,7 +355,6 @@ nav {
 }
 
 .stat-value {
-
     color: #d7e5d2;
 
     font-size: 14px;
@@ -350,7 +368,6 @@ nav {
 ========================= */
 
 .fact {
-
     border-left: 2px solid #8fb67e;
 
     padding-left: 18px;
@@ -364,40 +381,21 @@ nav {
 
 
 /* =========================
-   BACK BUTTON
+   FOOTER
 ========================= */
 
-.archive-back {
+footer {
+    padding: 40px;
 
-    display: block;
+    text-align: center;
 
-    width: fit-content;
+    background: #040b06;
 
-    margin: 35px auto 0;
+    color: #657664;
 
-    padding: 14px 25px;
+    font-size: 12px;
 
-    border: 1px solid rgba(159,199,140,0.3);
-
-    color: #b8d1ad;
-
-    text-decoration: none;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    transition: 0.3s;
-}
-
-.archive-back:hover {
-
-    background: #8fb67e;
-
-    color: #07110b;
-
+    letter-spacing: 1px;
 }
 
 
@@ -406,7 +404,6 @@ nav {
 ========================= */
 
 .falling-dino {
-
     position: fixed;
 
     top: -70px;
@@ -425,41 +422,17 @@ nav {
 @keyframes fall {
 
     from {
-
         transform:
             translateY(-80px)
             rotate(0deg);
-
     }
 
     to {
-
         transform:
             translateY(110vh)
             rotate(360deg);
-
     }
 
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-
-    padding: 35px;
-
-    text-align: center;
-
-    background: #040b06;
-
-    color: #657664;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
 }
 
 
@@ -469,24 +442,21 @@ footer {
 
 @media (max-width: 850px) {
 
-    .dino-profile.active {
-
+    .dino-profile {
         grid-template-columns: 1fr;
+    }
 
+    .photo-container {
+        min-height: 350px;
     }
 
     .dino-photo {
-
         min-height: 350px;
-
         height: 350px;
-
     }
 
     .dino-info {
-
         padding: 35px 25px;
-
     }
 
 }
@@ -494,35 +464,24 @@ footer {
 @media (max-width: 600px) {
 
     nav {
-
         height: 65px;
-
         padding: 0 20px;
-
     }
 
     .logo {
-
         font-size: 18px;
-
     }
 
     .hero {
-
-        min-height: 430px;
-
+        min-height: 470px;
     }
 
     .hero h1 {
-
         font-size: 48px;
-
     }
 
     .stats {
-
         grid-template-columns: 1fr;
-
     }
 
 }
@@ -536,7 +495,7 @@ footer {
 
 
 <!-- =========================
-     FALLING DINOSAURS
+     FALLING DINOS
 ========================= -->
 
 <div class="falling-dino"
@@ -589,11 +548,11 @@ footer {
             PREHISTORIC ARCHIVE
         </div>
 
-        <h1 id="heroTitle">
+        <h1>
             THE DINOSAURS
         </h1>
 
-        <p id="heroDescription">
+        <p>
             Discover the creatures that dominated Earth
             millions of years before us.
         </p>
@@ -610,250 +569,662 @@ footer {
 <main class="archive">
 
 
-    <!-- T-REX -->
+<!-- T-REX -->
 
-    <article class="dino-profile" id="trex">
+<article class="dino-profile">
+
+    <div class="photo-container">
 
         <img
             class="dino-photo"
             src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg"
             alt="Tyrannosaurus Rex">
 
-        <div class="dino-info">
+        <div class="image-label">
+            TYRANNOSAURUS
+        </div>
 
-            <div class="dino-number">
-                SPECIES 01
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 01
+        </div>
+
+        <h2>
+            Tyrannosaurus Rex
+        </h2>
+
+        <div class="period">
+            LATE CRETACEOUS
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Carnivore</span>
             </div>
 
-            <h2>
-                Tyrannosaurus Rex
-            </h2>
-
-            <div class="period">
-                LATE CRETACEOUS
+            <div class="stat">
+                <span class="stat-label">Length</span>
+                <span class="stat-value">Around 12 m</span>
             </div>
 
-            <div class="stats">
-
-                <div class="stat">
-                    <span class="stat-label">Diet</span>
-                    <span class="stat-value">Carnivore</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Length</span>
-                    <span class="stat-value">Around 12 m</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Period</span>
-                    <span class="stat-value">Cretaceous</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Type</span>
-                    <span class="stat-value">Theropod</span>
-                </div>
-
+            <div class="stat">
+                <span class="stat-label">Period</span>
+                <span class="stat-value">Cretaceous</span>
             </div>
 
-            <div class="fact">
-
-                One of the most famous dinosaurs ever discovered,
-                T. rex had enormous jaws and powerful teeth.
-
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Theropod</span>
             </div>
 
         </div>
 
-    </article>
+        <div class="fact">
+            One of the most famous dinosaurs ever discovered,
+            T. rex had enormous jaws and powerful teeth.
+        </div>
+
+    </div>
+
+</article>
 
 
-    <!-- TRICERATOPS -->
+<!-- TRICERATOPS -->
 
-    <article class="dino-profile" id="triceratops">
+<article class="dino-profile">
+
+    <div class="photo-container">
 
         <img
             class="dino-photo"
             src="https://upload.wikimedia.org/wikipedia/commons/4/44/Triceratops_BW.jpg"
             alt="Triceratops">
 
-        <div class="dino-info">
+        <div class="image-label">
+            TRICERATOPS
+        </div>
 
-            <div class="dino-number">
-                SPECIES 02
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 02
+        </div>
+
+        <h2>
+            Triceratops
+        </h2>
+
+        <div class="period">
+            LATE CRETACEOUS
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Herbivore</span>
             </div>
 
-            <h2>
-                Triceratops
-            </h2>
-
-            <div class="period">
-                LATE CRETACEOUS
+            <div class="stat">
+                <span class="stat-label">Length</span>
+                <span class="stat-value">Around 9 m</span>
             </div>
 
-            <div class="stats">
-
-                <div class="stat">
-                    <span class="stat-label">Diet</span>
-                    <span class="stat-value">Herbivore</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Length</span>
-                    <span class="stat-value">Around 9 m</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Defense</span>
-                    <span class="stat-value">Three horns</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Type</span>
-                    <span class="stat-value">Ceratopsian</span>
-                </div>
-
+            <div class="stat">
+                <span class="stat-label">Defense</span>
+                <span class="stat-value">Three horns</span>
             </div>
 
-            <div class="fact">
-
-                Triceratops had a huge skull, a protective frill,
-                and three distinctive horns.
-
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Ceratopsian</span>
             </div>
 
         </div>
 
-    </article>
+        <div class="fact">
+            Triceratops had a huge skull, a protective frill,
+            and three distinctive horns.
+        </div>
+
+    </div>
+
+</article>
 
 
-    <!-- VELOCIRAPTOR -->
+<!-- VELOCIRAPTOR -->
 
-    <article class="dino-profile" id="velociraptor">
+<article class="dino-profile">
+
+    <div class="photo-container">
 
         <img
             class="dino-photo"
             src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png"
             alt="Velociraptor">
 
-        <div class="dino-info">
+        <div class="image-label">
+            VELOCIRAPTOR
+        </div>
 
-            <div class="dino-number">
-                SPECIES 03
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 03
+        </div>
+
+        <h2>
+            Velociraptor
+        </h2>
+
+        <div class="period">
+            LATE CRETACEOUS
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Carnivore</span>
             </div>
 
-            <h2>
-                Velociraptor
-            </h2>
-
-            <div class="period">
-                LATE CRETACEOUS
+            <div class="stat">
+                <span class="stat-label">Length</span>
+                <span class="stat-value">Around 2 m</span>
             </div>
 
-            <div class="stats">
-
-                <div class="stat">
-                    <span class="stat-label">Diet</span>
-                    <span class="stat-value">Carnivore</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Length</span>
-                    <span class="stat-value">Around 2 m</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Feature</span>
-                    <span class="stat-value">Curved claw</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Type</span>
-                    <span class="stat-value">Dromaeosaur</span>
-                </div>
-
+            <div class="stat">
+                <span class="stat-label">Feature</span>
+                <span class="stat-value">Curved claw</span>
             </div>
 
-            <div class="fact">
-
-                Real Velociraptors were much smaller than their movie
-                versions and evidence indicates they had feathers.
-
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Dromaeosaur</span>
             </div>
 
         </div>
 
-    </article>
+        <div class="fact">
+            Real Velociraptors were much smaller than their movie
+            versions and evidence indicates they had feathers.
+        </div>
+
+    </div>
+
+</article>
 
 
-    <!-- SPINOSAURUS -->
+<!-- SPINOSAURUS -->
 
-    <article class="dino-profile" id="spinosaurus">
+<article class="dino-profile">
+
+    <div class="photo-container">
 
         <img
             class="dino-photo"
             src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png"
             alt="Spinosaurus">
 
-        <div class="dino-info">
+        <div class="image-label">
+            SPINOSAURUS
+        </div>
 
-            <div class="dino-number">
-                SPECIES 04
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 04
+        </div>
+
+        <h2>
+            Spinosaurus
+        </h2>
+
+        <div class="period">
+            CRETACEOUS
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Carnivore</span>
             </div>
 
-            <h2>
-                Spinosaurus
-            </h2>
-
-            <div class="period">
-                CRETACEOUS
+            <div class="stat">
+                <span class="stat-label">Feature</span>
+                <span class="stat-value">Large sail</span>
             </div>
 
-            <div class="stats">
-
-                <div class="stat">
-                    <span class="stat-label">Diet</span>
-                    <span class="stat-value">Carnivore</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Feature</span>
-                    <span class="stat-value">Large sail</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Habitat</span>
-                    <span class="stat-value">Near water</span>
-                </div>
-
-                <div class="stat">
-                    <span class="stat-label">Type</span>
-                    <span class="stat-value">Theropod</span>
-                </div>
-
+            <div class="stat">
+                <span class="stat-label">Habitat</span>
+                <span class="stat-value">Near water</span>
             </div>
 
-            <div class="fact">
-
-                Spinosaurus had a long, narrow skull and a distinctive
-                sail-like structure along its back.
-
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Theropod</span>
             </div>
 
         </div>
 
-    </article>
+        <div class="fact">
+            Spinosaurus had a long, narrow skull and a distinctive
+            sail-like structure along its back.
+        </div>
+
+    </div>
+
+</article>
 
 
-    <!-- BACK -->
+<!-- BRACHIOSAURUS -->
 
-    <a href="index.html" class="archive-back">
-        ← RETURN TO DINO EXPLORER
-    </a>
+<article class="dino-profile">
+
+    <div class="photo-container">
+
+        <img
+            class="dino-photo"
+            src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Brachiosaurus_BW.jpg"
+            alt="Brachiosaurus">
+
+        <div class="image-label">
+            BRACHIOSAURUS
+        </div>
+
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 05
+        </div>
+
+        <h2>
+            Brachiosaurus
+        </h2>
+
+        <div class="period">
+            LATE JURASSIC
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Herbivore</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Length</span>
+                <span class="stat-value">Around 23 m</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Feature</span>
+                <span class="stat-value">Long neck</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Sauropod</span>
+            </div>
+
+        </div>
+
+        <div class="fact">
+            Brachiosaurus had unusually long front legs,
+            allowing it to reach vegetation high above the ground.
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- STEGOSAURUS -->
+
+<article class="dino-profile">
+
+    <div class="photo-container">
+
+        <img
+            class="dino-photo"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Stegosaurus_BW.jpg"
+            alt="Stegosaurus">
+
+        <div class="image-label">
+            STEGOSAURUS
+        </div>
+
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 06
+        </div>
+
+        <h2>
+            Stegosaurus
+        </h2>
+
+        <div class="period">
+            LATE JURASSIC
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Herbivore</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Defense</span>
+                <span class="stat-value">Tail spikes</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Feature</span>
+                <span class="stat-value">Back plates</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Thyreophoran</span>
+            </div>
+
+        </div>
+
+        <div class="fact">
+            Stegosaurus is famous for its large plates along its back
+            and four powerful spikes on its tail.
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- ANKYLOSAURUS -->
+
+<article class="dino-profile">
+
+    <div class="photo-container">
+
+        <img
+            class="dino-photo"
+            src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Ankylosaurus_BW.jpg"
+            alt="Ankylosaurus">
+
+        <div class="image-label">
+            ANKYLOSAURUS
+        </div>
+
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 07
+        </div>
+
+        <h2>
+            Ankylosaurus
+        </h2>
+
+        <div class="period">
+            LATE CRETACEOUS
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Herbivore</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Defense</span>
+                <span class="stat-value">Armor & tail club</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Length</span>
+                <span class="stat-value">Around 8 m</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Ankylosaur</span>
+            </div>
+
+        </div>
+
+        <div class="fact">
+            Ankylosaurus was covered in protective bony plates
+            and had a powerful club-like tail.
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- ALLOSAURUS -->
+
+<article class="dino-profile">
+
+    <div class="photo-container">
+
+        <img
+            class="dino-photo"
+            src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Allosaurus_BW.jpg"
+            alt="Allosaurus">
+
+        <div class="image-label">
+            ALLOSAURUS
+        </div>
+
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 08
+        </div>
+
+        <h2>
+            Allosaurus
+        </h2>
+
+        <div class="period">
+            LATE JURASSIC
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Carnivore</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Length</span>
+                <span class="stat-value">Around 9.5 m</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Feature</span>
+                <span class="stat-value">Sharp teeth</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Theropod</span>
+            </div>
+
+        </div>
+
+        <div class="fact">
+            Allosaurus was one of the major predators of the
+            Late Jurassic and had distinctive ridges above its eyes.
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- DIPLODOCUS -->
+
+<article class="dino-profile">
+
+    <div class="photo-container">
+
+        <img
+            class="dino-photo"
+            src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Diplodocus_BW.jpg"
+            alt="Diplodocus">
+
+        <div class="image-label">
+            DIPLODOCUS
+        </div>
+
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 09
+        </div>
+
+        <h2>
+            Diplodocus
+        </h2>
+
+        <div class="period">
+            LATE JURASSIC
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Herbivore</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Feature</span>
+                <span class="stat-value">Whip-like tail</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Length</span>
+                <span class="stat-value">Around 25 m</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Sauropod</span>
+            </div>
+
+        </div>
+
+        <div class="fact">
+            Diplodocus had an extremely long neck and tail,
+            giving it one of the most recognizable sauropod shapes.
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- CARNOTAURUS -->
+
+<article class="dino-profile">
+
+    <div class="photo-container">
+
+        <img
+            class="dino-photo"
+            src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Carnotaurus_BW.jpg"
+            alt="Carnotaurus">
+
+        <div class="image-label">
+            CARNOTAURUS
+        </div>
+
+    </div>
+
+    <div class="dino-info">
+
+        <div class="dino-number">
+            SPECIES 10
+        </div>
+
+        <h2>
+            Carnotaurus
+        </h2>
+
+        <div class="period">
+            LATE CRETACEOUS
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span class="stat-label">Diet</span>
+                <span class="stat-value">Carnivore</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Feature</span>
+                <span class="stat-value">Two horns</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Length</span>
+                <span class="stat-value">Around 7.5 m</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Type</span>
+                <span class="stat-value">Theropod</span>
+            </div>
+
+        </div>
+
+        <div class="fact">
+            Carnotaurus had two horn-like structures above its eyes
+            and unusually small arms.
+        </div>
+
+    </div>
+
+</article>
+
 
 </main>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -864,94 +1235,6 @@ footer {
     THE PREHISTORIC WORLD AWAITS.
 
 </footer>
-
-
-<script>
-
-/* =========================
-   GET DINOSAUR FROM URL
-========================= */
-
-const params = new URLSearchParams(window.location.search);
-
-const selectedDino = params.get("dino");
-
-
-/* =========================
-   ALL PROFILES
-========================= */
-
-const profiles =
-    document.querySelectorAll(".dino-profile");
-
-
-/* =========================
-   TITLES
-========================= */
-
-const names = {
-
-    trex: "TYRANNOSAURUS REX",
-
-    triceratops: "TRICERATOPS",
-
-    velociraptor: "VELOCIRAPTOR",
-
-    spinosaurus: "SPINOSAURUS"
-
-};
-
-
-/* =========================
-   SHOW SELECTED DINOSAUR
-========================= */
-
-let found = false;
-
-
-profiles.forEach(profile => {
-
-    if (profile.id === selectedDino) {
-
-        profile.classList.add("active");
-
-        found = true;
-
-    }
-
-});
-
-
-/* =========================
-   UPDATE HERO
-========================= */
-
-if (found && names[selectedDino]) {
-
-    document.getElementById("heroTitle").textContent =
-        names[selectedDino];
-
-    document.getElementById("heroDescription").textContent =
-        "Explore the history, features, and fascinating facts about this prehistoric giant.";
-
-}
-
-
-/* =========================
-   IF NO DINOSAUR WAS SELECTED
-========================= */
-
-if (!found) {
-
-    document.getElementById("heroTitle").textContent =
-        "CHOOSE A DINOSAUR";
-
-    document.getElementById("heroDescription").textContent =
-        "Return to the Dino Explorer and choose a dinosaur to explore its story.";
-
-}
-
-</script>
 
 
 </body>
