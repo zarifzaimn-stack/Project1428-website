@@ -27,14 +27,19 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* ================= NAVBAR ================= */
+
+/* =========================
+   NAVBAR
+========================= */
 
 nav {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 78px;
+
     z-index: 100;
 
     display: flex;
@@ -44,17 +49,21 @@ nav {
     padding: 0 5%;
 
     background: rgba(5, 15, 9, 0.75);
-    backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(160, 195, 145, 0.15);
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(150, 190, 145, 0.18);
 }
 
 .logo {
     color: #dcebd4;
+
     text-decoration: none;
 
     font-family: 'Cinzel', serif;
+
     font-size: 23px;
+
     font-weight: 700;
 
     letter-spacing: 2px;
@@ -67,12 +76,15 @@ nav {
 
 .nav-links a {
     color: #c6d7c0;
+
     text-decoration: none;
 
     font-size: 13px;
+
     font-weight: 600;
 
     letter-spacing: 1px;
+
     text-transform: uppercase;
 
     transition: 0.3s;
@@ -82,16 +94,23 @@ nav {
     color: #b5d99e;
 }
 
-/* ================= HERO ================= */
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
+
     height: 100vh;
+
     min-height: 650px;
 
     position: relative;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     overflow: hidden;
@@ -100,33 +119,42 @@ nav {
 
     background:
         linear-gradient(
-            rgba(3, 12, 6, 0.3),
+            rgba(3, 12, 6, 0.30),
             rgba(3, 12, 6, 0.88)
         ),
         url("https://images.unsplash.com/photo-1551073179-0be7b3d1a4f4?auto=format&fit=crop&w=2000&q=85");
 
     background-size: cover;
+
     background-position: center;
 }
 
+
+/* HERO OVERLAY */
+
 .hero::after {
+
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     background:
         radial-gradient(
             circle at center,
             transparent 10%,
-            rgba(0,0,0,0.7) 100%
+            rgba(0,0,0,0.65) 100%
         );
 
     pointer-events: none;
 }
 
+
 .hero-content {
+
     position: relative;
+
     z-index: 3;
 
     max-width: 1000px;
@@ -134,10 +162,13 @@ nav {
     padding: 30px;
 }
 
+
 .hero-small {
+
     color: #b6d69e;
 
     font-size: 13px;
+
     font-weight: 600;
 
     letter-spacing: 6px;
@@ -145,7 +176,9 @@ nav {
     margin-bottom: 25px;
 }
 
+
 .hero h1 {
+
     font-family: 'Cinzel', serif;
 
     font-size: clamp(55px, 9vw, 120px);
@@ -162,12 +195,17 @@ nav {
         0 5px 30px rgba(0,0,0,0.8);
 }
 
+
 .hero h1 span {
+
     display: block;
+
     color: #a7cf8e;
 }
 
+
 .hero p {
+
     max-width: 680px;
 
     margin: 30px auto;
@@ -175,12 +213,15 @@ nav {
     color: #d3ddd0;
 
     font-size: 17px;
+
     line-height: 1.8;
 }
 
-/* ================= BUTTON ================= */
+
+/* QUIZ BUTTON */
 
 .quiz-button {
+
     display: inline-block;
 
     padding: 17px 34px;
@@ -203,15 +244,21 @@ nav {
 }
 
 .quiz-button:hover {
+
     background: #8eb879;
+
     color: #07110b;
 
     transform: translateY(-4px);
 }
 
-/* ================= DINOSAUR SECTION ================= */
+
+/* =========================
+   DINOSAUR SECTION
+========================= */
 
 .dinosaur-section {
+
     padding: 100px 4%;
 
     background:
@@ -221,7 +268,9 @@ nav {
         );
 }
 
+
 .section-heading {
+
     max-width: 1100px;
 
     margin: 0 auto 55px;
@@ -229,7 +278,9 @@ nav {
     text-align: center;
 }
 
+
 .section-heading h2 {
+
     font-family: 'Cinzel', serif;
 
     font-size: clamp(38px, 5vw, 65px);
@@ -241,7 +292,9 @@ nav {
     color: #dcebd4;
 }
 
+
 .section-heading p {
+
     color: #829480;
 
     font-size: 15px;
@@ -249,9 +302,13 @@ nav {
     letter-spacing: 1px;
 }
 
-/* ================= CARD GRID ================= */
+
+/* =========================
+   CARD GRID
+========================= */
 
 .dino-grid {
+
     max-width: 1450px;
 
     margin: auto;
@@ -264,9 +321,13 @@ nav {
     gap: 18px;
 }
 
-/* ================= CARD ================= */
+
+/* =========================
+   DINO CARD
+========================= */
 
 .dino-card {
+
     position: relative;
 
     display: block;
@@ -288,7 +349,9 @@ nav {
         border-color 0.5s ease;
 }
 
+
 .dino-card:hover {
+
     transform: scale(1.025);
 
     border-color: #9ec58b;
@@ -296,46 +359,52 @@ nav {
     z-index: 5;
 }
 
-/* ================= IMAGE ================= */
+
+/* =========================
+   IMAGE
+========================= */
 
 .dino-image {
+
     position: absolute;
 
     inset: 0;
 
     width: 100%;
-    height: 100%;
 
-    /*
-       CONTAIN keeps the whole dinosaur picture visible.
-       No cropping.
-    */
+    height: 100%;
 
     object-fit: contain;
 
     padding: 20px;
 
-    transition:
-        transform 0.8s ease,
-        filter 0.8s ease;
-
     background:
         radial-gradient(
             circle,
-            #203b27,
-            #09140c 80%
+            #203c28 0%,
+            #0b1710 75%
         );
+
+    transition:
+        transform 0.8s ease,
+        filter 0.8s ease;
 }
 
+
 .dino-card:hover .dino-image {
+
     transform: scale(1.05);
 
     filter: brightness(1.08);
 }
 
-/* ================= CARD OVERLAY ================= */
+
+/* =========================
+   CARD OVERLAY
+========================= */
 
 .dino-card::after {
+
     content: "";
 
     position: absolute;
@@ -344,8 +413,8 @@ nav {
 
     background:
         linear-gradient(
-            transparent 25%,
-            rgba(3, 12, 6, 0.15) 45%,
+            transparent 20%,
+            rgba(3, 12, 6, 0.15) 40%,
             rgba(3, 12, 6, 0.96) 100%
         );
 
@@ -354,17 +423,22 @@ nav {
     pointer-events: none;
 }
 
-/* ================= NUMBER ================= */
+
+/* =========================
+   NUMBER
+========================= */
 
 .dino-number {
+
     position: absolute;
 
     top: 25px;
+
     left: 25px;
 
     z-index: 3;
 
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.75);
 
     font-family: 'Cinzel', serif;
 
@@ -373,12 +447,17 @@ nav {
     letter-spacing: 3px;
 }
 
-/* ================= CONTENT ================= */
+
+/* =========================
+   CARD CONTENT
+========================= */
 
 .dino-content {
+
     position: absolute;
 
     bottom: 0;
+
     left: 0;
 
     width: 100%;
@@ -388,7 +467,9 @@ nav {
     z-index: 3;
 }
 
+
 .dino-label {
+
     color: #9fc78c;
 
     font-size: 11px;
@@ -400,7 +481,9 @@ nav {
     margin-bottom: 10px;
 }
 
+
 .dino-name {
+
     font-family: 'Cinzel', serif;
 
     font-size: clamp(25px, 2.5vw, 36px);
@@ -417,7 +500,9 @@ nav {
         0 3px 15px rgba(0,0,0,0.7);
 }
 
+
 .explore {
+
     display: inline-block;
 
     margin-top: 15px;
@@ -435,15 +520,21 @@ nav {
     transition: 0.35s;
 }
 
+
 .dino-card:hover .explore {
+
     opacity: 1;
 
     transform: translateY(0);
 }
 
-/* ================= QUIZ ================= */
+
+/* =========================
+   QUIZ SECTION
+========================= */
 
 .quiz-section {
+
     padding: 130px 20px;
 
     text-align: center;
@@ -456,7 +547,9 @@ nav {
         );
 }
 
+
 .quiz-section h2 {
+
     font-family: 'Cinzel', serif;
 
     font-size: clamp(40px, 5vw, 65px);
@@ -466,15 +559,21 @@ nav {
     color: #dcebd4;
 }
 
+
 .quiz-section p {
+
     color: #8fa18e;
 
     margin-bottom: 35px;
 }
 
-/* ================= FALLING DINOS ================= */
+
+/* =========================
+   FALLING DINOSAURS
+========================= */
 
 .falling-dino {
+
     position: fixed;
 
     top: -70px;
@@ -485,29 +584,39 @@ nav {
 
     pointer-events: none;
 
-    opacity: 0.5;
+    opacity: 0.55;
 
     animation: fall linear infinite;
 }
 
+
 @keyframes fall {
 
     0% {
+
         transform:
             translateY(-80px)
             rotate(0deg);
+
     }
 
     100% {
+
         transform:
             translateY(110vh)
             rotate(360deg);
+
     }
+
 }
 
-/* ================= FOOTER ================= */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
+
     padding: 35px;
 
     text-align: center;
@@ -521,63 +630,91 @@ footer {
     letter-spacing: 1px;
 }
 
-/* ================= TABLET ================= */
+
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width: 1000px) {
 
     .dino-grid {
+
         grid-template-columns:
             repeat(2, 1fr);
+
     }
 
 }
 
-/* ================= MOBILE ================= */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 650px) {
 
     nav {
+
         height: 65px;
 
         padding: 0 20px;
+
     }
 
     .logo {
+
         font-size: 18px;
+
     }
 
     .nav-links {
+
         display: none;
+
     }
 
     .hero {
+
         min-height: 620px;
+
     }
 
     .hero h1 {
+
         font-size: 55px;
+
     }
 
     .hero p {
+
         font-size: 14px;
+
     }
 
     .dinosaur-section {
+
         padding: 75px 15px;
+
     }
 
     .dino-grid {
+
         grid-template-columns: 1fr;
 
         gap: 15px;
+
     }
 
     .dino-card {
+
         height: 470px;
+
     }
 
     .dino-content {
+
         padding: 25px;
+
     }
 
 }
@@ -586,10 +723,13 @@ footer {
 
 </head>
 
+
 <body>
 
 
-<!-- ================= FALLING DINOSAURS ================= -->
+<!-- =========================
+     FALLING DINOSAURS
+========================= -->
 
 <div class="falling-dino"
      style="left:1%; animation-duration:8s;">
@@ -612,7 +752,9 @@ footer {
 </div>
 
 
-<!-- ================= NAVIGATION ================= -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -635,7 +777,9 @@ footer {
 </nav>
 
 
-<!-- ================= HERO ================= -->
+<!-- =========================
+     HERO
+========================= -->
 
 <header class="hero">
 
@@ -664,7 +808,9 @@ footer {
 </header>
 
 
-<!-- ================= DINOSAURS ================= -->
+<!-- =========================
+     DINOSAURS
+========================= -->
 
 <section id="dinosaurs" class="dinosaur-section">
 
@@ -684,7 +830,9 @@ footer {
     <div class="dino-grid">
 
 
-        <!-- 01 T-REX -->
+        <!-- =====================
+             01 T-REX
+        ====================== -->
 
         <a href="dinosaurs.html?dino=trex"
            class="dino-card">
@@ -717,7 +865,9 @@ footer {
         </a>
 
 
-        <!-- 02 TRICERATOPS -->
+        <!-- =====================
+             02 TRICERATOPS
+        ====================== -->
 
         <a href="dinosaurs.html?dino=triceratops"
            class="dino-card">
@@ -750,7 +900,9 @@ footer {
         </a>
 
 
-        <!-- 03 VELOCIRAPTOR -->
+        <!-- =====================
+             03 VELOCIRAPTOR
+        ====================== -->
 
         <a href="dinosaurs.html?dino=velociraptor"
            class="dino-card">
@@ -783,7 +935,9 @@ footer {
         </a>
 
 
-        <!-- 04 SPINOSAURUS -->
+        <!-- =====================
+             04 SPINOSAURUS
+        ====================== -->
 
         <a href="dinosaurs.html?dino=spinosaurus"
            class="dino-card">
@@ -816,7 +970,9 @@ footer {
         </a>
 
 
-        <!-- 05 STEGOSAURUS -->
+        <!-- =====================
+             05 STEGOSAURUS
+        ====================== -->
 
         <a href="dinosaurs.html?dino=stegosaurus"
            class="dino-card">
@@ -849,7 +1005,9 @@ footer {
         </a>
 
 
-        <!-- 06 BRACHIOSAURUS -->
+        <!-- =====================
+             06 BRACHIOSAURUS
+        ====================== -->
 
         <a href="dinosaurs.html?dino=brachiosaurus"
            class="dino-card">
@@ -882,7 +1040,9 @@ footer {
         </a>
 
 
-        <!-- 07 ANKYLOSAURUS -->
+        <!-- =====================
+             07 ANKYLOSAURUS
+        ====================== -->
 
         <a href="dinosaurs.html?dino=ankylosaurus"
            class="dino-card">
@@ -915,7 +1075,9 @@ footer {
         </a>
 
 
-        <!-- 08 ALLOSAURUS -->
+        <!-- =====================
+             08 ALLOSAURUS
+        ====================== -->
 
         <a href="dinosaurs.html?dino=allosaurus"
            class="dino-card">
@@ -948,7 +1110,9 @@ footer {
         </a>
 
 
-        <!-- 09 DIPLODOCUS -->
+        <!-- =====================
+             09 DIPLODOCUS
+        ====================== -->
 
         <a href="dinosaurs.html?dino=diplodocus"
            class="dino-card">
@@ -986,7 +1150,9 @@ footer {
 </section>
 
 
-<!-- ================= QUIZ ================= -->
+<!-- =========================
+     QUIZ
+========================= -->
 
 <section class="quiz-section">
 
@@ -1005,7 +1171,9 @@ footer {
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
