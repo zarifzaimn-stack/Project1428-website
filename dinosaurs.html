@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -45,7 +46,7 @@ nav {
 
     padding: 0 5%;
 
-    background: rgba(5, 15, 9, 0.78);
+    background: rgba(5, 15, 9, 0.82);
     backdrop-filter: blur(15px);
 
     border-bottom: 1px solid rgba(160, 195, 145, 0.15);
@@ -58,6 +59,7 @@ nav {
     font-family: 'Cinzel', serif;
     font-size: 22px;
     font-weight: 700;
+
     letter-spacing: 2px;
 }
 
@@ -139,7 +141,6 @@ nav {
     color: #91a393;
 
     line-height: 1.8;
-
     font-size: 15px;
 }
 
@@ -160,10 +161,9 @@ nav {
 ========================= */
 
 .dino-profile {
-
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 1fr;
 
     min-height: 540px;
 
@@ -176,13 +176,12 @@ nav {
     border: 1px solid rgba(155, 190, 140, 0.15);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
+        0 20px 60px rgba(0,0,0,0.3);
 
     transition: 0.4s;
 }
 
 .dino-profile:hover {
-
     border-color: rgba(159,199,140,0.5);
 
     transform: translateY(-4px);
@@ -192,40 +191,46 @@ nav {
    IMAGE AREA
 ========================= */
 
-.dino-photo-container {
-
+.dino-photo-box {
     width: 100%;
-    height: 540px;
+    min-height: 540px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    padding: 25px;
+
     background:
         radial-gradient(
             circle,
-            #1b3020,
-            #07110b
+            #1b3522 0%,
+            #0a160d 75%
         );
 
     overflow: hidden;
 }
 
-.dino-photo {
+/*
+   IMPORTANT:
+   CONTAIN = shows the FULL dinosaur image.
+   No cropping.
+*/
 
+.dino-photo {
     width: 100%;
     height: 100%;
 
-    /*
-       CONTAIN = SHOW THE WHOLE IMAGE
-       WITHOUT CROPPING
-    */
+    max-height: 490px;
 
     object-fit: contain;
 
+    object-position: center;
+
     display: block;
 
-    padding: 15px;
+    filter:
+        drop-shadow(0 15px 30px rgba(0,0,0,0.55));
 
     transition: transform 0.6s ease;
 }
@@ -239,7 +244,6 @@ nav {
 ========================= */
 
 .dino-info {
-
     padding: 55px;
 
     display: flex;
@@ -248,7 +252,6 @@ nav {
 }
 
 .dino-number {
-
     color: #8fb67e;
 
     font-size: 11px;
@@ -259,7 +262,6 @@ nav {
 }
 
 .dino-info h2 {
-
     font-family: 'Cinzel', serif;
 
     font-size: clamp(32px, 4vw, 52px);
@@ -272,7 +274,6 @@ nav {
 }
 
 .period {
-
     color: #a5b5a0;
 
     font-size: 13px;
@@ -283,11 +284,10 @@ nav {
 }
 
 /* =========================
-   STATS
+   INFO BOXES
 ========================= */
 
 .stats {
-
     display: grid;
 
     grid-template-columns: 1fr 1fr;
@@ -298,23 +298,14 @@ nav {
 }
 
 .stat {
-
     padding: 16px;
 
     background: rgba(255,255,255,0.035);
 
     border: 1px solid rgba(255,255,255,0.07);
-
-    transition: 0.3s;
-}
-
-.stat:hover {
-    background: rgba(159,199,140,0.08);
-    border-color: rgba(159,199,140,0.25);
 }
 
 .stat-label {
-
     display: block;
 
     color: #71816f;
@@ -329,7 +320,6 @@ nav {
 }
 
 .stat-value {
-
     color: #d7e5d2;
 
     font-size: 14px;
@@ -342,7 +332,6 @@ nav {
 ========================= */
 
 .fact {
-
     border-left: 2px solid #8fb67e;
 
     padding-left: 18px;
@@ -355,11 +344,28 @@ nav {
 }
 
 /* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 35px;
+
+    text-align: center;
+
+    background: #040b06;
+
+    color: #657664;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+/* =========================
    FALLING DINOSAURS
 ========================= */
 
 .falling-dino {
-
     position: fixed;
 
     top: -70px;
@@ -388,99 +394,69 @@ nav {
             translateY(110vh)
             rotate(360deg);
     }
+
 }
 
 /* =========================
-   FOOTER
+   TABLET
 ========================= */
 
-footer {
+@media (max-width: 850px) {
 
-    padding: 35px;
+    .dino-profile {
+        grid-template-columns: 1fr;
+    }
 
-    text-align: center;
+    .dino-photo-box {
+        min-height: 420px;
+        height: 420px;
+    }
 
-    background: #040b06;
+    .dino-photo {
+        max-height: 370px;
+    }
 
-    color: #657664;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
+    .dino-info {
+        padding: 35px 25px;
+    }
 }
 
 /* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 850px) {
-
-    .dino-profile {
-
-        grid-template-columns: 1fr;
-
-    }
-
-    .dino-photo-container {
-
-        height: 400px;
-
-    }
-
-    .dino-photo {
-
-        padding: 10px;
-
-    }
-
-    .dino-info {
-
-        padding: 35px 25px;
-
-    }
-
-}
-
 @media (max-width: 600px) {
 
     nav {
-
         height: 65px;
-
         padding: 0 20px;
-
     }
 
     .logo {
-
         font-size: 18px;
-
     }
 
     .hero {
-
         min-height: 470px;
-
     }
 
     .hero h1 {
-
         font-size: 48px;
-
     }
 
     .stats {
-
         grid-template-columns: 1fr;
-
     }
 
-    .dino-photo-container {
-
-        height: 320px;
-
+    .dino-photo-box {
+        min-height: 330px;
+        height: 330px;
+        padding: 15px;
     }
 
+    .dino-photo {
+        max-height: 300px;
+    }
 }
 
 </style>
@@ -491,7 +467,7 @@ footer {
 
 
 <!-- =========================
-     FALLING DINOS
+     FALLING DINOSAURS
 ========================= -->
 
 <div class="falling-dino"
@@ -571,7 +547,7 @@ footer {
 
 <article class="dino-profile">
 
-    <div class="dino-photo-container">
+    <div class="dino-photo-box">
 
         <img
             class="dino-photo"
@@ -619,10 +595,8 @@ footer {
         </div>
 
         <div class="fact">
-
             One of the most famous dinosaurs ever discovered,
             T. rex had enormous jaws and powerful teeth.
-
         </div>
 
     </div>
@@ -636,7 +610,7 @@ footer {
 
 <article class="dino-profile">
 
-    <div class="dino-photo-container">
+    <div class="dino-photo-box">
 
         <img
             class="dino-photo"
@@ -684,10 +658,8 @@ footer {
         </div>
 
         <div class="fact">
-
             Triceratops had a huge skull, a protective frill,
             and three distinctive horns.
-
         </div>
 
     </div>
@@ -701,7 +673,7 @@ footer {
 
 <article class="dino-profile">
 
-    <div class="dino-photo-container">
+    <div class="dino-photo-box">
 
         <img
             class="dino-photo"
@@ -749,10 +721,8 @@ footer {
         </div>
 
         <div class="fact">
-
             Real Velociraptors were much smaller than their movie
             versions and evidence indicates they had feathers.
-
         </div>
 
     </div>
@@ -766,7 +736,7 @@ footer {
 
 <article class="dino-profile">
 
-    <div class="dino-photo-container">
+    <div class="dino-photo-box">
 
         <img
             class="dino-photo"
@@ -814,10 +784,8 @@ footer {
         </div>
 
         <div class="fact">
-
             Spinosaurus had a long, narrow skull and a distinctive
             sail-like structure along its back.
-
         </div>
 
     </div>
@@ -831,7 +799,7 @@ footer {
 
 <article class="dino-profile">
 
-    <div class="dino-photo-container">
+    <div class="dino-photo-box">
 
         <img
             class="dino-photo"
@@ -867,8 +835,8 @@ footer {
             </div>
 
             <div class="stat">
-                <span class="stat-label">Feature</span>
-                <span class="stat-value">Back plates</span>
+                <span class="stat-label">Defense</span>
+                <span class="stat-value">Tail spikes</span>
             </div>
 
             <div class="stat">
@@ -879,10 +847,8 @@ footer {
         </div>
 
         <div class="fact">
-
-            Stegosaurus is famous for its large plates along
-            its back and four powerful spikes on its tail.
-
+            Stegosaurus was famous for the large plates along
+            its back and the spikes on its tail.
         </div>
 
     </div>
@@ -896,7 +862,7 @@ footer {
 
 <article class="dino-profile">
 
-    <div class="dino-photo-container">
+    <div class="dino-photo-box">
 
         <img
             class="dino-photo"
@@ -944,10 +910,8 @@ footer {
         </div>
 
         <div class="fact">
-
-            Brachiosaurus had very long front legs and could
-            reach high vegetation with its long neck.
-
+            Brachiosaurus had long front legs and a tall neck,
+            allowing it to reach vegetation high above the ground.
         </div>
 
     </div>
@@ -961,7 +925,7 @@ footer {
 
 <article class="dino-profile">
 
-    <div class="dino-photo-container">
+    <div class="dino-photo-box">
 
         <img
             class="dino-photo"
@@ -998,21 +962,19 @@ footer {
 
             <div class="stat">
                 <span class="stat-label">Defense</span>
-                <span class="stat-value">Armor & tail club</span>
+                <span class="stat-value">Armored body</span>
             </div>
 
             <div class="stat">
-                <span class="stat-label">Type</span>
-                <span class="stat-value">Ankylosaur</span>
+                <span class="stat-label">Weapon</span>
+                <span class="stat-value">Tail club</span>
             </div>
 
         </div>
 
         <div class="fact">
-
             Ankylosaurus was heavily armored and had a powerful
-            tail club that could be used for defense.
-
+            club-like tail for defense.
         </div>
 
     </div>
@@ -1026,7 +988,7 @@ footer {
 
 <article class="dino-profile">
 
-    <div class="dino-photo-container">
+    <div class="dino-photo-box">
 
         <img
             class="dino-photo"
@@ -1058,7 +1020,7 @@ footer {
 
             <div class="stat">
                 <span class="stat-label">Length</span>
-                <span class="stat-value">Around 9.5 m</span>
+                <span class="stat-value">Around 9 m</span>
             </div>
 
             <div class="stat">
@@ -1074,10 +1036,8 @@ footer {
         </div>
 
         <div class="fact">
-
-            Allosaurus was a major predator of the Late Jurassic,
-            with sharp teeth and powerful jaws.
-
+            Allosaurus was one of the major predators of the
+            Late Jurassic and had powerful jaws and sharp teeth.
         </div>
 
     </div>
@@ -1091,7 +1051,7 @@ footer {
 
 <article class="dino-profile">
 
-    <div class="dino-photo-container">
+    <div class="dino-photo-box">
 
         <img
             class="dino-photo"
@@ -1139,11 +1099,8 @@ footer {
         </div>
 
         <div class="fact">
-
             Diplodocus had an extremely long neck and tail,
-            giving it one of the most recognizable body shapes
-            among sauropods.
-
+            making it one of the most recognizable sauropods.
         </div>
 
     </div>
@@ -1153,10 +1110,6 @@ footer {
 
 </main>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -1168,6 +1121,6 @@ footer {
 
 </footer>
 
-
 </body>
+
 </html>
