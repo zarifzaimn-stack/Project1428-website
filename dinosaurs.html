@@ -1,1 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Dino Explorer | Dinosaur List</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Fredoka', 'sans-serif'],
+        body: ['Plus Jakarta Sans', 'sans-serif'],
+      },
+      colors: {
+        jungle: '#14532D',
+        prehistoric: '#1E293B',
+        amber: '#F59E0B',
+      }
+    }
+  }
+}
+</script>
+
+<style>
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* SIDE FALLING DINOSAURS */
+
+.falling-dino {
+  position: fixed;
+  top: -80px;
+  font-size: 42px;
+  z-index: 5;
+  pointer-events: none;
+  animation: fallDown linear infinite;
+}
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* DINO BUTTON */
+
+.dino-button {
+  transition: all 0.25s ease;
+}
+
+.dino-button:hover {
+  transform: translateX(8px) scale(1.02);
+}
+
+/* INFO POPUP */
+
+#dino-modal {
+  display: none;
+}
+
+#dino-modal.show {
+  display: flex;
+}
+
+/* QUIZ */
+
+#quiz-section {
+  display: none;
+}
+
+#quiz-section.show {
+  display: block;
+}
+
+.quiz-option {
+  transition: all 0.2s ease;
+}
+
+.quiz-option:hover {
+  transform: translateY(-2px);
+}
+
+</style>
+</head>
+
+<body class="bg-prehistoric text-slate-100 font-body min-h-screen">
+
+<!-- =====================================================
+     FALLING DINOSAURS — ONLY ON THE SIDES
+===================================================== -->
+
+<div class="falling-dino" style="left: 2%; animation-duration: 7s;">
+🦖
+</div>
+
+<div class="falling-dino" style="left: 7%; animation-duration: 9s; animation-delay: 2s;">
+🦕
+</div>
+
+<div class="falling-dino" style="right: 3%; animation-duration: 8s; animation-delay: 1s;">
+🦖
+</div>
+
+<div class="falling-dino" style="right: 8%; animation-duration: 10s; animation-delay: 4s;">
+🦕
+</div>
+
+<!-- NAVIGATION -->
+
+<nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <a href="index.html"
+       class="flex items-center gap-2">
+
+      <span class="text-3xl">🦖</span>
+
+      <span class="font-display font-bold text-2xl text-amber">
+        DINO EXPLORER
+      </span>
+
+    </a>
+
+    <a href="index.html"
+       class="text-sm font-semibold hover:text-amber transition-colors">
+      ← Home
+    </a>
+
+  </div>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header class="text-center py-16 px-6">
+
+  <span class="inline-block bg-amber/20 text-amber font-display px-4 py-2 rounded-full text-sm font-semibold border border-amber/30 mb-5">
+    DINOSAUR DATABASE
+  </span>
+
+  <h1 class="font-display text-5xl md:text-6xl font-bold text-white">
+    EXPLORE THE DINOSAURS
+  </h1>
+
+  <p class="text-slate-300 max-w-2xl mx-auto mt-5 text-lg">
+    Click a dinosaur to discover its period, size, diet, and an amazing fact.
+  </p>
+
+  <div class="mt-6">
+    <span id="click-counter"
+          class="inline-block bg-slate-900 border border-slate-700 px-5 py-2 rounded-full text-sm font-semibold text-amber">
+      Dinosaurs explored: 0 / 5
+    </span>
+  </div>
+
+</header>
+
+
+<!-- DINOSAUR LIST -->
+
+<main class="max-w-4xl mx-auto px-6 pb-20">
+
+  <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6 md:p-10">
+
+    <h2 class="font-display text-3xl font-bold text-white mb-7 text-center">
+      🦖 Dinosaur List
+    </h2>
+
+    <div id="dino-list" class="space-y-4">
+    </div>
+
+  </div>
+
+
+  <!-- POP QUIZ -->
+
+  <section id="quiz-section"
+           class="mt-16 bg-slate-900 border border-amber/30 rounded-3xl p-7 md:p-12">
+
+    <div class="text-center mb-10">
+
+      <div class="text-6xl mb-4">
+        🧠
+      </div>
+
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-amber">
+        POP QUIZ!
+      </h2>
+
+      <p class="text-slate-300 mt-3">
+        You explored 5 dinosaurs! Now test your dinosaur knowledge.
+      </p>
+
+    </div>
+
+    <div id="quiz-container" class="space-y-8">
+    </div>
+
+    <div id="quiz-score"
+         class="hidden mt-10 text-center bg-slate-800 rounded-2xl p-6">
+
+      <h3 class="font-display text-3xl font-bold text-amber">
+        QUIZ COMPLETE! 🎉
+      </h3>
+
+      <p id="score-text"
+         class="text-xl text-white mt-3">
+      </p>
+
+      <button onclick="restartQuiz()"
+              class="mt-5 bg-amber hover:bg-amber-600 text-slate-950 font-display font-bold px-7 py-3 rounded-full">
+        TRY AGAIN
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- DINOSAUR INFORMATION MODAL -->
+
+<div id="dino-modal"
+     class="fixed inset-0 bg-black/70 backdrop-blur-sm items-center justify-center p-6 z-[100]">
+
+  <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-8 relative">
+
+    <button onclick="closeModal()"
+            class="absolute right-5 top-4 text-slate-400 hover:text-white text-2xl">
+      ×
+    </button>
+
+    <div id="modal-icon" class="text-6xl mb-4">
+    </div>
+
+    <h2 id="modal-name"
+        class="font-display text-3xl font-bold text-amber">
+    </h2>
+
+    <p id="modal-period"
+       class="text-sm text-amber mt-2 font-semibold">
+    </p>
+
+    <div class="grid grid-cols-2 gap-4 mt-6">
+
+      <div class="bg-slate-800 rounded-xl p-4">
+        <p class="text-slate-400 text-sm">Diet</p>
+        <p id="modal-diet" class="font-bold mt-1"></p>
+      </div>
+
+      <div class="bg-slate-800 rounded-xl p-4">
+        <p class="text-slate-400 text-sm">Length</p>
+        <p id="modal-length" class="font-bold mt-1"></p>
+      </div>
+
+    </div>
+
+    <div class="mt-5 bg-slate-950 rounded-xl p-5">
+      <p class="text-sm text-slate-400 mb-2">
+        💡 FUN FACT
+      </p>
+
+      <p id="modal-fact"
+         class="text-slate-200 leading-relaxed">
+      </p>
+    </div>
+
+    <button onclick="closeModal()"
+            class="mt-6 w-full bg-amber hover:bg-amber-600 text-slate-950 font-display font-bold py-3 rounded-xl">
+      CLOSE
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer class="bg-slate-950 border-t border-slate-900 py-8 text-center text-slate-500 text-sm">
+
+  <p>
+    Created for Dino Explorers | Powered by GitHub Pages
+  </p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   DINOSAUR DATA
+===================================================== */
+
+const dinos = [
+
+  {
+    name: "Tyrannosaurus Rex",
+    icon: "🦖",
+    period: "Late Cretaceous",
+    diet: "Carnivore 🥩",
+    length: "About 12 meters",
+    fact: "T. rex had huge teeth and powerful jaws. It lived near the end of the dinosaur age."
+  },
+
+  {
+    name: "Triceratops",
+    icon: "🦏",
+    period: "Late Cretaceous",
+    diet: "Herbivore 🌿",
+    length: "About 9 meters",
+    fact: "Triceratops had three horns and a large bony frill around the back of its skull."
+  },
+
+  {
+    name: "Velociraptor",
+    icon: "🦅",
+    period: "Late Cretaceous",
+    diet: "Carnivore 🥩",
+    length: "About 2 meters",
+    fact: "Real Velociraptors were much smaller than they are usually shown in movies and had feathers."
+  },
+
+  {
+    name: "Brachiosaurus",
+    icon: "🦕",
+    period: "Late Jurassic",
+    diet: "Herbivore 🌿",
+    length: "About 23 meters",
+    fact: "Brachiosaurus had very long front legs and could reach vegetation high above the ground."
+  },
+
+  {
+    name: "Stegosaurus",
+    icon: "🦕",
+    period: "Late Jurassic",
+    diet: "Herbivore 🌿",
+    length: "About 9 meters",
+    fact: "Stegosaurus had large plates along its back and four long spikes at the end of its tail."
+  },
+
+  {
+    name: "Ankylosaurus",
+    icon: "🛡️",
+    period: "Late Cretaceous",
+    diet: "Herbivore 🌿",
+    length: "About 8 meters",
+    fact: "Ankylosaurus had heavy body armor and a powerful club at the end of its tail."
+  },
+
+  {
+    name: "Spinosaurus",
+    icon: "🦖",
+    period: "Cretaceous",
+    diet: "Carnivore 🥩",
+    length: "About 14 meters",
+    fact: "Spinosaurus had a huge sail-like structure on its back and a long crocodile-like snout."
+  },
+
+  {
+    name: "Allosaurus",
+    icon: "🦖",
+    period: "Late Jurassic",
+    diet: "Carnivore 🥩",
+    length: "About 9 meters",
+    fact: "Allosaurus was a large predator that lived millions of years before T. rex."
+  },
+
+  {
+    name: "Diplodocus",
+    icon: "🦕",
+    period: "Late Jurassic",
+    diet: "Herbivore 🌿",
+    length: "About 25 meters",
+    fact: "Diplodocus had an extremely long neck and tail."
+  },
+
+  {
+    name: "Parasaurolophus",
+    icon: "🦕",
+    period: "Late Cretaceous",
+    diet: "Herbivore 🌿",
+    length: "About 10 meters",
+    fact: "Parasaurolophus had a long hollow crest extending from the back of its head."
+  },
+
+  {
+    name: "Pachycephalosaurus",
+    icon: "🦖",
+    period: "Late Cretaceous",
+    diet: "Herbivore 🌿",
+    length: "About 4.5 meters",
+    fact: "Pachycephalosaurus had a very thick dome-shaped skull."
+  },
+
+  {
+    name: "Carnotaurus",
+    icon: "🦖",
+    period: "Late Cretaceous",
+    diet: "Carnivore 🥩",
+    length: "About 7.5 meters",
+    fact: "Carnotaurus had two distinctive horns above its eyes."
+  }
+];
+
+
+/* =====================================================
+   CREATE DINOSAUR LIST
+===================================================== */
+
+const dinoList = document.getElementById("dino-list");
+
+let clickedDinos = new Set();
+
+function renderDinos() {
+
+  dinoList.innerHTML = "";
+
+  dinos.forEach((dino, index) => {
+
+    const button = document.createElement("button");
+
+    button.className =
+      "dino-button w-full text-left bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-amber/50 rounded-2xl p-5 flex items-center gap-5";
+
+    button.innerHTML = `
+
+      <span class="text-4xl">
+        ${dino.icon}
+      </span>
+
+      <span class="flex-grow">
+
+        <span class="block font-display text-xl font-bold text-white">
+          ${dino.name}
+        </span>
+
+        <span class="block text-sm text-slate-400 mt-1">
+          ${dino.period} • ${dino.diet}
+        </span>
+
+      </span>
+
+      <span class="text-amber text-2xl">
+        →
+      </span>
+
+    `;
+
+    button.onclick = function() {
+      openDino(index);
+    };
+
+    dinoList.appendChild(button);
+
+  });
+
+}
+
+renderDinos();
+
+
+/* =====================================================
+   OPEN DINOSAUR
+===================================================== */
+
+function openDino(index) {
+
+  const dino = dinos[index];
+
+  clickedDinos.add(index);
+
+  document.getElementById("click-counter").innerText =
+    "Dinosaurs explored: " + clickedDinos.size + " / 5";
+
+  document.getElementById("modal-icon").innerText = dino.icon;
+  document.getElementById("modal-name").innerText = dino.name;
+  document.getElementById("modal-period").innerText = dino.period;
+  document.getElementById("modal-diet").innerText = dino.diet;
+  document.getElementById("modal-length").innerText = dino.length;
+  document.getElementById("modal-fact").innerText = dino.fact;
+
+  document.getElementById("dino-modal").classList.add("show");
+
+  /*
+    Once 5 different dinosaurs have been clicked,
+    reveal the quiz.
+  */
+
+  if (clickedDinos.size >= 5) {
+
+    setTimeout(() => {
+
+      const quiz = document.getElementById("quiz-section");
+
+      quiz.classList.add("show");
+
+      quiz.scrollIntoView({
+        behavior: "smooth"
+      });
+
+      createQuiz();
+
+    }, 700);
+
+  }
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeModal() {
+
+  document.getElementById("dino-modal").classList.remove("show");
+
+}
+
+
+/* =====================================================
+   15 QUESTION POP QUIZ
+===================================================== */
+
+const questions = [
+
+  {
+    q: "What does the name Tyrannosaurus Rex roughly mean?",
+    options: [
+      "Tyrant lizard king",
+      "Thunder lizard",
+      "Three-horned lizard",
+      "Fast hunter"
+    ],
+    answer: 0
+  },
+
+  {
+    q: "Which dinosaur had three horns?",
+    options: [
+      "Stegosaurus",
+      "Triceratops",
+      "Velociraptor",
+      "Spinosaurus"
+    ],
+    answer: 1
+  },
+
+  {
+    q: "Which dinosaur had large plates along its back?",
+    options: [
+      "Stegosaurus",
+      "T. rex",
+      "Triceratops",
+      "Allosaurus"
+    ],
+    answer: 0
+  },
+
+  {
+    q: "Which dinosaur had a large sail-like structure on its back?",
+    options: [
+      "Brachiosaurus",
+      "Spinosaurus",
+      "Diplodocus",
+      "Ankylosaurus"
+    ],
+    answer: 1
+  },
+
+  {
+    q: "What did most herbivorous dinosaurs eat?",
+    options: [
+      "Fish",
+      "Meat",
+      "Plants",
+      "Insects"
+    ],
+    answer: 2
+  },
+
+  {
+    q: "Which dinosaur was famous for its heavy armor and tail club?",
+    options: [
+      "Ankylosaurus",
+      "Velociraptor",
+      "Allosaurus",
+      "Parasaurolophus"
+    ],
+    answer: 0
+  },
+
+  {
+    q: "Which dinosaur had a long hollow crest on its head?",
+    options: [
+      "Parasaurolophus",
+      "Triceratops",
+      "Carnotaurus",
+      "Stegosaurus"
+    ],
+    answer: 0
+  },
+
+  {
+    q: "Which dinosaur had two horns above its eyes?",
+    options: [
+      "Carnotaurus",
+      "Diplodocus",
+      "Brachiosaurus",
+      "Ankylosaurus"
+    ],
+    answer: 0
+  },
+
+  {
+    q: "Which dinosaur was known for its very thick dome-shaped skull?",
+    options: [
+      "Pachycephalosaurus",
+      "Spinosaurus",
+      "Velociraptor",
+      "Triceratops"
+    ],
+    answer: 0
+  },
+
+  {
+    q: "During which period did Tyrannosaurus Rex live?",
+    options: [
+      "Triassic",
+      "Early Jurassic",
+      "Late Jurassic",
+      "Late Cretaceous"
+    ],
+    answer: 3
+  },
+
+  {
+    q: "Which dinosaur had an extremely long neck and tail?",
+    options: [
+      "Diplodocus",
+      "Carnotaurus",
+      "T. rex",
+      "Velociraptor"
+    ],
+    answer: 0
+  },
+
+  {
+    q: "Which dinosaur is often shown incorrectly as being much larger than it really was?",
+    options: [
+      "Velociraptor",
+      "Brachiosaurus",
+      "Triceratops",
+      "Diplodocus"
+    ],
+    answer: 0
+  },
+
+  {
+    q: "Which dinosaur had front legs longer than its back legs?",
+    options: [
+      "Brachiosaurus",
+      "Stegosaurus",
+      "T. rex",
+      "Carnotaurus"
+    ],
+    answer: 0
+  },
+
+  {
+    q: "What are fossils?",
+    options: [
+      "Modern animal bones",
+      "Preserved remains or traces of ancient life",
+      "Dinosaur eggs only",
+      "Volcanic rocks"
+    ],
+    answer: 1
+  },
+
+  {
+    q: "Which event marks the end of the Cretaceous Period?",
+    options: [
+      "The appearance of the first dinosaurs",
+      "The extinction of non-avian dinosaurs",
+      "The beginning of the Jurassic Period",
+      "The first appearance of mammals"
+    ],
+    answer: 1
+  }
+
+];
+
+
+/* =====================================================
+   CREATE QUIZ
+===================================================== */
+
+function createQuiz() {
+
+  const container = document.getElementById("quiz-container");
+
+  container.innerHTML = "";
+
+  questions.forEach((question, index) => {
+
+    const box = document.createElement("div");
+
+    box.className =
+      "bg-slate-800 border border-slate-700 rounded-2xl p-6";
+
+    box.innerHTML = `
+
+      <h3 class="font-display text-xl font-bold text-white mb-5">
+        ${index + 1}. ${question.q}
+      </h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+        ${question.options.map((option, optionIndex) => `
+
+          <button
+            onclick="answerQuestion(${index}, ${optionIndex}, this)"
+            class="quiz-option bg-slate-900 hover:bg-slate-700 border border-slate-700 text-slate-200 p-4 rounded-xl text-left font-semibold">
+
+            ${option}
+
+          </button>
+
+        `).join("")}
+
+      </div>
+
+    `;
+
+    container.appendChild(box);
+
+  });
+
+}
+
+
+/* =====================================================
+   QUIZ ANSWERS
+===================================================== */
+
+let score = 0;
+let answered = 0;
+let answeredQuestions = new Set();
+
+function answerQuestion(questionIndex, optionIndex, button) {
+
+  if (answeredQuestions.has(questionIndex)) {
+    return;
+  }
+
+  answeredQuestions.add(questionIndex);
+  answered++;
+
+  const question = questions[questionIndex];
+
+  const buttons = button.parentElement.querySelectorAll("button");
+
+  buttons.forEach(btn => {
+    btn.disabled = true;
+  });
+
+  if (optionIndex === question.answer) {
+
+    score++;
+
+    button.classList.remove(
+      "bg-slate-900",
+      "border-slate-700"
+    );
+
+    button.classList.add(
+      "bg-emerald-600",
+      "border-emerald-400"
+    );
+
+    button.innerHTML += " ✅";
+
+  } else {
+
+    button.classList.remove(
+      "bg-slate-900",
+      "border-slate-700"
+    );
+
+    button.classList.add(
+      "bg-rose-600",
+      "border-rose-400"
+    );
+
+    button.innerHTML += " ❌";
+
+    buttons[question.answer].classList.remove(
+      "bg-slate-900",
+      "border-slate-700"
+    );
+
+    buttons[question.answer].classList.add(
+      "bg-emerald-600",
+      "border-emerald-400"
+    );
+
+    buttons[question.answer].innerHTML += " ✅";
+
+  }
+
+  if (answered === questions.length) {
+
+    setTimeout(() => {
+
+      document.getElementById("quiz-score").classList.remove("hidden");
+
+      document.getElementById("score-text").innerText =
+        "You scored " + score + " out of " + questions.length + "!";
+
+      document.getElementById("quiz-score").scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }, 500);
+
+  }
+
+}
+
+
+/* =====================================================
+   RESTART QUIZ
+===================================================== */
+
+function restartQuiz() {
+
+  score = 0;
+  answered = 0;
+  answeredQuestions.clear();
+
+  document.getElementById("quiz-score").classList.add("hidden");
+
+  createQuiz();
+
+  document.getElementById("quiz-section").scrollIntoView({
+    behavior: "smooth"
+  });
+
+}
+
+</script>
+
+</body>
+</html>
