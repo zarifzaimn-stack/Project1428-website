@@ -16,36 +16,42 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-
     background: #07110b;
-
     color: white;
-
     font-family: 'Montserrat', sans-serif;
 }
 
-/* NAV */
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
-    height: 78px;
+    position: fixed;
+    top: 0;
+    left: 0;
 
     width: 100%;
+    height: 78px;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     padding: 0 5%;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    background: rgba(5,15,9,0.85);
+    background: rgba(5, 15, 9, 0.82);
 
     backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(160,195,145,0.18);
+    border-bottom: 1px solid rgba(160, 195, 145, 0.18);
 }
 
 .logo {
@@ -80,26 +86,32 @@ nav {
     color: white;
 }
 
-/* PAGE */
+/* =========================
+   PAGE
+========================= */
 
 .dino-page {
 
-    min-height: calc(100vh - 78px);
+    min-height: 100vh;
+
+    padding: 125px 5% 70px;
 
     display: flex;
 
     align-items: center;
 
     justify-content: center;
-
-    padding: 60px 5%;
 }
 
-/* CARD */
+/* =========================
+   DINOSAUR CARD
+========================= */
 
 .dino-card {
 
-    width: min(1200px,100%);
+    width: min(1200px, 100%);
+
+    min-height: 650px;
 
     display: grid;
 
@@ -107,15 +119,17 @@ nav {
 
     background: #0d1911;
 
-    border: 1px solid rgba(155,190,140,0.2);
+    border: 1px solid rgba(155, 190, 140, 0.2);
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,0.5);
+        0 25px 80px rgba(0, 0, 0, 0.5);
 
     overflow: hidden;
 }
 
-/* IMAGE */
+/* =========================
+   IMAGE BOX
+========================= */
 
 .image-box {
 
@@ -129,9 +143,11 @@ nav {
 
     justify-content: center;
 
-    background: #111;
+    background: #101a13;
 
     overflow: hidden;
+
+    padding: 25px;
 }
 
 .image-box img {
@@ -142,10 +158,15 @@ nav {
 
     object-fit: contain;
 
+    object-position: center;
+
     display: block;
+
 }
 
-/* INFO */
+/* =========================
+   INFO
+========================= */
 
 .info {
 
@@ -173,7 +194,7 @@ h1 {
 
     font-family: 'Cinzel', serif;
 
-    font-size: clamp(40px,5vw,65px);
+    font-size: clamp(40px, 5vw, 65px);
 
     line-height: 1;
 
@@ -193,7 +214,9 @@ h1 {
     margin-bottom: 35px;
 }
 
-/* STATS */
+/* =========================
+   STATS
+========================= */
 
 .stats {
 
@@ -210,9 +233,9 @@ h1 {
 
     padding: 17px;
 
-    background: rgba(255,255,255,0.035);
+    background: rgba(255, 255, 255, 0.035);
 
-    border: 1px solid rgba(255,255,255,0.07);
+    border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .label {
@@ -239,7 +262,9 @@ h1 {
     font-weight: 600;
 }
 
-/* FACT */
+/* =========================
+   FACT
+========================= */
 
 .fact {
 
@@ -254,7 +279,9 @@ h1 {
     line-height: 1.8;
 }
 
-/* FALLING DINOS */
+/* =========================
+   FALLING DINOSAURS
+========================= */
 
 .falling-dino {
 
@@ -289,29 +316,34 @@ h1 {
 
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
-@media (max-width:850px) {
+@media (max-width: 850px) {
+
+    .dino-page {
+        padding: 105px 20px 50px;
+    }
 
     .dino-card {
         grid-template-columns: 1fr;
     }
 
     .image-box {
-        height: 400px;
+        height: 450px;
     }
 
     .info {
-        padding: 35px 25px;
+        padding: 40px 30px;
     }
 
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
 
     nav {
         height: 65px;
-
         padding: 0 20px;
     }
 
@@ -319,8 +351,21 @@ h1 {
         font-size: 17px;
     }
 
+    .back {
+        font-size: 11px;
+    }
+
     .dino-page {
-        padding: 30px 15px;
+        padding: 90px 12px 35px;
+    }
+
+    .image-box {
+        height: 350px;
+        padding: 15px;
+    }
+
+    .info {
+        padding: 30px 20px;
     }
 
     .stats {
@@ -329,35 +374,61 @@ h1 {
 
 }
 
+/* =========================
+   IMAGE ERROR MESSAGE
+========================= */
+
+.image-error {
+
+    color: #8fa18e;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    display: none;
+
+    padding: 30px;
+}
+
 </style>
 
 </head>
 
+
 <body>
 
-<!-- FALLING DINOS -->
+
+<!-- =========================
+     FALLING DINOSAURS
+========================= -->
 
 <div class="falling-dino"
-     style="left:1%;animation-duration:8s;">
+     style="left:1%; animation-duration:8s;">
     🦖
 </div>
 
 <div class="falling-dino"
-     style="left:5%;animation-duration:11s;animation-delay:3s;">
+     style="left:5%; animation-duration:11s; animation-delay:3s;">
     🦕
 </div>
 
 <div class="falling-dino"
-     style="right:1%;animation-duration:9s;animation-delay:1s;">
+     style="right:1%; animation-duration:9s; animation-delay:1s;">
     🦖
 </div>
 
 <div class="falling-dino"
-     style="right:5%;animation-duration:12s;animation-delay:4s;">
+     style="right:5%; animation-duration:12s; animation-delay:4s;">
     🦕
 </div>
 
-<!-- NAV -->
+
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -371,21 +442,38 @@ h1 {
 
 </nav>
 
-<!-- DINOSAUR -->
+
+<!-- =========================
+     DINOSAUR PAGE
+========================= -->
 
 <main class="dino-page">
 
     <article class="dino-card">
+
+
+        <!-- IMAGE -->
 
         <div class="image-box">
 
             <img
                 id="dinoImage"
                 src=""
-                alt="Dinosaur"
-            >
+                alt="Dinosaur">
+
+            <div
+                id="imageError"
+                class="image-error">
+
+                🦖<br><br>
+                This dinosaur image could not be loaded.
+
+            </div>
 
         </div>
+
+
+        <!-- INFORMATION -->
 
         <div class="info">
 
@@ -395,9 +483,11 @@ h1 {
                 SPECIES
             </div>
 
+
             <h1 id="dinoName">
                 Dinosaur
             </h1>
+
 
             <div
                 id="dinoPeriod"
@@ -405,7 +495,9 @@ h1 {
                 PREHISTORIC
             </div>
 
+
             <div class="stats">
+
 
                 <div class="stat">
 
@@ -420,6 +512,7 @@ h1 {
 
                 </div>
 
+
                 <div class="stat">
 
                     <span class="label">
@@ -432,6 +525,7 @@ h1 {
                     </span>
 
                 </div>
+
 
                 <div class="stat">
 
@@ -446,6 +540,7 @@ h1 {
 
                 </div>
 
+
                 <div class="stat">
 
                     <span class="label">
@@ -459,7 +554,9 @@ h1 {
 
                 </div>
 
+
             </div>
+
 
             <div
                 id="dinoFact"
@@ -472,166 +569,238 @@ h1 {
 
 </main>
 
+
 <script>
 
 /* ==========================================
-   DINOSAUR INFORMATION
+   DINOSAUR DATABASE
    ========================================== */
 
 const dinosaurs = {
 
     trex: {
+
         number: "SPECIES 01",
+
         name: "Tyrannosaurus Rex",
+
         period: "LATE CRETACEOUS",
+
         diet: "Carnivore",
+
         length: "Around 12 m",
+
         feature: "Powerful jaws",
+
         type: "Theropod",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg",
+
         fact: "T. rex was one of the most famous predators ever to live. It had enormous jaws, powerful teeth and a massive skull."
+
     },
+
 
     triceratops: {
+
         number: "SPECIES 02",
+
         name: "Triceratops",
+
         period: "LATE CRETACEOUS",
+
         diet: "Herbivore",
+
         length: "Around 9 m",
+
         feature: "Three horns",
+
         type: "Ceratopsian",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/44/Triceratops_BW.jpg",
+
         fact: "Triceratops had a huge skull, three horns and a large protective frill."
+
     },
+
 
     velociraptor: {
+
         number: "SPECIES 03",
+
         name: "Velociraptor",
+
         period: "LATE CRETACEOUS",
+
         diet: "Carnivore",
+
         length: "Around 2 m",
+
         feature: "Curved claw",
+
         type: "Dromaeosaur",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png",
+
         fact: "Real Velociraptors were much smaller than their movie versions. Fossil evidence indicates that they had feathers."
+
     },
+
 
     spinosaurus: {
+
         number: "SPECIES 04",
+
         name: "Spinosaurus",
+
         period: "CRETACEOUS",
+
         diet: "Carnivore",
+
         length: "Around 14 m",
+
         feature: "Large sail",
+
         type: "Theropod",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png",
+
         fact: "Spinosaurus had a long narrow skull and a distinctive sail-like structure along its back."
+
     },
+
 
     stegosaurus: {
+
         number: "SPECIES 05",
+
         name: "Stegosaurus",
+
         period: "LATE JURASSIC",
+
         diet: "Herbivore",
+
         length: "Around 9 m",
+
         feature: "Back plates",
+
         type: "Stegosaur",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/0/08/Stegosaurus_BW.jpg",
+
         fact: "Stegosaurus had large plates along its back and four long spikes on its tail."
+
     },
+
 
     brachiosaurus: {
+
         number: "SPECIES 06",
+
         name: "Brachiosaurus",
+
         period: "LATE JURASSIC",
+
         diet: "Herbivore",
+
         length: "Around 18–22 m",
+
         feature: "Long neck",
+
         type: "Sauropod",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Brachiosaurus_BW.jpg",
+
         fact: "Brachiosaurus had a very long neck and unusually long front legs, helping it reach vegetation high above the ground."
+
     },
+
 
     ankylosaurus: {
+
         number: "SPECIES 07",
+
         name: "Ankylosaurus",
+
         period: "LATE CRETACEOUS",
+
         diet: "Herbivore",
+
         length: "Around 8 m",
+
         feature: "Tail club",
+
         type: "Ankylosaur",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Ankylosaurus_dinosaur.png",
+
         fact: "Ankylosaurus was covered in bony armor and had a powerful club at the end of its tail."
+
     },
+
 
     allosaurus: {
+
         number: "SPECIES 08",
+
         name: "Allosaurus",
+
         period: "LATE JURASSIC",
+
         diet: "Carnivore",
+
         length: "Around 9–10 m",
+
         feature: "Sharp teeth",
+
         type: "Theropod",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Allosaurus_BW.jpg",
+
         fact: "Allosaurus was a large Jurassic predator with powerful jaws, sharp teeth and three-fingered hands."
+
     },
 
+
     diplodocus: {
+
         number: "SPECIES 09",
+
         name: "Diplodocus",
+
         period: "LATE JURASSIC",
+
         diet: "Herbivore",
+
         length: "Around 24–26 m",
+
         feature: "Whip-like tail",
+
         type: "Sauropod",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Diplodocus_carnegii.jpg",
+
         fact: "Diplodocus had an extremely long neck and tail. Its tail may have been used like a whip."
+
     }
 
 };
 
 
 /* ==========================================
-   IMAGE URLS
-   THESE ARE THE SAME URLs AS INDEX.HTML
+   GET ?dino= FROM THE URL
    ========================================== */
 
-const images = {
-
-    trex:
-    "https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg",
-
-    triceratops:
-    "https://upload.wikimedia.org/wikipedia/commons/4/44/Triceratops_BW.jpg",
-
-    velociraptor:
-    "https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png",
-
-    spinosaurus:
-    "https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png",
-
-    stegosaurus:
-    "https://upload.wikimedia.org/wikipedia/commons/0/08/Stegosaurus_BW.jpg",
-
-    brachiosaurus:
-    "https://upload.wikimedia.org/wikipedia/commons/3/3b/Brachiosaurus_BW.jpg",
-
-    ankylosaurus:
-    "https://upload.wikimedia.org/wikipedia/commons/5/5e/Ankylosaurus_dinosaur.png",
-
-    allosaurus:
-    "https://upload.wikimedia.org/wikipedia/commons/b/b0/Allosaurus_BW.jpg",
-
-    diplodocus:
-    "https://upload.wikimedia.org/wikipedia/commons/5/5b/Diplodocus_carnegii.jpg"
-
-};
-
-
-/* ==========================================
-   GET THE ?dino= VALUE
-   ========================================== */
-
-const params =
-    new URLSearchParams(window.location.search);
+const params = new URLSearchParams(
+    window.location.search
+);
 
 const selectedDino =
     params.get("dino");
 
 
 /* ==========================================
-   FIND THAT ONE DINOSAUR
+   FIND SELECTED DINOSAUR
    ========================================== */
 
 const dino =
@@ -639,7 +808,18 @@ const dino =
 
 
 /* ==========================================
-   SHOW ONLY THAT DINOSAUR
+   HTML ELEMENTS
+   ========================================== */
+
+const image =
+    document.getElementById("dinoImage");
+
+const imageError =
+    document.getElementById("imageError");
+
+
+/* ==========================================
+   SHOW ONLY SELECTED DINOSAUR
    ========================================== */
 
 if (dino) {
@@ -669,27 +849,42 @@ if (dino) {
         dino.fact;
 
 
-    const image =
-        document.getElementById("dinoImage");
+    /* LOAD IMAGE */
 
+    image.src = dino.image;
 
-    /* USE THE EXACT SAME IMAGE URL */
-
-    image.src =
-        images[selectedDino];
-
-    image.alt =
-        dino.name;
-
+    image.alt = dino.name;
 
     document.title =
         dino.name + " | Dino Explorer";
+
+
+    /* IMAGE LOADED */
+
+    image.onload = function() {
+
+        image.style.display = "block";
+
+        imageError.style.display = "none";
+
+    };
+
+
+    /* IMAGE FAILED */
+
+    image.onerror = function() {
+
+        image.style.display = "none";
+
+        imageError.style.display = "block";
+
+    };
 
 }
 
 
 /* ==========================================
-   IF THE URL IS WRONG
+   NO DINOSAUR SELECTED
    ========================================== */
 
 else {
@@ -703,12 +898,27 @@ else {
     document.getElementById("dinoPeriod").textContent =
         "RETURN TO THE EXPLORE PAGE";
 
+    document.getElementById("dinoDiet").textContent =
+        "—";
+
+    document.getElementById("dinoLength").textContent =
+        "—";
+
+    document.getElementById("dinoFeature").textContent =
+        "—";
+
+    document.getElementById("dinoType").textContent =
+        "—";
+
     document.getElementById("dinoFact").textContent =
         "Please choose a dinosaur from the Dino Explorer homepage.";
+
+    image.style.display = "none";
 
 }
 
 </script>
 
 </body>
+
 </html>
