@@ -1,1 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dino Quiz 🦖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #f5f9f3;
+    color: #173b2a;
+    min-height: 100vh;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: #14532d;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.home-button {
+    color: white;
+    text-decoration: none;
+    background: #2f855a;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.home-button:hover {
+    background: #4caf70;
+}
+
+
+/* QUIZ CONTAINER */
+
+.quiz-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+
+/* TITLE */
+
+.quiz-title {
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 50px;
+    color: #14532d;
+    margin-bottom: 10px;
+}
+
+.quiz-subtitle {
+    text-align: center;
+    color: #55745f;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+
+/* PROGRESS */
+
+.progress-area {
+    background: white;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(20,83,45,0.1);
+    margin-bottom: 25px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #dcebdd;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #2f855a;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+
+/* QUESTION CARD */
+
+.question-card {
+    background: white;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(20,83,45,0.12);
+}
+
+.question-number {
+    color: #4b8f63;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.question {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 28px;
+    color: #14532d;
+    margin: 0 0 25px;
+}
+
+
+/* ANSWERS */
+
+.answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.answer {
+    background: #f5f9f3;
+    border: 2px solid #d8e8db;
+    padding: 16px;
+    border-radius: 15px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #173b2a;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.answer:hover {
+    background: #e4f2e7;
+    border-color: #4caf70;
+    transform: translateY(-2px);
+}
+
+.answer.correct {
+    background: #c9efd4;
+    border-color: #2f855a;
+}
+
+.answer.wrong {
+    background: #ffd7d7;
+    border-color: #dc5a5a;
+}
+
+
+/* NEXT BUTTON */
+
+.next-button {
+    display: none;
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    background: #14532d;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.next-button:hover {
+    background: #2f855a;
+}
+
+
+/* RESULT */
+
+.result {
+    display: none;
+    background: white;
+    padding: 45px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(20,83,45,0.15);
+}
+
+.result-emoji {
+    font-size: 70px;
+}
+
+.result h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 40px;
+    color: #14532d;
+}
+
+.score {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 55px;
+    color: #2f855a;
+    margin: 15px;
+}
+
+.result-button {
+    display: inline-block;
+    margin: 8px;
+    padding: 14px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
+.retry {
+    background: #f6c453;
+    color: #173b2a;
+}
+
+.home {
+    background: #14532d;
+    color: white;
+}
+
+
+/* FALLING DINOSAURS */
+
+.falling-dino {
+    position: fixed;
+    top: -70px;
+    font-size: 42px;
+    pointer-events: none;
+    z-index: 1;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+
+    from {
+        transform: translateY(-80px) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .quiz-title {
+        font-size: 40px;
+    }
+
+    .question {
+        font-size: 23px;
+    }
+
+    .answers {
+        grid-template-columns: 1fr;
+    }
+
+    .question-card {
+        padding: 25px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- FALLING DINOSAURS -->
+
+<div class="falling-dino" style="left: 2%; animation-duration: 7s;">
+🦖
+</div>
+
+<div class="falling-dino" style="left: 7%; animation-duration: 10s; animation-delay: 3s;">
+🦕
+</div>
+
+<div class="falling-dino" style="right: 2%; animation-duration: 8s; animation-delay: 1s;">
+🦖
+</div>
+
+<div class="falling-dino" style="right: 7%; animation-duration: 11s; animation-delay: 4s;">
+🦕
+</div>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+        🦖 Dino Explorer
+    </a>
+
+    <a href="index.html" class="home-button">
+        ← Home
+    </a>
+
+</nav>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-container">
+
+    <h1 class="quiz-title">
+        🧠 Dino Quiz
+    </h1>
+
+    <p class="quiz-subtitle">
+        Think you know dinosaurs? Let's find out!
+    </p>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-area">
+
+        <div class="progress-text">
+
+            <span id="questionCounter">
+                Question 1 of 15
+            </span>
+
+            <span id="scoreText">
+                Score: 0
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div id="progressFill" class="progress-fill"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION CARD -->
+
+    <div id="questionCard" class="question-card">
+
+        <div id="questionNumber" class="question-number">
+            QUESTION 1
+        </div>
+
+        <h2 id="question" class="question">
+            Question goes here
+        </h2>
+
+        <div id="answers" class="answers">
+        </div>
+
+        <button id="nextButton" class="next-button">
+            Next Question →
+        </button>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div id="result" class="result">
+
+        <div class="result-emoji">
+            🦖🏆
+        </div>
+
+        <h2>
+            Quiz Complete!
+        </h2>
+
+        <p>
+            Your final score is:
+        </p>
+
+        <div id="finalScore" class="score">
+            0 / 15
+        </div>
+
+        <p id="resultMessage">
+        </p>
+
+        <button onclick="restartQuiz()" class="result-button retry">
+            🔄 Try Again
+        </button>
+
+        <a href="index.html" class="result-button home">
+            🏠 Home
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   QUIZ QUESTIONS
+========================= */
+
+const questions = [
+
+    {
+        question: "Which dinosaur is famous for having three horns?",
+        answers: [
+            "T-Rex",
+            "Triceratops",
+            "Velociraptor",
+            "Stegosaurus"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "What did most dinosaurs live on Earth millions of years ago?",
+        answers: [
+            "Only in the ocean",
+            "Only underground",
+            "On land",
+            "On other planets"
+        ],
+        correct: 2
+    },
+
+    {
+        question: "Which dinosaur had a huge sail on its back?",
+        answers: [
+            "Spinosaurus",
+            "Triceratops",
+            "Stegosaurus",
+            "Ankylosaurus"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Which dinosaur had large plates along its back?",
+        answers: [
+            "T-Rex",
+            "Stegosaurus",
+            "Velociraptor",
+            "Diplodocus"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "What did herbivorous dinosaurs mainly eat?",
+        answers: [
+            "Plants",
+            "Other dinosaurs",
+            "Fish only",
+            "Rocks"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Which dinosaur was famous for its powerful bite?",
+        answers: [
+            "T-Rex",
+            "Diplodocus",
+            "Parasaurolophus",
+            "Stegosaurus"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "What was the main diet of a T-Rex?",
+        answers: [
+            "Plants",
+            "Meat",
+            "Fruit only",
+            "Grass"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "Which dinosaur had a long backward-pointing crest?",
+        answers: [
+            "Parasaurolophus",
+            "Triceratops",
+            "T-Rex",
+            "Allosaurus"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Which dinosaur had armor and a large tail club?",
+        answers: [
+            "Ankylosaurus",
+            "Velociraptor",
+            "Brachiosaurus",
+            "Spinosaurus"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Which dinosaur was known for its very long neck?",
+        answers: [
+            "T-Rex",
+            "Brachiosaurus",
+            "Velociraptor",
+            "Ankylosaurus"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "Were real Velociraptors covered completely in scales like they are shown in some movies?",
+        answers: [
+            "Yes",
+            "No, evidence suggests they had feathers",
+            "They lived underwater",
+            "They had shells"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "What does the word 'dinosaur' roughly mean?",
+        answers: [
+            "Terrible lizard",
+            "Giant bird",
+            "Ancient monster",
+            "Big reptile"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Which dinosaur had a long whip-like tail?",
+        answers: [
+            "Diplodocus",
+            "Triceratops",
+            "T-Rex",
+            "Spinosaurus"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "Which dinosaur lived during the Late Jurassic period?",
+        answers: [
+            "Stegosaurus",
+            "T-Rex",
+            "Triceratops",
+            "Velociraptor"
+        ],
+        correct: 0
+    },
+
+    {
+        question: "What do scientists study to learn about dinosaurs?",
+        answers: [
+            "Fossils",
+            "Modern cars",
+            "Clouds",
+            "Computer games"
+        ],
+        correct: 0
+    }
+
+];
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+
+/* =========================
+   LOAD QUESTION
+========================= */
+
+function loadQuestion() {
+
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        "QUESTION " + (currentQuestion + 1);
+
+    document.getElementById("questionCounter").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    document.getElementById("scoreText").textContent =
+        "Score: " + score;
+
+    document.getElementById("question").textContent =
+        q.question;
+
+    const answersContainer =
+        document.getElementById("answers");
+
+    answersContainer.innerHTML = "";
+
+    q.answers.forEach((answer, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer";
+
+        button.textContent = answer;
+
+        button.onclick = function() {
+
+            selectAnswer(index, button);
+
+        };
+
+        answersContainer.appendChild(button);
+
+    });
+
+
+    /* Progress */
+
+    const progress =
+        ((currentQuestion) / questions.length) * 100;
+
+    document.getElementById("progressFill").style.width =
+        progress + "%";
+
+
+    document.getElementById("nextButton").style.display =
+        "none";
+}
+
+
+/* =========================
+   SELECT ANSWER
+========================= */
+
+function selectAnswer(index, button) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const correctAnswer =
+        questions[currentQuestion].correct;
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+
+    buttons.forEach(btn => {
+
+        btn.style.pointerEvents = "none";
+
+    });
+
+
+    if (index === correctAnswer) {
+
+        button.classList.add("correct");
+
+        score++;
+
+        document.getElementById("scoreText").textContent =
+            "Score: " + score;
+
+    } else {
+
+        button.classList.add("wrong");
+
+        buttons[correctAnswer].classList.add("correct");
+
+    }
+
+
+    document.getElementById("nextButton").style.display =
+        "block";
+}
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
+
+document.getElementById("nextButton").onclick = function() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+    } else {
+
+        showResult();
+
+    }
+
+};
+
+
+/* =========================
+   SHOW RESULT
+========================= */
+
+function showResult() {
+
+    document.getElementById("questionCard").style.display =
+        "none";
+
+    document.querySelector(".progress-area").style.display =
+        "none";
+
+    document.querySelector(".quiz-subtitle").style.display =
+        "none";
+
+    document.getElementById("result").style.display =
+        "block";
+
+
+    document.getElementById("finalScore").textContent =
+        score + " / " + questions.length;
+
+
+    let message = "";
+
+    if (score === 15) {
+
+        message =
+            "🏆 INCREDIBLE! You're a true Dinosaur Master!";
+
+    } else if (score >= 12) {
+
+        message =
+            "🔥 Amazing! You really know your dinosaurs!";
+
+    } else if (score >= 8) {
+
+        message =
+            "👏 Great job! You know quite a lot about dinosaurs!";
+
+    } else if (score >= 5) {
+
+        message =
+            "🦕 Good try! Keep exploring the dinosaur world!";
+
+    } else {
+
+        message =
+            "🌱 Keep learning! There are plenty more dinosaurs to discover!";
+
+    }
+
+
+    document.getElementById("resultMessage").textContent =
+        message;
+
+}
+
+
+/* =========================
+   RESTART
+========================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    document.getElementById("questionCard").style.display =
+        "block";
+
+    document.querySelector(".progress-area").style.display =
+        "block";
+
+    document.querySelector(".quiz-subtitle").style.display =
+        "block";
+
+    document.getElementById("result").style.display =
+        "none";
+
+    loadQuestion();
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
