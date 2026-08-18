@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -56,6 +57,8 @@ nav {
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 1px;
+
+    transition: 0.3s;
 }
 
 .back:hover {
@@ -113,11 +116,6 @@ nav {
 
     width: 100%;
     height: 100%;
-
-    /*
-       CONTAIN = SHOW THE WHOLE IMAGE
-       WITHOUT CUTTING IT OFF
-    */
 
     object-fit: contain;
 
@@ -302,6 +300,7 @@ h1 {
 }
 
 </style>
+
 </head>
 
 <body>
@@ -342,7 +341,6 @@ h1 {
 
 </nav>
 
-
 <!-- DINOSAUR -->
 
 <main class="dino-page">
@@ -354,7 +352,6 @@ h1 {
             <img id="dinoImage" src="" alt="Dinosaur">
 
         </div>
-
 
         <div class="info">
 
@@ -370,61 +367,31 @@ h1 {
                 PREHISTORIC
             </div>
 
-
             <div class="stats">
 
                 <div class="stat">
-
-                    <span class="label">
-                        Diet
-                    </span>
-
-                    <span id="dinoDiet" class="value">
-                    </span>
-
+                    <span class="label">Diet</span>
+                    <span id="dinoDiet" class="value"></span>
                 </div>
 
-
                 <div class="stat">
-
-                    <span class="label">
-                        Length
-                    </span>
-
-                    <span id="dinoLength" class="value">
-                    </span>
-
+                    <span class="label">Length</span>
+                    <span id="dinoLength" class="value"></span>
                 </div>
 
-
                 <div class="stat">
-
-                    <span class="label">
-                        Feature
-                    </span>
-
-                    <span id="dinoFeature" class="value">
-                    </span>
-
+                    <span class="label">Feature</span>
+                    <span id="dinoFeature" class="value"></span>
                 </div>
 
-
                 <div class="stat">
-
-                    <span class="label">
-                        Type
-                    </span>
-
-                    <span id="dinoType" class="value">
-                    </span>
-
+                    <span class="label">Type</span>
+                    <span id="dinoType" class="value"></span>
                 </div>
 
             </div>
 
-
-            <div id="dinoFact" class="fact">
-            </div>
+            <div id="dinoFact" class="fact"></div>
 
         </div>
 
@@ -432,263 +399,157 @@ h1 {
 
 </main>
 
-
 <script>
 
-/*
-=================================================
-DINOSAUR DATABASE
-
-THE IMAGE URLS ARE THE SAME ONES USED
-ON YOUR INDEX.HTML
-=================================================
-*/
+/* ==========================================
+   DINOSAUR DATABASE
+   ========================================== */
 
 const dinosaurs = {
 
     trex: {
-
         number: "SPECIES 01",
-
         name: "Tyrannosaurus Rex",
-
         period: "LATE CRETACEOUS",
-
         diet: "Carnivore",
-
         length: "Around 12 m",
-
         feature: "Powerful jaws",
-
         type: "Theropod",
 
-        image:
-        "https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg",
 
-        fact:
-        "T. rex was one of the most famous predators ever to live. It had enormous jaws, powerful teeth and a massive skull."
+        fact: "T. rex was one of the most famous predators ever to live. It had enormous jaws, powerful teeth and a massive skull."
     },
-
 
     triceratops: {
-
         number: "SPECIES 02",
-
         name: "Triceratops",
-
         period: "LATE CRETACEOUS",
-
         diet: "Herbivore",
-
         length: "Around 9 m",
-
         feature: "Three horns",
-
         type: "Ceratopsian",
 
-        image:
-        "https://upload.wikimedia.org/wikipedia/commons/4/44/Triceratops_BW.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/44/Triceratops_BW.jpg",
 
-        fact:
-        "Triceratops had a huge skull, three horns and a large protective frill."
+        fact: "Triceratops had a huge skull, three horns and a large protective frill."
     },
-
 
     velociraptor: {
-
         number: "SPECIES 03",
-
         name: "Velociraptor",
-
         period: "LATE CRETACEOUS",
-
         diet: "Carnivore",
-
         length: "Around 2 m",
-
         feature: "Curved claw",
-
         type: "Dromaeosaur",
 
-        image:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Velociraptor%20Restoration.png",
 
-        fact:
-        "Real Velociraptors were much smaller than their movie versions. Fossil evidence indicates that they had feathers."
+        fact: "Real Velociraptors were much smaller than their movie versions. Fossil evidence indicates that they had feathers."
     },
-
 
     spinosaurus: {
-
         number: "SPECIES 04",
-
         name: "Spinosaurus",
-
         period: "CRETACEOUS",
-
         diet: "Carnivore",
-
         length: "Around 14 m",
-
         feature: "Large sail",
-
         type: "Theropod",
 
-        image:
-        "https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png",
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png",
 
-        fact:
-        "Spinosaurus had a long narrow skull and a distinctive sail-like structure along its back."
+        fact: "Spinosaurus had a long narrow skull and a distinctive sail-like structure along its back."
     },
-
 
     stegosaurus: {
-
         number: "SPECIES 05",
-
         name: "Stegosaurus",
-
         period: "LATE JURASSIC",
-
         diet: "Herbivore",
-
         length: "Around 9 m",
-
         feature: "Back plates",
-
         type: "Stegosaur",
 
-        image:
-        "https://upload.wikimedia.org/wikipedia/commons/0/08/Stegosaurus_BW.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/commons/0/08/Stegosaurus_BW.jpg",
 
-        fact:
-        "Stegosaurus had large plates along its back and four long spikes on its tail."
+        fact: "Stegosaurus had large plates along its back and four long spikes on its tail."
     },
-
 
     brachiosaurus: {
-
         number: "SPECIES 06",
-
         name: "Brachiosaurus",
-
         period: "LATE JURASSIC",
-
         diet: "Herbivore",
-
         length: "Around 18–22 m",
-
         feature: "Long neck",
-
         type: "Sauropod",
 
-        image:
-        "https://upload.wikimedia.org/wikipedia/commons/3/3b/Brachiosaurus_BW.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Brachiosaurus_BW.jpg",
 
-        fact:
-        "Brachiosaurus had a very long neck and unusually long front legs, helping it reach vegetation high above the ground."
+        fact: "Brachiosaurus had a very long neck and unusually long front legs, helping it reach vegetation high above the ground."
     },
-
 
     ankylosaurus: {
-
         number: "SPECIES 07",
-
         name: "Ankylosaurus",
-
         period: "LATE CRETACEOUS",
-
         diet: "Herbivore",
-
         length: "Around 8 m",
-
         feature: "Tail club",
-
         type: "Ankylosaur",
 
-        image:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5e/Ankylosaurus_dinosaur.png",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Ankylosaurus_dinosaur.png",
 
-        fact:
-        "Ankylosaurus was covered in bony armor and had a powerful club at the end of its tail."
+        fact: "Ankylosaurus was covered in bony armor and had a powerful club at the end of its tail."
     },
-
 
     allosaurus: {
-
         number: "SPECIES 08",
-
         name: "Allosaurus",
-
         period: "LATE JURASSIC",
-
         diet: "Carnivore",
-
         length: "Around 9–10 m",
-
         feature: "Sharp teeth",
-
         type: "Theropod",
 
-        image:
-        "https://upload.wikimedia.org/wikipedia/commons/b/b0/Allosaurus_BW.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Allosaurus_BW.jpg",
 
-        fact:
-        "Allosaurus was a large Jurassic predator with powerful jaws, sharp teeth and three-fingered hands."
+        fact: "Allosaurus was a large Jurassic predator with powerful jaws, sharp teeth and three-fingered hands."
     },
 
-
     diplodocus: {
-
         number: "SPECIES 09",
-
         name: "Diplodocus",
-
         period: "LATE JURASSIC",
-
         diet: "Herbivore",
-
         length: "Around 24–26 m",
-
         feature: "Whip-like tail",
-
         type: "Sauropod",
 
-        image:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5b/Diplodocus_carnegii.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Diplodocus_carnegii.jpg",
 
-        fact:
-        "Diplodocus had an extremely long neck and tail. Its tail may have been used like a whip."
+        fact: "Diplodocus had an extremely long neck and tail. Its tail may have been used like a whip."
     }
 
 };
 
 
-/*
-=================================================
-GET THE DINOSAUR FROM THE URL
-=================================================
-*/
+/* ==========================================
+   GET ?dino= FROM THE URL
+   ========================================== */
 
 const params = new URLSearchParams(window.location.search);
 
 const selectedDino = params.get("dino");
 
-
-/*
-=================================================
-FIND THE DINOSAUR
-=================================================
-*/
-
 const dino = dinosaurs[selectedDino];
 
 
-/*
-=================================================
-SHOW ONLY THE SELECTED DINOSAUR
-=================================================
-*/
+/* ==========================================
+   DISPLAY ONLY THE SELECTED DINOSAUR
+   ========================================== */
 
 if (dino) {
 
@@ -716,12 +577,10 @@ if (dino) {
     document.getElementById("dinoFact").textContent =
         dino.fact;
 
-
     const image =
         document.getElementById("dinoImage");
 
     image.src = dino.image;
-
     image.alt = dino.name;
 
     document.title =
@@ -730,13 +589,14 @@ if (dino) {
 }
 
 
-/*
-=================================================
-IF NO DINOSAUR WAS SELECTED
-=================================================
-*/
+/* ==========================================
+   INVALID DINOSAUR
+   ========================================== */
 
 else {
+
+    document.getElementById("dinoNumber").textContent =
+        "ERROR";
 
     document.getElementById("dinoName").textContent =
         "Dinosaur Not Found";
@@ -745,7 +605,7 @@ else {
         "RETURN TO THE EXPLORE PAGE";
 
     document.getElementById("dinoFact").textContent =
-        "Please choose a dinosaur from the Dino Explorer homepage.";
+        "Choose a dinosaur from the Dino Explorer homepage.";
 
 }
 
