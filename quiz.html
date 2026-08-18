@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dino Quiz 🦖</title>
+<title>Dino Explorer | Quiz</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,340 +16,794 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    font-family: 'Nunito', sans-serif;
-    background: #f5f9f3;
-    color: #173b2a;
     min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #193522 0%,
+            #0b1710 35%,
+            #040b06 85%
+        );
+
+    color: white;
+
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* NAVIGATION */
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
-    background: #14532d;
-    padding: 18px 25px;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 78px;
+
+    z-index: 100;
+
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    background: rgba(5, 15, 9, 0.78);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(160, 195, 145, 0.15);
 }
+
 
 .logo {
-    color: white;
-    font-family: 'Fredoka', sans-serif;
-    font-size: 25px;
-    font-weight: 700;
+
+    color: #dcebd4;
+
     text-decoration: none;
+
+    font-family: 'Cinzel', serif;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
 }
+
 
 .home-button {
-    color: white;
+
+    color: #b8d1ad;
+
     text-decoration: none;
-    background: #2f855a;
-    padding: 10px 18px;
-    border-radius: 20px;
-    font-weight: 700;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    padding: 12px 20px;
+
+    border: 1px solid rgba(159,199,140,0.35);
+
     transition: 0.3s;
 }
+
 
 .home-button:hover {
-    background: #4caf70;
+
+    background: #8fb67e;
+
+    color: #07110b;
+
 }
 
 
-/* QUIZ CONTAINER */
-
-.quiz-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-}
-
-
-/* TITLE */
-
-.quiz-title {
-    text-align: center;
-    font-family: 'Fredoka', sans-serif;
-    font-size: 50px;
-    color: #14532d;
-    margin-bottom: 10px;
-}
-
-.quiz-subtitle {
-    text-align: center;
-    color: #55745f;
-    font-size: 18px;
-    margin-bottom: 35px;
-}
-
-
-/* PROGRESS */
-
-.progress-area {
-    background: white;
-    padding: 18px;
-    border-radius: 18px;
-    box-shadow: 0 6px 20px rgba(20,83,45,0.1);
-    margin-bottom: 25px;
-}
-
-.progress-text {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 12px;
-    background: #dcebdd;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    width: 0%;
-    background: #2f855a;
-    border-radius: 20px;
-    transition: 0.4s;
-}
-
-
-/* QUESTION CARD */
-
-.question-card {
-    background: white;
-    padding: 35px;
-    border-radius: 25px;
-    box-shadow: 0 10px 35px rgba(20,83,45,0.12);
-}
-
-.question-number {
-    color: #4b8f63;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.question {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 28px;
-    color: #14532d;
-    margin: 0 0 25px;
-}
-
-
-/* ANSWERS */
-
-.answers {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.answer {
-    background: #f5f9f3;
-    border: 2px solid #d8e8db;
-    padding: 16px;
-    border-radius: 15px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #173b2a;
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-.answer:hover {
-    background: #e4f2e7;
-    border-color: #4caf70;
-    transform: translateY(-2px);
-}
-
-.answer.correct {
-    background: #c9efd4;
-    border-color: #2f855a;
-}
-
-.answer.wrong {
-    background: #ffd7d7;
-    border-color: #dc5a5a;
-}
-
-
-/* NEXT BUTTON */
-
-.next-button {
-    display: none;
-    width: 100%;
-    margin-top: 25px;
-    padding: 15px;
-    background: #14532d;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    font-family: 'Fredoka', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.next-button:hover {
-    background: #2f855a;
-}
-
-
-/* RESULT */
-
-.result {
-    display: none;
-    background: white;
-    padding: 45px;
-    border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 10px 35px rgba(20,83,45,0.15);
-}
-
-.result-emoji {
-    font-size: 70px;
-}
-
-.result h2 {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 40px;
-    color: #14532d;
-}
-
-.score {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 55px;
-    color: #2f855a;
-    margin: 15px;
-}
-
-.result-button {
-    display: inline-block;
-    margin: 8px;
-    padding: 14px 25px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-}
-
-.retry {
-    background: #f6c453;
-    color: #173b2a;
-}
-
-.home {
-    background: #14532d;
-    color: white;
-}
-
-
-/* FALLING DINOSAURS */
+/* =========================
+   FALLING DINOSAURS
+========================= */
 
 .falling-dino {
+
     position: fixed;
-    top: -70px;
-    font-size: 42px;
+
+    top: -80px;
+
+    font-size: 45px;
+
     pointer-events: none;
-    z-index: 1;
+
+    z-index: 2;
+
+    opacity: 0.38;
+
     animation: fall linear infinite;
 }
+
 
 @keyframes fall {
 
     from {
-        transform: translateY(-80px) rotate(0deg);
+
+        transform:
+            translateY(-80px)
+            rotate(0deg);
+
     }
 
     to {
-        transform: translateY(110vh) rotate(360deg);
+
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
     }
 
 }
 
 
-/* MOBILE */
+/* =========================
+   MAIN
+========================= */
+
+.quiz-container {
+
+    width: min(1000px, 92%);
+
+    margin: 0 auto;
+
+    padding: 145px 0 100px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.quiz-header {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+
+.quiz-label {
+
+    color: #9fc78c;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 18px;
+}
+
+
+.quiz-title {
+
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(45px, 7vw, 80px);
+
+    line-height: 1;
+
+    margin: 0;
+
+    color: #e2eddd;
+
+    text-shadow:
+        0 5px 30px rgba(0,0,0,0.5);
+}
+
+
+.quiz-title span {
+
+    color: #9fc78c;
+}
+
+
+.quiz-subtitle {
+
+    max-width: 600px;
+
+    margin: 25px auto 0;
+
+    color: #91a393;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-area {
+
+    padding: 20px 25px;
+
+    margin-bottom: 22px;
+
+    background: rgba(14, 27, 17, 0.82);
+
+    border: 1px solid rgba(155,190,140,0.16);
+
+    backdrop-filter: blur(12px);
+}
+
+
+.progress-text {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    color: #aabdA7;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 5px;
+
+    background: #1c2d20;
+
+    overflow: hidden;
+}
+
+
+.progress-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #91bb7c;
+
+    transition: width 0.5s ease;
+}
+
+
+/* =========================
+   QUESTION CARD
+========================= */
+
+.question-card {
+
+    position: relative;
+
+    padding: 55px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 43, 27, 0.96),
+            rgba(8, 18, 11, 0.97)
+        );
+
+    border: 1px solid rgba(159,199,140,0.18);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.35);
+
+    overflow: hidden;
+}
+
+
+/* subtle glow */
+
+.question-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+
+    height: 300px;
+
+    top: -150px;
+
+    right: -150px;
+
+    border-radius: 50%;
+
+    background: rgba(128,180,105,0.08);
+
+    filter: blur(20px);
+
+}
+
+
+.question-number {
+
+    position: relative;
+
+    color: #9fc78c;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 18px;
+}
+
+
+.question {
+
+    position: relative;
+
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(25px, 4vw, 39px);
+
+    line-height: 1.3;
+
+    color: #e1ebdd;
+
+    margin: 0 0 35px;
+}
+
+
+/* =========================
+   ANSWERS
+========================= */
+
+.answers {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 14px;
+}
+
+
+.answer {
+
+    min-height: 70px;
+
+    padding: 18px 20px;
+
+    text-align: left;
+
+    background: rgba(255,255,255,0.025);
+
+    border: 1px solid rgba(170,200,160,0.18);
+
+    color: #cddbc8;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s,
+        background 0.25s,
+        border-color 0.25s;
+}
+
+
+.answer:hover {
+
+    transform: translateY(-3px);
+
+    background: rgba(115,160,95,0.12);
+
+    border-color: #8fb67e;
+
+    color: white;
+}
+
+
+.answer.correct {
+
+    background: rgba(74, 145, 83, 0.25);
+
+    border-color: #8fc58a;
+
+    color: #dff1d9;
+}
+
+
+.answer.wrong {
+
+    background: rgba(150, 55, 55, 0.25);
+
+    border-color: #c56b6b;
+
+    color: #ffdada;
+}
+
+
+/* =========================
+   NEXT BUTTON
+========================= */
+
+.next-button {
+
+    display: none;
+
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 17px;
+
+    background: #8fb67e;
+
+    color: #07110b;
+
+    border: none;
+
+    font-family: 'Cinzel', serif;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.next-button:hover {
+
+    background: #b0d49d;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 70px 40px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 43, 27, 0.96),
+            rgba(8, 18, 11, 0.97)
+        );
+
+    border: 1px solid rgba(159,199,140,0.2);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.4);
+}
+
+
+.result-emoji {
+
+    font-size: 70px;
+
+    margin-bottom: 15px;
+}
+
+
+.result h2 {
+
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(35px, 5vw, 55px);
+
+    color: #dcebd4;
+
+    margin: 0 0 15px;
+}
+
+
+.result p {
+
+    color: #91a393;
+
+    font-size: 15px;
+}
+
+
+.score {
+
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(55px, 8vw, 85px);
+
+    color: #9fc78c;
+
+    margin: 15px;
+}
+
+
+#resultMessage {
+
+    color: #b9cdb2;
+
+    font-weight: 600;
+
+    margin: 20px 0 30px;
+}
+
+
+.result-button {
+
+    display: inline-block;
+
+    margin: 7px;
+
+    padding: 15px 25px;
+
+    text-decoration: none;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    border: none;
+
+    transition: 0.3s;
+}
+
+
+.retry {
+
+    background: #8fb67e;
+
+    color: #07110b;
+}
+
+
+.retry:hover {
+
+    background: #b0d49d;
+
+    transform: translateY(-3px);
+}
+
+
+.home {
+
+    background: transparent;
+
+    color: #b8d1ad;
+
+    border: 1px solid rgba(159,199,140,0.4);
+}
+
+
+.home:hover {
+
+    background: rgba(159,199,140,0.1);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding: 35px;
+
+    text-align: center;
+
+    background: #040b06;
+
+    color: #657664;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 650px) {
 
-    .quiz-title {
-        font-size: 40px;
+    nav {
+
+        height: 65px;
+
+        padding: 0 20px;
+
     }
 
-    .question {
-        font-size: 23px;
+    .logo {
+
+        font-size: 17px;
+
+    }
+
+    .home-button {
+
+        padding: 9px 13px;
+
+        font-size: 10px;
+
+    }
+
+    .quiz-container {
+
+        padding-top: 115px;
+
+    }
+
+    .quiz-title {
+
+        font-size: 48px;
+
     }
 
     .answers {
+
         grid-template-columns: 1fr;
+
     }
 
     .question-card {
-        padding: 25px;
+
+        padding: 30px 22px;
+
+    }
+
+    .progress-area {
+
+        padding: 17px;
+
+    }
+
+    .result {
+
+        padding: 50px 20px;
+
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
 
-<!-- FALLING DINOSAURS -->
+<!-- =========================
+     FALLING DINOSAURS
+========================= -->
 
-<div class="falling-dino" style="left: 2%; animation-duration: 7s;">
-🦖
+<div class="falling-dino"
+     style="left:1%; animation-duration:8s;">
+    🦖
 </div>
 
-<div class="falling-dino" style="left: 7%; animation-duration: 10s; animation-delay: 3s;">
-🦕
+<div class="falling-dino"
+     style="left:5%; animation-duration:11s; animation-delay:3s;">
+    🦕
 </div>
 
-<div class="falling-dino" style="right: 2%; animation-duration: 8s; animation-delay: 1s;">
-🦖
+<div class="falling-dino"
+     style="right:1%; animation-duration:9s; animation-delay:1s;">
+    🦖
 </div>
 
-<div class="falling-dino" style="right: 7%; animation-duration: 11s; animation-delay: 4s;">
-🦕
+<div class="falling-dino"
+     style="right:5%; animation-duration:12s; animation-delay:4s;">
+    🦕
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
     <a href="index.html" class="logo">
-        🦖 Dino Explorer
+        🦖 DINO EXPLORER
     </a>
 
     <a href="index.html" class="home-button">
-        ← Home
+        ← HOME
     </a>
 
 </nav>
 
 
-<!-- QUIZ -->
+<!-- =========================
+     QUIZ
+========================= -->
 
-<div class="quiz-container">
+<main class="quiz-container">
 
-    <h1 class="quiz-title">
-        🧠 Dino Quiz
-    </h1>
 
-    <p class="quiz-subtitle">
-        Think you know dinosaurs? Let's find out!
-    </p>
+    <header class="quiz-header">
+
+        <div class="quiz-label">
+            THE ULTIMATE PREHISTORIC TEST
+        </div>
+
+        <h1 class="quiz-title">
+            DINO <span>QUIZ</span>
+        </h1>
+
+        <p class="quiz-subtitle">
+            Fifteen questions. One prehistoric challenge.
+            How much do you really know about the giants
+            that once ruled Earth?
+        </p>
+
+    </header>
 
 
     <!-- PROGRESS -->
@@ -369,30 +824,43 @@ nav {
 
         <div class="progress-bar">
 
-            <div id="progressFill" class="progress-fill"></div>
+            <div id="progressFill"
+                 class="progress-fill">
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- QUESTION CARD -->
+    <!-- QUESTION -->
 
-    <div id="questionCard" class="question-card">
+    <div id="questionCard"
+         class="question-card">
 
-        <div id="questionNumber" class="question-number">
+        <div id="questionNumber"
+             class="question-number">
+
             QUESTION 1
+
         </div>
 
-        <h2 id="question" class="question">
+        <h2 id="question"
+            class="question">
+
             Question goes here
+
         </h2>
 
-        <div id="answers" class="answers">
+        <div id="answers"
+             class="answers">
         </div>
 
-        <button id="nextButton" class="next-button">
-            Next Question →
+        <button id="nextButton"
+                class="next-button">
+
+            NEXT QUESTION →
+
         </button>
 
     </div>
@@ -400,44 +868,65 @@ nav {
 
     <!-- RESULT -->
 
-    <div id="result" class="result">
+    <div id="result"
+         class="result">
 
         <div class="result-emoji">
             🦖🏆
         </div>
 
         <h2>
-            Quiz Complete!
+            QUIZ COMPLETE
         </h2>
 
         <p>
-            Your final score is:
+            Your final prehistoric score
         </p>
 
-        <div id="finalScore" class="score">
+        <div id="finalScore"
+             class="score">
+
             0 / 15
+
         </div>
 
         <p id="resultMessage">
         </p>
 
-        <button onclick="restartQuiz()" class="result-button retry">
-            🔄 Try Again
+        <button onclick="restartQuiz()"
+                class="result-button retry">
+
+            🔄 TRY AGAIN
+
         </button>
 
-        <a href="index.html" class="result-button home">
-            🏠 Home
+        <a href="index.html"
+           class="result-button home">
+
+            🏠 RETURN HOME
+
         </a>
 
     </div>
 
-</div>
+</main>
+
+
+<footer>
+
+    🦖 DINO EXPLORER
+
+    <br><br>
+
+    THE PREHISTORIC WORLD AWAITS.
+
+</footer>
 
 
 <script>
 
 /* =========================
-   QUIZ QUESTIONS
+   QUESTIONS
 ========================= */
 
 const questions = [
@@ -615,7 +1104,9 @@ const questions = [
 ========================= */
 
 let currentQuestion = 0;
+
 let score = 0;
+
 let answered = false;
 
 
@@ -629,30 +1120,44 @@ function loadQuestion() {
 
     const q = questions[currentQuestion];
 
+
     document.getElementById("questionNumber").textContent =
         "QUESTION " + (currentQuestion + 1);
 
+
     document.getElementById("questionCounter").textContent =
-        "Question " + (currentQuestion + 1) + " of " + questions.length;
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
+
 
     document.getElementById("scoreText").textContent =
         "Score: " + score;
 
+
     document.getElementById("question").textContent =
         q.question;
+
 
     const answersContainer =
         document.getElementById("answers");
 
+
     answersContainer.innerHTML = "";
+
 
     q.answers.forEach((answer, index) => {
 
-        const button = document.createElement("button");
+        const button =
+            document.createElement("button");
+
 
         button.className = "answer";
 
+
         button.textContent = answer;
+
 
         button.onclick = function() {
 
@@ -660,15 +1165,15 @@ function loadQuestion() {
 
         };
 
+
         answersContainer.appendChild(button);
 
     });
 
 
-    /* Progress */
-
     const progress =
-        ((currentQuestion) / questions.length) * 100;
+        (currentQuestion / questions.length) * 100;
+
 
     document.getElementById("progressFill").style.width =
         progress + "%";
@@ -676,11 +1181,12 @@ function loadQuestion() {
 
     document.getElementById("nextButton").style.display =
         "none";
+
 }
 
 
 /* =========================
-   SELECT ANSWER
+   ANSWER
 ========================= */
 
 function selectAnswer(index, button) {
@@ -689,8 +1195,10 @@ function selectAnswer(index, button) {
 
     answered = true;
 
+
     const correctAnswer =
         questions[currentQuestion].correct;
+
 
     const buttons =
         document.querySelectorAll(".answer");
@@ -716,23 +1224,26 @@ function selectAnswer(index, button) {
 
         button.classList.add("wrong");
 
-        buttons[correctAnswer].classList.add("correct");
+        buttons[correctAnswer]
+            .classList.add("correct");
 
     }
 
 
     document.getElementById("nextButton").style.display =
         "block";
+
 }
 
 
 /* =========================
-   NEXT QUESTION
+   NEXT
 ========================= */
 
 document.getElementById("nextButton").onclick = function() {
 
     currentQuestion++;
+
 
     if (currentQuestion < questions.length) {
 
@@ -748,7 +1259,7 @@ document.getElementById("nextButton").onclick = function() {
 
 
 /* =========================
-   SHOW RESULT
+   RESULT
 ========================= */
 
 function showResult() {
@@ -756,11 +1267,14 @@ function showResult() {
     document.getElementById("questionCard").style.display =
         "none";
 
+
     document.querySelector(".progress-area").style.display =
         "none";
 
+
     document.querySelector(".quiz-subtitle").style.display =
         "none";
+
 
     document.getElementById("result").style.display =
         "block";
@@ -772,30 +1286,39 @@ function showResult() {
 
     let message = "";
 
+
     if (score === 15) {
 
         message =
             "🏆 INCREDIBLE! You're a true Dinosaur Master!";
 
-    } else if (score >= 12) {
+    }
+
+    else if (score >= 12) {
 
         message =
-            "🔥 Amazing! You really know your dinosaurs!";
+            "🔥 AMAZING! You really know your dinosaurs!";
 
-    } else if (score >= 8) {
+    }
 
-        message =
-            "👏 Great job! You know quite a lot about dinosaurs!";
-
-    } else if (score >= 5) {
+    else if (score >= 8) {
 
         message =
-            "🦕 Good try! Keep exploring the dinosaur world!";
+            "👏 GREAT JOB! You know quite a lot about dinosaurs!";
 
-    } else {
+    }
+
+    else if (score >= 5) {
 
         message =
-            "🌱 Keep learning! There are plenty more dinosaurs to discover!";
+            "🦕 GOOD TRY! Keep exploring the dinosaur world!";
+
+    }
+
+    else {
+
+        message =
+            "🌱 KEEP LEARNING! There are plenty more dinosaurs to discover!";
 
     }
 
@@ -816,17 +1339,22 @@ function restartQuiz() {
 
     score = 0;
 
+
     document.getElementById("questionCard").style.display =
         "block";
+
 
     document.querySelector(".progress-area").style.display =
         "block";
 
+
     document.querySelector(".quiz-subtitle").style.display =
         "block";
 
+
     document.getElementById("result").style.display =
         "none";
+
 
     loadQuestion();
 
