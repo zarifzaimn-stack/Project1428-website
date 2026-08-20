@@ -6,15 +6,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dino Explorer | Prehistoric World</title>
+<title>Dino Explorer | The Prehistoric World</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
 
 * {
     box-sizing: border-box;
@@ -31,10 +27,9 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-
-/* =========================================================
+/* =========================
    NAVIGATION
-========================================================= */
+========================= */
 
 nav {
     position: fixed;
@@ -44,7 +39,7 @@ nav {
     width: 100%;
     height: 78px;
 
-    z-index: 1000;
+    z-index: 100;
 
     display: flex;
     align-items: center;
@@ -52,7 +47,7 @@ nav {
 
     padding: 0 5%;
 
-    background: rgba(5, 15, 9, 0.84);
+    background: rgba(5, 15, 9, 0.88);
 
     backdrop-filter: blur(15px);
 
@@ -61,13 +56,10 @@ nav {
 
 .logo {
     color: #dcebd4;
-
     text-decoration: none;
 
     font-family: 'Cinzel', serif;
-
     font-size: 22px;
-
     font-weight: 700;
 
     letter-spacing: 2px;
@@ -76,54 +68,184 @@ nav {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 30px;
 }
 
-.nav-link {
-    color: #aabdA7;
-
+.nav-links a {
+    color: #a9bea3;
     text-decoration: none;
 
-    font-size: 11px;
-
+    font-size: 12px;
     font-weight: 600;
 
     letter-spacing: 2px;
-
     text-transform: uppercase;
-
-    padding: 12px 16px;
-
-    border: 1px solid transparent;
 
     transition: 0.3s;
 }
 
-.nav-link:hover {
-    color: white;
-
-    border-color: rgba(159, 199, 140, 0.3);
-
-    background: rgba(159, 199, 140, 0.08);
+.nav-links a:hover {
+    color: #dcebd4;
 }
 
+/* =========================
+   HERO
+========================= */
 
-/* =========================================================
+.hero {
+    min-height: 720px;
+
+    padding: 170px 6% 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #1c3b25 0%,
+            #0c1d12 40%,
+            #07110b 75%
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: rgba(116, 163, 96, 0.06);
+
+    filter: blur(50px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+
+    max-width: 900px;
+}
+
+.hero-label {
+    color: #9fc78c;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 6px;
+
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(55px, 9vw, 105px);
+
+    line-height: 0.95;
+
+    color: #e4eee0;
+
+    text-shadow:
+        0 10px 40px rgba(0,0,0,0.45);
+}
+
+.hero h1 span {
+    color: #91bb7c;
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin: 30px auto 0;
+
+    color: #91a393;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    margin-top: 40px;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.hero-button {
+    display: inline-block;
+
+    padding: 15px 25px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+}
+
+.primary-button {
+    background: #8fb67e;
+    color: #07110b;
+}
+
+.primary-button:hover {
+    background: #b0d49d;
+    transform: translateY(-3px);
+}
+
+.secondary-button {
+    border: 1px solid rgba(159,199,140,0.4);
+    color: #b8d1ad;
+}
+
+.secondary-button:hover {
+    background: rgba(159,199,140,0.1);
+    transform: translateY(-3px);
+}
+
+/* =========================
    FALLING DINOSAURS
-========================================================= */
+========================= */
 
 .falling-dino {
     position: fixed;
 
     top: -80px;
 
-    font-size: 42px;
+    font-size: 40px;
 
     pointer-events: none;
 
-    opacity: 0.22;
+    z-index: 20;
 
-    z-index: 1;
+    opacity: 0.25;
 
     animation: fall linear infinite;
 }
@@ -144,179 +266,18 @@ nav {
 
 }
 
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    min-height: 100vh;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 140px 20px 100px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            #193522 0%,
-            #0b1710 40%,
-            #040b06 85%
-        );
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 600px;
-    height: 600px;
-
-    border-radius: 50%;
-
-    background: rgba(112, 170, 95, 0.08);
-
-    filter: blur(80px);
-
-    top: 10%;
-    left: 50%;
-
-    transform: translateX(-50%);
-}
-
-.hero-content {
-    position: relative;
-
-    z-index: 5;
-
-    max-width: 900px;
-}
-
-.hero-label {
-    color: #9fc78c;
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    letter-spacing: 6px;
-
-    margin-bottom: 22px;
-}
-
-.hero h1 {
-    margin: 0;
-
-    font-family: 'Cinzel', serif;
-
-    font-size: clamp(55px, 10vw, 110px);
-
-    line-height: 0.95;
-
-    color: #e3edde;
-
-    text-shadow:
-        0 10px 40px rgba(0,0,0,0.5);
-}
-
-.hero h1 span {
-    color: #91bb7c;
-}
-
-.hero p {
-    max-width: 650px;
-
-    margin: 30px auto 0;
-
-    color: #9cac99;
-
-    font-size: 15px;
-
-    line-height: 1.9;
-}
-
-.hero-buttons {
-    margin-top: 35px;
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-}
-
-.hero-button {
-    display: inline-block;
-
-    padding: 16px 27px;
-
-    text-decoration: none;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    transition: 0.3s;
-}
-
-.primary-button {
-    background: #8fb67e;
-
-    color: #07110b;
-}
-
-.primary-button:hover {
-    background: #b0d49d;
-
-    transform: translateY(-3px);
-}
-
-.secondary-button {
-    color: #b8d1ad;
-
-    border: 1px solid rgba(159,199,140,0.4);
-}
-
-.secondary-button:hover {
-    background: rgba(159,199,140,0.1);
-
-    color: white;
-
-    transform: translateY(-3px);
-}
-
-
-/* =========================================================
+/* =========================
    SECTION
-========================================================= */
+========================= */
 
-.section {
-    padding: 110px 5%;
+.explore {
+    padding: 110px 5% 120px;
 
-    position: relative;
-
-    z-index: 5;
+    background: #07110b;
 }
 
-.section-header {
-    max-width: 850px;
+.section-heading {
+    max-width: 900px;
 
     margin: 0 auto 55px;
 
@@ -326,43 +287,41 @@ nav {
 .section-label {
     color: #8fb67e;
 
-    font-size: 10px;
-
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 600;
 
     letter-spacing: 5px;
 
-    margin-bottom: 16px;
+    margin-bottom: 15px;
 }
 
-.section-title {
+.section-heading h2 {
     margin: 0;
 
     font-family: 'Cinzel', serif;
 
-    color: #dcebd4;
+    font-size: clamp(38px, 6vw, 65px);
 
-    font-size: clamp(35px, 5vw, 58px);
+    color: #dcebd4;
 }
 
-.section-description {
-    color: #819080;
-
-    max-width: 650px;
+.section-heading p {
+    max-width: 620px;
 
     margin: 20px auto 0;
 
-    line-height: 1.8;
+    color: #839481;
 
     font-size: 14px;
+
+    line-height: 1.8;
 }
 
-
-/* =========================================================
+/* =========================
    DINOSAUR GRID
-========================================================= */
+========================= */
 
-.dinosaur-grid {
+.dino-grid {
 
     width: min(1250px, 100%);
 
@@ -373,59 +332,54 @@ nav {
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 22px;
+    gap: 20px;
 }
 
-
-/* =========================================================
+/* =========================
    DINOSAUR CARD
-========================================================= */
+========================= */
 
-.dinosaur-card {
+.dino-card {
 
-    background: #0d1911;
-
-    border: 1px solid rgba(155,190,140,0.17);
-
-    overflow: hidden;
+    display: block;
 
     text-decoration: none;
 
     color: white;
 
+    background: #0d1911;
+
+    border: 1px solid rgba(155,190,140,0.18);
+
+    overflow: hidden;
+
     transition:
-        transform 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.dinosaur-card:hover {
+.dino-card:hover {
 
     transform: translateY(-8px);
 
-    border-color: rgba(143,182,126,0.55);
+    border-color: rgba(159,199,140,0.55);
 
     box-shadow:
-        0 25px 60px rgba(0,0,0,0.4);
+        0 20px 50px rgba(0,0,0,0.4);
 }
 
-
-/* =========================================================
+/* =========================
    IMAGE AREA
-========================================================= */
+========================= */
 
-.dinosaur-image {
+.dino-image {
 
     width: 100%;
 
-    height: 235px;
+    height: 280px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #16251a,
-            #0b130d
-        );
+    padding: 18px;
 
     display: flex;
 
@@ -433,124 +387,95 @@ nav {
 
     justify-content: center;
 
-    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at center,
+            #1a2a1d 0%,
+            #101a13 65%,
+            #0b140e 100%
+        );
 
-    position: relative;
+    overflow: hidden;
 }
 
-
-/*
-   IMPORTANT:
-   Every image gets the same frame.
-*/
-
-.dinosaur-image img {
+.dino-image img {
 
     width: 100%;
-
     height: 100%;
 
-    object-fit: cover;
+    object-fit: contain;
 
     object-position: center;
 
     display: block;
 
-    transition:
-        transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
-.dinosaur-card:hover .dinosaur-image img {
-
-    transform: scale(1.05);
+.dino-card:hover .dino-image img {
+    transform: scale(1.04);
 }
 
+/* =========================
+   CARD INFO
+========================= */
 
-/* =========================================================
-   IMAGE DARK OVERLAY
-========================================================= */
+.dino-info {
 
-.dinosaur-image::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(5,12,7,0.55),
-            transparent 55%
-        );
-
-    pointer-events: none;
+    padding: 25px 25px 28px;
 }
 
-
-/* =========================================================
-   CARD CONTENT
-========================================================= */
-
-.card-content {
-
-    padding: 25px;
-}
-
-.card-number {
+.dino-number {
 
     color: #8fb67e;
 
-    font-size: 9px;
-
-    font-weight: 700;
+    font-size: 10px;
 
     letter-spacing: 3px;
-
-    margin-bottom: 9px;
-}
-
-.card-name {
-
-    font-family: 'Cinzel', serif;
-
-    font-size: 24px;
-
-    color: #e0eadc;
 
     margin-bottom: 10px;
 }
 
-.card-period {
+.dino-name {
 
-    color: #71816f;
+    margin: 0 0 10px;
+
+    font-family: 'Cinzel', serif;
+
+    font-size: 25px;
+
+    color: #dcebd4;
+}
+
+.dino-period {
+
+    color: #738371;
 
     font-size: 10px;
 
-    font-weight: 600;
-
     letter-spacing: 2px;
 
-    margin-bottom: 17px;
+    margin-bottom: 18px;
 }
 
-.card-fact {
+.dino-description {
 
-    color: #8f9f8c;
+    color: #94a493;
 
-    font-size: 12px;
+    font-size: 13px;
 
     line-height: 1.7;
+
+    margin: 0;
 }
 
-.explore-text {
+.view-dino {
 
     display: inline-block;
 
     margin-top: 20px;
 
-    color: #9fc78c;
+    color: #a9c69b;
 
     font-size: 10px;
 
@@ -561,48 +486,43 @@ nav {
     text-transform: uppercase;
 }
 
-
-/* =========================================================
+/* =========================
    QUIZ SECTION
-========================================================= */
+========================= */
 
 .quiz-section {
 
-    padding: 120px 5%;
-
-    background:
-        linear-gradient(
-            180deg,
-            #07110b,
-            #0b1710
-        );
-
-    text-align: center;
-
-    position: relative;
-
-    z-index: 5;
-}
-
-.quiz-box {
-
-    width: min(950px, 100%);
-
-    margin: auto;
-
-    padding: 70px 40px;
-
-    border: 1px solid rgba(159,199,140,0.18);
+    padding: 110px 5%;
 
     background:
         linear-gradient(
             145deg,
-            rgba(20,43,27,0.9),
-            rgba(8,18,11,0.95)
+            #0d1d12,
+            #07110b
         );
 
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.35);
+    border-top: 1px solid rgba(159,199,140,0.08);
+    border-bottom: 1px solid rgba(159,199,140,0.08);
+}
+
+.quiz-box {
+
+    width: min(1050px, 100%);
+
+    margin: auto;
+
+    padding: 70px 50px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(54, 91, 57, 0.3),
+            rgba(8,18,11,0.8)
+        );
+
+    border: 1px solid rgba(159,199,140,0.18);
 }
 
 .quiz-box h2 {
@@ -611,9 +531,9 @@ nav {
 
     font-family: 'Cinzel', serif;
 
-    color: #dcebd4;
+    font-size: clamp(38px, 6vw, 65px);
 
-    font-size: clamp(35px, 6vw, 60px);
+    color: #dcebd4;
 }
 
 .quiz-box p {
@@ -629,10 +549,9 @@ nav {
     line-height: 1.8;
 }
 
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer {
 
@@ -644,28 +563,21 @@ footer {
 
     color: #657664;
 
-    font-size: 10px;
+    font-size: 11px;
 
     letter-spacing: 2px;
 
     line-height: 1.8;
-
-    position: relative;
-
-    z-index: 5;
 }
 
-
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media (max-width: 950px) {
 
-    .dinosaur-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
+    .dino-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
@@ -673,110 +585,55 @@ footer {
 @media (max-width: 650px) {
 
     nav {
-
         height: 65px;
-
         padding: 0 20px;
     }
 
     .logo {
-
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .nav-links {
-
-        gap: 3px;
+        gap: 12px;
     }
 
-    .nav-link {
-
+    .nav-links a {
         font-size: 9px;
-
-        padding: 9px 7px;
-
         letter-spacing: 1px;
     }
 
     .hero {
+        min-height: 650px;
 
-        padding-top: 110px;
+        padding:
+            130px 20px
+            80px;
     }
 
     .hero h1 {
-
         font-size: 55px;
     }
 
-    .hero p {
-
-        font-size: 13px;
-    }
-
-    .section {
-
+    .explore {
         padding: 80px 15px;
     }
 
-    .dinosaur-grid {
-
+    .dino-grid {
         grid-template-columns: 1fr;
 
         gap: 18px;
     }
 
-    .dinosaur-image {
-
-        height: 250px;
+    .dino-image {
+        height: 300px;
     }
 
     .quiz-section {
-
         padding: 80px 15px;
     }
 
     .quiz-box {
-
-        padding: 50px 22px;
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 400px) {
-
-    .hero h1 {
-
-        font-size: 47px;
-    }
-
-    .nav-link {
-
-        display: none;
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+        padding: 50px 25px;
     }
 
 }
@@ -789,48 +646,48 @@ footer {
 <body>
 
 
-<!-- =====================================================
+<!-- =========================
      FALLING DINOSAURS
-===================================================== -->
+========================= -->
 
 <div class="falling-dino"
-     style="left: 2%; animation-duration: 9s;">
+     style="left:2%; animation-duration:9s;">
     🦖
 </div>
 
 <div class="falling-dino"
-     style="left: 8%; animation-duration: 12s; animation-delay: 3s;">
+     style="left:8%; animation-duration:12s; animation-delay:3s;">
     🦕
 </div>
 
 <div class="falling-dino"
-     style="right: 2%; animation-duration: 10s; animation-delay: 1s;">
+     style="right:2%; animation-duration:10s; animation-delay:1s;">
     🦖
 </div>
 
 <div class="falling-dino"
-     style="right: 8%; animation-duration: 13s; animation-delay: 4s;">
+     style="right:8%; animation-duration:13s; animation-delay:5s;">
     🦕
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      NAVIGATION
-===================================================== -->
+========================= -->
 
 <nav>
 
     <a href="index.html" class="logo">
-        DINO EXPLORER
+        🦖 DINO EXPLORER
     </a>
 
     <div class="nav-links">
 
-        <a href="#dinosaurs" class="nav-link">
+        <a href="#dinosaurs">
             Explore
         </a>
 
-        <a href="quiz.html" class="nav-link">
+        <a href="quiz.html">
             Quiz
         </a>
 
@@ -839,11 +696,11 @@ footer {
 </nav>
 
 
-<!-- =====================================================
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
-<header class="hero">
+<section class="hero">
 
     <div class="hero-content">
 
@@ -852,13 +709,14 @@ footer {
         </div>
 
         <h1>
-            DINO <span>EXPLORER</span>
+            DINO<br>
+            <span>EXPLORER</span>
         </h1>
 
         <p>
-            Travel millions of years into the past and
-            discover some of the most fascinating dinosaurs
-            that ever walked the Earth.
+            Step into the world of dinosaurs and discover
+            some of the most incredible creatures that ever
+            walked the Earth.
         </p>
 
         <div class="hero-buttons">
@@ -877,74 +735,74 @@ footer {
 
     </div>
 
-</header>
+</section>
 
 
-<!-- =====================================================
+<!-- =========================
      DINOSAURS
-===================================================== -->
+========================= -->
 
 <section id="dinosaurs"
-         class="section">
+         class="explore">
 
-    <div class="section-header">
+    <div class="section-heading">
 
         <div class="section-label">
-            PREHISTORIC COLLECTION
+            PREHISTORIC SPECIES
         </div>
 
-        <h2 class="section-title">
-            Meet The Dinosaurs
+        <h2>
+            Explore the Giants
         </h2>
 
-        <p class="section-description">
-            Click on any dinosaur to explore its period,
-            diet, size, features and an interesting fact.
+        <p>
+            Click any dinosaur to open its full information
+            page with its period, diet, size, features and
+            an amazing prehistoric fact.
         </p>
 
     </div>
 
 
-    <div class="dinosaur-grid">
+    <div class="dino-grid">
 
 
-        <!-- =================================================
-             T-REX
-        ================================================== -->
+        <!-- T-REX -->
 
         <a href="dinosaurs.html?dino=trex"
-           class="dinosaur-card">
+           class="dino-card">
 
-            <div class="dinosaur-image">
+            <div class="dino-image">
 
                 <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tyrannosaurus_rex_mmartyniuk.png"
+                    src="https://www.wired.com/wp-content/uploads/2026/07/01_WIRED_TREX_AUCTION.jpg"
                     alt="Tyrannosaurus Rex"
                     loading="lazy">
 
             </div>
 
-            <div class="card-content">
+            <div class="dino-info">
 
-                <div class="card-number">
+                <div class="dino-number">
                     SPECIES 01
                 </div>
 
-                <div class="card-name">
+                <h3 class="dino-name">
                     Tyrannosaurus Rex
-                </div>
+                </h3>
 
-                <div class="card-period">
+                <div class="dino-period">
                     LATE CRETACEOUS
                 </div>
 
-                <div class="card-fact">
-                    One of the most famous predators
-                    in dinosaur history.
-                </div>
+                <p class="dino-description">
+                    One of the most famous predators in
+                    prehistoric history, known for its massive
+                    skull and powerful jaws.
+                </p>
 
-                <span class="explore-text">
-                    Explore →
+                <span class="view-dino">
+                    VIEW DINOSAUR →
                 </span>
 
             </div>
@@ -952,43 +810,41 @@ footer {
         </a>
 
 
-        <!-- =================================================
-             TRICERATOPS
-        ================================================== -->
+        <!-- TRICERATOPS -->
 
         <a href="dinosaurs.html?dino=triceratops"
-           class="dinosaur-card">
+           class="dino-card">
 
-            <div class="dinosaur-image">
+            <div class="dino-image">
 
                 <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/202007_Triceratops_horridus.svg"
+                    src="https://upload.wikimedia.org/wikipedia/commons/4/44/Triceratops_BW.jpg"
                     alt="Triceratops"
                     loading="lazy">
 
             </div>
 
-            <div class="card-content">
+            <div class="dino-info">
 
-                <div class="card-number">
+                <div class="dino-number">
                     SPECIES 02
                 </div>
 
-                <div class="card-name">
+                <h3 class="dino-name">
                     Triceratops
-                </div>
+                </h3>
 
-                <div class="card-period">
+                <div class="dino-period">
                     LATE CRETACEOUS
                 </div>
 
-                <div class="card-fact">
-                    A massive horned dinosaur with
-                    three distinctive horns.
-                </div>
+                <p class="dino-description">
+                    A powerful herbivore with three horns,
+                    a huge skull and a protective bony frill.
+                </p>
 
-                <span class="explore-text">
-                    Explore →
+                <span class="view-dino">
+                    VIEW DINOSAUR →
                 </span>
 
             </div>
@@ -996,43 +852,41 @@ footer {
         </a>
 
 
-        <!-- =================================================
-             VELOCIRAPTOR
-        ================================================== -->
+        <!-- VELOCIRAPTOR -->
 
         <a href="dinosaurs.html?dino=velociraptor"
-           class="dinosaur-card">
+           class="dino-card">
 
-            <div class="dinosaur-image">
+            <div class="dino-image">
 
                 <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Velociraptor_Restoration.png"
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png"
                     alt="Velociraptor"
                     loading="lazy">
 
             </div>
 
-            <div class="card-content">
+            <div class="dino-info">
 
-                <div class="card-number">
+                <div class="dino-number">
                     SPECIES 03
                 </div>
 
-                <div class="card-name">
+                <h3 class="dino-name">
                     Velociraptor
-                </div>
+                </h3>
 
-                <div class="card-period">
+                <div class="dino-period">
                     LATE CRETACEOUS
                 </div>
 
-                <div class="card-fact">
-                    A small feathered predator known
-                    for its curved foot claw.
-                </div>
+                <p class="dino-description">
+                    A small, agile predator famous for its
+                    curved toe claw and feathered body.
+                </p>
 
-                <span class="explore-text">
-                    Explore →
+                <span class="view-dino">
+                    VIEW DINOSAUR →
                 </span>
 
             </div>
@@ -1040,43 +894,41 @@ footer {
         </a>
 
 
-        <!-- =================================================
-             SPINOSAURUS
-        ================================================== -->
+        <!-- SPINOSAURUS -->
 
         <a href="dinosaurs.html?dino=spinosaurus"
-           class="dinosaur-card">
+           class="dino-card">
 
-            <div class="dinosaur-image">
+            <div class="dino-image">
 
                 <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Spinosaurus_life_restoration_based_on_fossil_reconstruction.png"
+                    src="https://www.fieldmuseum.org/sites/default/files/styles/hero/public/2023-07/spinosaurus.jpg"
                     alt="Spinosaurus"
                     loading="lazy">
 
             </div>
 
-            <div class="card-content">
+            <div class="dino-info">
 
-                <div class="card-number">
+                <div class="dino-number">
                     SPECIES 04
                 </div>
 
-                <div class="card-name">
+                <h3 class="dino-name">
                     Spinosaurus
-                </div>
+                </h3>
 
-                <div class="card-period">
+                <div class="dino-period">
                     CRETACEOUS
                 </div>
 
-                <div class="card-fact">
-                    A giant predator famous for its
-                    long skull and enormous sail.
-                </div>
+                <p class="dino-description">
+                    A huge theropod with a long narrow skull
+                    and a distinctive sail-like back.
+                </p>
 
-                <span class="explore-text">
-                    Explore →
+                <span class="view-dino">
+                    VIEW DINOSAUR →
                 </span>
 
             </div>
@@ -1084,43 +936,41 @@ footer {
         </a>
 
 
-        <!-- =================================================
-             STEGOSAURUS
-        ================================================== -->
+        <!-- STEGOSAURUS -->
 
         <a href="dinosaurs.html?dino=stegosaurus"
-           class="dinosaur-card">
+           class="dino-card">
 
-            <div class="dinosaur-image">
+            <div class="dino-image">
 
                 <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Stegosaurus_stenops_Life_Reconstruction.png"
+                    src="https://www.nhm.ac.uk/content/dam/nhmwww/discover/stegosaurus-skeleton/stegosaurus-skeleton-full-width.jpg"
                     alt="Stegosaurus"
                     loading="lazy">
 
             </div>
 
-            <div class="card-content">
+            <div class="dino-info">
 
-                <div class="card-number">
+                <div class="dino-number">
                     SPECIES 05
                 </div>
 
-                <div class="card-name">
+                <h3 class="dino-name">
                     Stegosaurus
-                </div>
+                </h3>
 
-                <div class="card-period">
+                <div class="dino-period">
                     LATE JURASSIC
                 </div>
 
-                <div class="card-fact">
-                    Recognised by its large back plates
-                    and four tail spikes.
-                </div>
+                <p class="dino-description">
+                    A plant-eating dinosaur recognised by its
+                    large back plates and spiked tail.
+                </p>
 
-                <span class="explore-text">
-                    Explore →
+                <span class="view-dino">
+                    VIEW DINOSAUR →
                 </span>
 
             </div>
@@ -1128,43 +978,41 @@ footer {
         </a>
 
 
-        <!-- =================================================
-             BRACHIOSAURUS
-        ================================================== -->
+        <!-- BRACHIOSAURUS -->
 
         <a href="dinosaurs.html?dino=brachiosaurus"
-           class="dinosaur-card">
+           class="dino-card">
 
-            <div class="dinosaur-image">
+            <div class="dino-image">
 
                 <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Brachiosaurus_alti.jpg"
+                    src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Brachiosaurus_BW.jpg"
                     alt="Brachiosaurus"
                     loading="lazy">
 
             </div>
 
-            <div class="card-content">
+            <div class="dino-info">
 
-                <div class="card-number">
+                <div class="dino-number">
                     SPECIES 06
                 </div>
 
-                <div class="card-name">
+                <h3 class="dino-name">
                     Brachiosaurus
-                </div>
+                </h3>
 
-                <div class="card-period">
+                <div class="dino-period">
                     LATE JURASSIC
                 </div>
 
-                <div class="card-fact">
-                    A huge long-necked herbivore with
-                    unusually long front legs.
-                </div>
+                <p class="dino-description">
+                    A gigantic sauropod with a remarkably long
+                    neck and tall front legs.
+                </p>
 
-                <span class="explore-text">
-                    Explore →
+                <span class="view-dino">
+                    VIEW DINOSAUR →
                 </span>
 
             </div>
@@ -1172,43 +1020,41 @@ footer {
         </a>
 
 
-        <!-- =================================================
-             ANKYLOSAURUS
-        ================================================== -->
+        <!-- ANKYLOSAURUS -->
 
         <a href="dinosaurs.html?dino=ankylosaurus"
-           class="dinosaur-card">
+           class="dino-card">
 
-            <div class="dinosaur-image">
+            <div class="dino-image">
 
                 <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ankylosaurus_magniventris_reconstruction.png"
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Ankylosaurus_dinosaur.png"
                     alt="Ankylosaurus"
                     loading="lazy">
 
             </div>
 
-            <div class="card-content">
+            <div class="dino-info">
 
-                <div class="card-number">
+                <div class="dino-number">
                     SPECIES 07
                 </div>
 
-                <div class="card-name">
+                <h3 class="dino-name">
                     Ankylosaurus
-                </div>
+                </h3>
 
-                <div class="card-period">
+                <div class="dino-period">
                     LATE CRETACEOUS
                 </div>
 
-                <div class="card-fact">
-                    An armored dinosaur with a powerful
-                    club at the end of its tail.
-                </div>
+                <p class="dino-description">
+                    A heavily armoured dinosaur with protective
+                    bony plates and a powerful tail club.
+                </p>
 
-                <span class="explore-text">
-                    Explore →
+                <span class="view-dino">
+                    VIEW DINOSAUR →
                 </span>
 
             </div>
@@ -1216,43 +1062,41 @@ footer {
         </a>
 
 
-        <!-- =================================================
-             ALLOSAURUS
-        ================================================== -->
+        <!-- ALLOSAURUS -->
 
         <a href="dinosaurs.html?dino=allosaurus"
-           class="dinosaur-card">
+           class="dino-card">
 
-            <div class="dinosaur-image">
+            <div class="dino-image">
 
                 <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Allosaurus_Revised.jpg"
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Allosaurus_BW.jpg"
                     alt="Allosaurus"
                     loading="lazy">
 
             </div>
 
-            <div class="card-content">
+            <div class="dino-info">
 
-                <div class="card-number">
+                <div class="dino-number">
                     SPECIES 08
                 </div>
 
-                <div class="card-name">
+                <h3 class="dino-name">
                     Allosaurus
-                </div>
+                </h3>
 
-                <div class="card-period">
+                <div class="dino-period">
                     LATE JURASSIC
                 </div>
 
-                <div class="card-fact">
-                    A powerful Jurassic predator with
-                    sharp teeth and three-fingered hands.
-                </div>
+                <p class="dino-description">
+                    A large Jurassic predator with sharp teeth,
+                    strong jaws and three-fingered hands.
+                </p>
 
-                <span class="explore-text">
-                    Explore →
+                <span class="view-dino">
+                    VIEW DINOSAUR →
                 </span>
 
             </div>
@@ -1260,43 +1104,41 @@ footer {
         </a>
 
 
-        <!-- =================================================
-             DIPLODOCUS
-        ================================================== -->
+        <!-- DIPLODOCUS -->
 
         <a href="dinosaurs.html?dino=diplodocus"
-           class="dinosaur-card">
+           class="dino-card">
 
-            <div class="dinosaur-image">
+            <div class="dino-image">
 
                 <img
-                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Diplodocus_carnegii.jpg"
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Diplodocus_carnegii.jpg"
                     alt="Diplodocus"
                     loading="lazy">
 
             </div>
 
-            <div class="card-content">
+            <div class="dino-info">
 
-                <div class="card-number">
+                <div class="dino-number">
                     SPECIES 09
                 </div>
 
-                <div class="card-name">
+                <h3 class="dino-name">
                     Diplodocus
-                </div>
+                </h3>
 
-                <div class="card-period">
+                <div class="dino-period">
                     LATE JURASSIC
                 </div>
 
-                <div class="card-fact">
-                    A gigantic herbivore with an extremely
-                    long neck and whip-like tail.
-                </div>
+                <p class="dino-description">
+                    A gigantic sauropod with an extremely long
+                    neck and a remarkable whip-like tail.
+                </p>
 
-                <span class="explore-text">
-                    Explore →
+                <span class="view-dino">
+                    VIEW DINOSAUR →
                 </span>
 
             </div>
@@ -1309,9 +1151,9 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      QUIZ
-===================================================== -->
+========================= -->
 
 <section class="quiz-section">
 
@@ -1327,8 +1169,8 @@ footer {
 
         <p>
             Test your prehistoric knowledge with 15 questions
-            covering dinosaurs, fossils, diets, features
-            and prehistoric history.
+            covering famous dinosaurs, fossils, diets,
+            prehistoric periods and amazing dinosaur facts.
         </p>
 
         <a href="quiz.html"
@@ -1341,13 +1183,13 @@ footer {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      FOOTER
-===================================================== -->
+========================= -->
 
 <footer>
 
-    DINO EXPLORER
+    🦖 DINO EXPLORER
 
     <br>
 
@@ -1355,11 +1197,11 @@ footer {
 
     <br><br>
 
-    Dinosaur artwork sourced from Wikimedia Commons
-    and used according to the respective image licenses.
+    EXPLORE • DISCOVER • LEARN
 
 </footer>
 
 
 </body>
+
 </html>
