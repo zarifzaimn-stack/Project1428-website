@@ -52,7 +52,7 @@ nav {
 
     padding: 0 5%;
 
-    background: rgba(5, 15, 9, 0.86);
+    background: rgba(5, 15, 9, 0.88);
 
     backdrop-filter: blur(15px);
 
@@ -75,9 +75,7 @@ nav {
 
 .nav-links {
     display: flex;
-
     align-items: center;
-
     gap: 28px;
 }
 
@@ -96,7 +94,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #dcebd4;
+    color: white;
 }
 
 
@@ -105,7 +103,6 @@ nav {
 ========================= */
 
 .hero {
-
     min-height: 100vh;
 
     position: relative;
@@ -118,21 +115,20 @@ nav {
 
     text-align: center;
 
-    padding: 120px 20px 80px;
+    padding: 130px 20px 90px;
 
     overflow: hidden;
 
     background:
         radial-gradient(
-            circle at center,
+            circle at 50% 20%,
             #193522 0%,
-            #0b1710 42%,
+            #0b1710 40%,
             #040b06 90%
         );
 }
 
 .hero::before {
-
     content: "";
 
     position: absolute;
@@ -141,16 +137,15 @@ nav {
 
     background:
         radial-gradient(
-            circle at 50% 50%,
-            rgba(143, 182, 126, 0.08),
-            transparent 50%
+            circle at center,
+            rgba(143,182,126,0.08),
+            transparent 55%
         );
 
     pointer-events: none;
 }
 
 .hero-content {
-
     position: relative;
 
     z-index: 5;
@@ -159,7 +154,6 @@ nav {
 }
 
 .hero-label {
-
     color: #9fc78c;
 
     font-size: 11px;
@@ -172,7 +166,6 @@ nav {
 }
 
 .hero h1 {
-
     font-family: 'Cinzel', serif;
 
     font-size: clamp(55px, 10vw, 120px);
@@ -192,7 +185,6 @@ nav {
 }
 
 .hero p {
-
     max-width: 650px;
 
     margin: 30px auto;
@@ -205,7 +197,6 @@ nav {
 }
 
 .hero-buttons {
-
     display: flex;
 
     justify-content: center;
@@ -218,7 +209,6 @@ nav {
 }
 
 .button {
-
     display: inline-block;
 
     padding: 16px 28px;
@@ -235,28 +225,24 @@ nav {
 }
 
 .primary-button {
-
     background: #8fb67e;
 
     color: #07110b;
 }
 
 .primary-button:hover {
-
     background: #b0d49d;
 
     transform: translateY(-3px);
 }
 
 .secondary-button {
-
     color: #b8d1ad;
 
     border: 1px solid rgba(159,199,140,0.45);
 }
 
 .secondary-button:hover {
-
     background: rgba(159,199,140,0.1);
 
     transform: translateY(-3px);
@@ -268,7 +254,6 @@ nav {
 ========================= */
 
 .falling-dino {
-
     position: fixed;
 
     top: -70px;
@@ -277,7 +262,7 @@ nav {
 
     pointer-events: none;
 
-    opacity: 0.28;
+    opacity: 0.25;
 
     z-index: 2;
 
@@ -306,14 +291,12 @@ nav {
 ========================= */
 
 .section {
-
     padding: 110px 5%;
 
     background: #07110b;
 }
 
 .section-header {
-
     max-width: 750px;
 
     margin: 0 auto 55px;
@@ -322,7 +305,6 @@ nav {
 }
 
 .section-label {
-
     color: #8fb67e;
 
     font-size: 11px;
@@ -335,7 +317,6 @@ nav {
 }
 
 .section-title {
-
     font-family: 'Cinzel', serif;
 
     font-size: clamp(35px, 6vw, 60px);
@@ -346,7 +327,6 @@ nav {
 }
 
 .section-description {
-
     color: #81917f;
 
     line-height: 1.8;
@@ -362,8 +342,7 @@ nav {
 ========================= */
 
 .dino-grid {
-
-    width: min(1200px, 100%);
+    width: min(1250px, 100%);
 
     margin: auto;
 
@@ -372,76 +351,116 @@ nav {
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 18px;
+    gap: 20px;
 }
 
-.dino-card {
 
+/* =========================
+   DINOSAUR CARD
+========================= */
+
+.dino-card {
     position: relative;
 
-    min-height: 210px;
+    display: block;
 
-    padding: 28px;
+    min-height: 390px;
 
     text-decoration: none;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,43,27,0.95),
-            rgba(8,18,11,0.98)
-        );
+    background: #0d1911;
 
-    border: 1px solid rgba(159,199,140,0.15);
+    border: 1px solid rgba(159,199,140,0.17);
 
     overflow: hidden;
 
     transition:
-        transform 0.3s,
-        border-color 0.3s,
-        box-shadow 0.3s;
-}
-
-.dino-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 130px;
-
-    height: 130px;
-
-    right: -45px;
-
-    bottom: -45px;
-
-    border-radius: 50%;
-
-    background: rgba(143,182,126,0.08);
-
-    filter: blur(15px);
+        transform 0.35s,
+        border-color 0.35s,
+        box-shadow 0.35s;
 }
 
 .dino-card:hover {
+    transform: translateY(-8px);
 
-    transform: translateY(-7px);
-
-    border-color: rgba(159,199,140,0.5);
+    border-color: rgba(159,199,140,0.55);
 
     box-shadow:
-        0 20px 45px rgba(0,0,0,0.35);
+        0 25px 55px rgba(0,0,0,0.45);
 }
 
-.dino-emoji {
 
-    font-size: 45px;
+/* =========================
+   IMAGE
+========================= */
 
-    margin-bottom: 15px;
+.dino-image {
+    width: 100%;
+
+    height: 245px;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    background: #111b14;
+
+    transition:
+        transform 0.5s,
+        filter 0.5s;
+}
+
+.dino-card:hover .dino-image {
+    transform: scale(1.06);
+
+    filter: brightness(1.08);
+}
+
+
+/* =========================
+   IMAGE OVERLAY
+========================= */
+
+.image-overlay {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 245px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 45%,
+            rgba(7,17,11,0.85) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   CARD INFO
+========================= */
+
+.dino-info {
+    position: relative;
+
+    padding: 22px 24px 25px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0d1911,
+            #09130c
+        );
 }
 
 .dino-number {
-
     color: #71816f;
 
     font-size: 10px;
@@ -452,23 +471,23 @@ nav {
 }
 
 .dino-name {
-
     color: #dcebd4;
 
     font-family: 'Cinzel', serif;
 
     font-size: 22px;
 
+    line-height: 1.2;
+
     margin-bottom: 10px;
 }
 
 .dino-type {
-
     color: #91a393;
 
     font-size: 12px;
 
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 
@@ -477,7 +496,6 @@ nav {
 ========================= */
 
 .quiz-section {
-
     padding: 110px 5%;
 
     background:
@@ -491,7 +509,6 @@ nav {
 }
 
 .quiz-box {
-
     width: min(950px, 100%);
 
     margin: auto;
@@ -512,7 +529,6 @@ nav {
 }
 
 .quiz-box h2 {
-
     font-family: 'Cinzel', serif;
 
     font-size: clamp(35px, 6vw, 60px);
@@ -523,12 +539,10 @@ nav {
 }
 
 .quiz-box h2 span {
-
     color: #9fc78c;
 }
 
 .quiz-box p {
-
     max-width: 600px;
 
     margin: 0 auto 30px;
@@ -546,14 +560,12 @@ nav {
 ========================= */
 
 .about {
-
     padding: 110px 5%;
 
     background: #050c07;
 }
 
 .about-grid {
-
     width: min(1100px, 100%);
 
     margin: auto;
@@ -568,7 +580,6 @@ nav {
 }
 
 .about-text h2 {
-
     font-family: 'Cinzel', serif;
 
     color: #dcebd4;
@@ -579,12 +590,10 @@ nav {
 }
 
 .about-text h2 span {
-
     color: #9fc78c;
 }
 
 .about-text p {
-
     color: #91a393;
 
     font-size: 14px;
@@ -595,7 +604,6 @@ nav {
 }
 
 .about-panel {
-
     padding: 35px;
 
     border: 1px solid rgba(159,199,140,0.16);
@@ -604,7 +612,6 @@ nav {
 }
 
 .about-stat {
-
     display: flex;
 
     justify-content: space-between;
@@ -621,7 +628,6 @@ nav {
 }
 
 .about-stat span:first-child {
-
     color: #71816f;
 
     font-size: 11px;
@@ -632,7 +638,6 @@ nav {
 }
 
 .about-stat span:last-child {
-
     color: #d7e5d2;
 
     font-weight: 600;
@@ -648,7 +653,6 @@ nav {
 ========================= */
 
 footer {
-
     padding: 40px 20px;
 
     text-align: center;
@@ -669,11 +673,7 @@ footer {
    MOBILE
 ========================= */
 
-@media (max-width: 850px) {
-
-    .nav-links {
-        gap: 14px;
-    }
+@media (max-width: 900px) {
 
     .dino-grid {
         grid-template-columns: 1fr 1fr;
@@ -695,6 +695,10 @@ footer {
 
     .logo {
         font-size: 16px;
+    }
+
+    .nav-links {
+        gap: 12px;
     }
 
     .nav-links a {
@@ -721,6 +725,18 @@ footer {
 
     .dino-grid {
         grid-template-columns: 1fr;
+    }
+
+    .dino-card {
+        min-height: 360px;
+    }
+
+    .dino-image {
+        height: 230px;
+    }
+
+    .image-overlay {
+        height: 230px;
     }
 
     .section {
@@ -834,12 +850,12 @@ footer {
 
             <a href="#dinosaurs"
                class="button primary-button">
-                🦖 EXPLORE DINOSAURS
+                EXPLORE DINOSAURS
             </a>
 
             <a href="quiz.html"
                class="button secondary-button">
-                🧠 TAKE THE QUIZ
+                TAKE THE QUIZ
             </a>
 
         </div>
@@ -876,217 +892,307 @@ footer {
     <div class="dino-grid">
 
 
-        <!-- T-REX -->
+        <!-- =========================
+             T-REX
+        ========================= -->
 
         <a href="dinosaurs.html?dino=trex"
            class="dino-card">
 
-            <div class="dino-emoji">
-                🦖
-            </div>
+            <img
+                class="dino-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tyrannosaurus%20Rex%20-.jpg"
+                alt="Tyrannosaurus Rex"
+                loading="lazy">
 
-            <div class="dino-number">
-                SPECIES 01
-            </div>
+            <div class="image-overlay"></div>
 
-            <div class="dino-name">
-                Tyrannosaurus Rex
-            </div>
+            <div class="dino-info">
 
-            <div class="dino-type">
-                Powerful jaws • Carnivore • Theropod
+                <div class="dino-number">
+                    SPECIES 01
+                </div>
+
+                <div class="dino-name">
+                    Tyrannosaurus Rex
+                </div>
+
+                <div class="dino-type">
+                    Powerful jaws • Carnivore • Theropod
+                </div>
+
             </div>
 
         </a>
 
 
-        <!-- TRICERATOPS -->
+        <!-- =========================
+             TRICERATOPS
+        ========================= -->
 
         <a href="dinosaurs.html?dino=triceratops"
            class="dino-card">
 
-            <div class="dino-emoji">
-                🦏
-            </div>
+            <img
+                class="dino-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Triceratops%20-.jpg"
+                alt="Triceratops"
+                loading="lazy">
 
-            <div class="dino-number">
-                SPECIES 02
-            </div>
+            <div class="image-overlay"></div>
 
-            <div class="dino-name">
-                Triceratops
-            </div>
+            <div class="dino-info">
 
-            <div class="dino-type">
-                Three horns • Herbivore • Ceratopsian
+                <div class="dino-number">
+                    SPECIES 02
+                </div>
+
+                <div class="dino-name">
+                    Triceratops
+                </div>
+
+                <div class="dino-type">
+                    Three horns • Herbivore • Ceratopsian
+                </div>
+
             </div>
 
         </a>
 
 
-        <!-- VELOCIRAPTOR -->
+        <!-- =========================
+             VELOCIRAPTOR
+        ========================= -->
 
         <a href="dinosaurs.html?dino=velociraptor"
            class="dino-card">
 
-            <div class="dino-emoji">
-                🦖
-            </div>
+            <img
+                class="dino-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Velociraptor%20recon.png"
+                alt="Velociraptor"
+                loading="lazy">
 
-            <div class="dino-number">
-                SPECIES 03
-            </div>
+            <div class="image-overlay"></div>
 
-            <div class="dino-name">
-                Velociraptor
-            </div>
+            <div class="dino-info">
 
-            <div class="dino-type">
-                Curved claw • Carnivore • Dromaeosaur
+                <div class="dino-number">
+                    SPECIES 03
+                </div>
+
+                <div class="dino-name">
+                    Velociraptor
+                </div>
+
+                <div class="dino-type">
+                    Curved claw • Carnivore • Dromaeosaur
+                </div>
+
             </div>
 
         </a>
 
 
-        <!-- SPINOSAURUS -->
+        <!-- =========================
+             SPINOSAURUS
+        ========================= -->
 
         <a href="dinosaurs.html?dino=spinosaurus"
            class="dino-card">
 
-            <div class="dino-emoji">
-                🦖
-            </div>
+            <img
+                class="dino-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Spinosaurus.png"
+                alt="Spinosaurus"
+                loading="lazy">
 
-            <div class="dino-number">
-                SPECIES 04
-            </div>
+            <div class="image-overlay"></div>
 
-            <div class="dino-name">
-                Spinosaurus
-            </div>
+            <div class="dino-info">
 
-            <div class="dino-type">
-                Large sail • Carnivore • Theropod
+                <div class="dino-number">
+                    SPECIES 04
+                </div>
+
+                <div class="dino-name">
+                    Spinosaurus
+                </div>
+
+                <div class="dino-type">
+                    Large sail • Carnivore • Theropod
+                </div>
+
             </div>
 
         </a>
 
 
-        <!-- STEGOSAURUS -->
+        <!-- =========================
+             STEGOSAURUS
+        ========================= -->
 
         <a href="dinosaurs.html?dino=stegosaurus"
            class="dino-card">
 
-            <div class="dino-emoji">
-                🦕
-            </div>
+            <img
+                class="dino-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Stegosaurus_BW.jpg"
+                alt="Stegosaurus"
+                loading="lazy">
 
-            <div class="dino-number">
-                SPECIES 05
-            </div>
+            <div class="image-overlay"></div>
 
-            <div class="dino-name">
-                Stegosaurus
-            </div>
+            <div class="dino-info">
 
-            <div class="dino-type">
-                Back plates • Herbivore • Stegosaur
+                <div class="dino-number">
+                    SPECIES 05
+                </div>
+
+                <div class="dino-name">
+                    Stegosaurus
+                </div>
+
+                <div class="dino-type">
+                    Back plates • Herbivore • Stegosaur
+                </div>
+
             </div>
 
         </a>
 
 
-        <!-- BRACHIOSAURUS -->
+        <!-- =========================
+             BRACHIOSAURUS
+        ========================= -->
 
         <a href="dinosaurs.html?dino=brachiosaurus"
            class="dino-card">
 
-            <div class="dino-emoji">
-                🦕
-            </div>
+            <img
+                class="dino-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Brachiosaurus_BW.jpg"
+                alt="Brachiosaurus"
+                loading="lazy">
 
-            <div class="dino-number">
-                SPECIES 06
-            </div>
+            <div class="image-overlay"></div>
 
-            <div class="dino-name">
-                Brachiosaurus
-            </div>
+            <div class="dino-info">
 
-            <div class="dino-type">
-                Long neck • Herbivore • Sauropod
+                <div class="dino-number">
+                    SPECIES 06
+                </div>
+
+                <div class="dino-name">
+                    Brachiosaurus
+                </div>
+
+                <div class="dino-type">
+                    Long neck • Herbivore • Sauropod
+                </div>
+
             </div>
 
         </a>
 
 
-        <!-- ANKYLOSAURUS -->
+        <!-- =========================
+             ANKYLOSAURUS
+        ========================= -->
 
         <a href="dinosaurs.html?dino=ankylosaurus"
            class="dino-card">
 
-            <div class="dino-emoji">
-                🦕
-            </div>
+            <img
+                class="dino-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ankylosaurus_dinosaur.png"
+                alt="Ankylosaurus"
+                loading="lazy">
 
-            <div class="dino-number">
-                SPECIES 07
-            </div>
+            <div class="image-overlay"></div>
 
-            <div class="dino-name">
-                Ankylosaurus
-            </div>
+            <div class="dino-info">
 
-            <div class="dino-type">
-                Tail club • Herbivore • Ankylosaur
+                <div class="dino-number">
+                    SPECIES 07
+                </div>
+
+                <div class="dino-name">
+                    Ankylosaurus
+                </div>
+
+                <div class="dino-type">
+                    Tail club • Herbivore • Ankylosaur
+                </div>
+
             </div>
 
         </a>
 
 
-        <!-- ALLOSAURUS -->
+        <!-- =========================
+             ALLOSAURUS
+        ========================= -->
 
         <a href="dinosaurs.html?dino=allosaurus"
            class="dino-card">
 
-            <div class="dino-emoji">
-                🦖
-            </div>
+            <img
+                class="dino-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Allosaurus_BW.jpg"
+                alt="Allosaurus"
+                loading="lazy">
 
-            <div class="dino-number">
-                SPECIES 08
-            </div>
+            <div class="image-overlay"></div>
 
-            <div class="dino-name">
-                Allosaurus
-            </div>
+            <div class="dino-info">
 
-            <div class="dino-type">
-                Sharp teeth • Carnivore • Theropod
+                <div class="dino-number">
+                    SPECIES 08
+                </div>
+
+                <div class="dino-name">
+                    Allosaurus
+                </div>
+
+                <div class="dino-type">
+                    Sharp teeth • Carnivore • Theropod
+                </div>
+
             </div>
 
         </a>
 
 
-        <!-- DIPLODOCUS -->
+        <!-- =========================
+             DIPLODOCUS
+        ========================= -->
 
         <a href="dinosaurs.html?dino=diplodocus"
            class="dino-card">
 
-            <div class="dino-emoji">
-                🦕
-            </div>
+            <img
+                class="dino-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Diplodocus_carnegii.jpg"
+                alt="Diplodocus"
+                loading="lazy">
 
-            <div class="dino-number">
-                SPECIES 09
-            </div>
+            <div class="image-overlay"></div>
 
-            <div class="dino-name">
-                Diplodocus
-            </div>
+            <div class="dino-info">
 
-            <div class="dino-type">
-                Whip-like tail • Herbivore • Sauropod
+                <div class="dino-number">
+                    SPECIES 09
+                </div>
+
+                <div class="dino-name">
+                    Diplodocus
+                </div>
+
+                <div class="dino-type">
+                    Whip-like tail • Herbivore • Sauropod
+                </div>
+
             </div>
 
         </a>
@@ -1121,7 +1227,7 @@ footer {
 
         <a href="quiz.html"
            class="button primary-button">
-            🧠 START THE QUIZ →
+            START THE QUIZ →
         </a>
 
     </div>
@@ -1179,7 +1285,6 @@ footer {
 
             </div>
 
-
             <div class="about-stat">
 
                 <span>
@@ -1187,11 +1292,10 @@ footer {
                 </span>
 
                 <span>
-                    Triassic – Cretaceous
+                    Jurassic – Cretaceous
                 </span>
 
             </div>
-
 
             <div class="about-stat">
 
@@ -1204,7 +1308,6 @@ footer {
                 </span>
 
             </div>
-
 
             <div class="about-stat">
 
@@ -1239,9 +1342,7 @@ footer {
 
     <br>
 
-    <span>
-        Explore • Learn • Discover
-    </span>
+    Explore • Learn • Discover
 
 </footer>
 
