@@ -2,14 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dino Explorer | The Prehistoric World</title>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,6 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 * {
     box-sizing: border-box;
@@ -34,15 +31,20 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* NAV */
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 78px;
-    z-index: 100;
+
+    z-index: 1000;
 
     display: flex;
     align-items: center;
@@ -50,457 +52,604 @@ nav {
 
     padding: 0 5%;
 
-    background: rgba(5,15,9,0.75);
+    background: rgba(5, 15, 9, 0.86);
+
     backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(160,195,145,0.15);
+    border-bottom: 1px solid rgba(160, 195, 145, 0.18);
 }
 
 .logo {
     color: #dcebd4;
+
     text-decoration: none;
 
     font-family: 'Cinzel', serif;
+
     font-size: 22px;
+
     font-weight: 700;
+
     letter-spacing: 2px;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+
+    align-items: center;
+
+    gap: 28px;
 }
 
 .nav-links a {
-    color: #c6d7c0;
+    color: #b8d1ad;
+
     text-decoration: none;
 
-    font-size: 13px;
+    font-size: 12px;
+
     font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
 
     transition: 0.3s;
 }
 
 .nav-links a:hover {
-    color: #b5d99e;
+    color: #dcebd4;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
-    height: 100vh;
-    min-height: 650px;
+
+    min-height: 100vh;
 
     position: relative;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    overflow: hidden;
     text-align: center;
 
-    background:
-        linear-gradient(
-            rgba(3,12,6,0.25),
-            rgba(3,12,6,0.85)
-        ),
-        url("https://images.unsplash.com/photo-1551073179-0be7b3d1a4f4?auto=format&fit=crop&w=2000&q=85");
+    padding: 120px 20px 80px;
 
-    background-size: cover;
-    background-position: center;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+    overflow: hidden;
 
     background:
         radial-gradient(
             circle at center,
-            transparent 10%,
-            rgba(0,0,0,0.65) 100%
+            #193522 0%,
+            #0b1710 42%,
+            #040b06 90%
+        );
+}
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(143, 182, 126, 0.08),
+            transparent 50%
         );
 
     pointer-events: none;
 }
 
 .hero-content {
-    position: relative;
-    z-index: 3;
 
-    max-width: 1000px;
-    padding: 30px;
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
 }
 
-.hero-small {
-    color: #b6d69e;
+.hero-label {
 
-    font-size: 13px;
+    color: #9fc78c;
+
+    font-size: 11px;
+
     font-weight: 600;
 
     letter-spacing: 6px;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
+
     font-family: 'Cinzel', serif;
 
-    font-size: clamp(55px,9vw,120px);
+    font-size: clamp(55px, 10vw, 120px);
 
     line-height: 0.95;
 
     margin: 0;
 
-    letter-spacing: 3px;
-
-    color: white;
+    color: #e2eddd;
 
     text-shadow:
-        0 5px 30px rgba(0,0,0,0.8);
+        0 10px 40px rgba(0,0,0,0.6);
 }
 
 .hero h1 span {
-    display: block;
-    color: #a7cf8e;
+    color: #9fc78c;
 }
 
 .hero p {
-    max-width: 680px;
+
+    max-width: 650px;
 
     margin: 30px auto;
 
-    color: #d3ddd0;
+    color: #9cac99;
 
-    font-size: 17px;
+    font-size: 16px;
 
     line-height: 1.8;
 }
 
-/* BUTTON */
+.hero-buttons {
 
-.quiz-button {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 35px;
+}
+
+.button {
+
     display: inline-block;
 
-    padding: 17px 34px;
-
-    border: 1px solid #9fc78c;
-
-    color: white;
+    padding: 16px 28px;
 
     text-decoration: none;
-
-    font-weight: 600;
-
-    letter-spacing: 1px;
-
-    background: rgba(50,85,48,0.55);
-
-    backdrop-filter: blur(8px);
-
-    transition: 0.35s;
-}
-
-.quiz-button:hover {
-    background: #8eb879;
-
-    color: #07110b;
-
-    transform: translateY(-4px);
-}
-
-/* SECTION */
-
-.dinosaur-section {
-    padding: 100px 4%;
-
-    background:
-        linear-gradient(
-            #07110b,
-            #0b1710
-        );
-}
-
-.section-heading {
-    max-width: 1100px;
-
-    margin: 0 auto 55px;
-
-    text-align: center;
-}
-
-.section-heading h2 {
-    font-family: 'Cinzel', serif;
-
-    font-size: clamp(38px,5vw,65px);
-
-    margin: 0 0 15px;
-
-    letter-spacing: 2px;
-
-    color: #dcebd4;
-}
-
-.section-heading p {
-    color: #829480;
-
-    font-size: 15px;
-
-    letter-spacing: 1px;
-}
-
-/* GRID */
-
-.dino-grid {
-    max-width: 1450px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 18px;
-}
-
-/* CARD */
-
-.dino-card {
-    position: relative;
-
-    display: block;
-
-    height: 500px;
-
-    overflow: hidden;
-
-    text-decoration: none;
-
-    color: white;
-
-    background: #111;
-
-    border: 1px solid rgba(170,200,160,0.15);
-
-    transition:
-        transform 0.5s ease,
-        border-color 0.5s ease;
-}
-
-.dino-card:hover {
-    transform: scale(1.025);
-
-    border-color: #9ec58b;
-
-    z-index: 5;
-}
-
-/* IMAGE */
-
-.dino-image {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    background: #111;
-
-    transition:
-        transform 0.8s ease,
-        filter 0.8s ease;
-}
-
-.dino-card:hover .dino-image {
-    transform: scale(1.04);
-
-    filter: brightness(1.08);
-}
-
-/* OVERLAY */
-
-.dino-card::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            transparent 25%,
-            rgba(3,12,6,0.2) 45%,
-            rgba(3,12,6,0.95) 100%
-        );
-
-    z-index: 1;
-
-    pointer-events: none;
-}
-
-/* NUMBER */
-
-.dino-number {
-    position: absolute;
-
-    top: 25px;
-    left: 25px;
-
-    z-index: 3;
-
-    color: rgba(255,255,255,0.7);
-
-    font-family: 'Cinzel', serif;
-
-    font-size: 14px;
-
-    letter-spacing: 3px;
-}
-
-/* CONTENT */
-
-.dino-content {
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-
-    padding: 32px;
-
-    z-index: 3;
-}
-
-.dino-label {
-    color: #9fc78c;
-
-    font-size: 11px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 10px;
-}
-
-.dino-name {
-    font-family: 'Cinzel', serif;
-
-    font-size: clamp(25px,2.5vw,36px);
-
-    font-weight: 700;
-
-    margin: 0;
-
-    line-height: 1.1;
-
-    color: white;
-
-    text-shadow:
-        0 3px 15px rgba(0,0,0,0.7);
-}
-
-.explore {
-    display: inline-block;
-
-    margin-top: 15px;
-
-    color: #b9d6aa;
 
     font-size: 12px;
 
-    letter-spacing: 2px;
+    font-weight: 700;
 
-    opacity: 0;
+    letter-spacing: 1.5px;
 
-    transform: translateY(10px);
-
-    transition: 0.35s;
+    transition: 0.3s;
 }
 
-.dino-card:hover .explore {
-    opacity: 1;
+.primary-button {
 
-    transform: translateY(0);
+    background: #8fb67e;
+
+    color: #07110b;
 }
 
-/* QUIZ */
+.primary-button:hover {
 
-.quiz-section {
-    padding: 130px 20px;
+    background: #b0d49d;
 
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle,
-            #193522,
-            #07110b 70%
-        );
+    transform: translateY(-3px);
 }
 
-.quiz-section h2 {
-    font-family: 'Cinzel', serif;
+.secondary-button {
 
-    font-size: clamp(40px,5vw,65px);
+    color: #b8d1ad;
 
-    margin: 0 0 15px;
-
-    color: #dcebd4;
+    border: 1px solid rgba(159,199,140,0.45);
 }
 
-.quiz-section p {
-    color: #8fa18e;
+.secondary-button:hover {
 
-    margin-bottom: 35px;
+    background: rgba(159,199,140,0.1);
+
+    transform: translateY(-3px);
 }
 
-/* FALLING DINOS */
+
+/* =========================
+   FALLING DINOSAURS
+========================= */
 
 .falling-dino {
+
     position: fixed;
 
     top: -70px;
 
-    font-size: 45px;
-
-    z-index: 90;
+    font-size: 42px;
 
     pointer-events: none;
 
-    opacity: 0.55;
+    opacity: 0.28;
+
+    z-index: 2;
 
     animation: fall linear infinite;
 }
 
 @keyframes fall {
 
-    0% {
+    from {
         transform:
             translateY(-80px)
             rotate(0deg);
     }
 
-    100% {
+    to {
         transform:
             translateY(110vh)
             rotate(360deg);
     }
+
 }
 
-/* FOOTER */
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+
+    padding: 110px 5%;
+
+    background: #07110b;
+}
+
+.section-header {
+
+    max-width: 750px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+.section-label {
+
+    color: #8fb67e;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 15px;
+}
+
+.section-title {
+
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(35px, 6vw, 60px);
+
+    color: #dcebd4;
+
+    margin: 0;
+}
+
+.section-description {
+
+    color: #81917f;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+    margin-top: 20px;
+}
+
+
+/* =========================
+   DINOSAUR GRID
+========================= */
+
+.dino-grid {
+
+    width: min(1200px, 100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.dino-card {
+
+    position: relative;
+
+    min-height: 210px;
+
+    padding: 28px;
+
+    text-decoration: none;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,43,27,0.95),
+            rgba(8,18,11,0.98)
+        );
+
+    border: 1px solid rgba(159,199,140,0.15);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s,
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+.dino-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+
+    height: 130px;
+
+    right: -45px;
+
+    bottom: -45px;
+
+    border-radius: 50%;
+
+    background: rgba(143,182,126,0.08);
+
+    filter: blur(15px);
+}
+
+.dino-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: rgba(159,199,140,0.5);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.35);
+}
+
+.dino-emoji {
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.dino-number {
+
+    color: #71816f;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+.dino-name {
+
+    color: #dcebd4;
+
+    font-family: 'Cinzel', serif;
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.dino-type {
+
+    color: #91a393;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   QUIZ SECTION
+========================= */
+
+.quiz-section {
+
+    padding: 110px 5%;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #102518,
+            #07110b 65%
+        );
+
+    text-align: center;
+}
+
+.quiz-box {
+
+    width: min(950px, 100%);
+
+    margin: auto;
+
+    padding: 65px 35px;
+
+    border: 1px solid rgba(159,199,140,0.18);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,43,27,0.8),
+            rgba(8,18,11,0.9)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.35);
+}
+
+.quiz-box h2 {
+
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(35px, 6vw, 60px);
+
+    margin: 0 0 18px;
+
+    color: #dcebd4;
+}
+
+.quiz-box h2 span {
+
+    color: #9fc78c;
+}
+
+.quiz-box p {
+
+    max-width: 600px;
+
+    margin: 0 auto 30px;
+
+    color: #91a393;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+
+    padding: 110px 5%;
+
+    background: #050c07;
+}
+
+.about-grid {
+
+    width: min(1100px, 100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+
+    align-items: center;
+}
+
+.about-text h2 {
+
+    font-family: 'Cinzel', serif;
+
+    color: #dcebd4;
+
+    font-size: 42px;
+
+    margin: 0 0 20px;
+}
+
+.about-text h2 span {
+
+    color: #9fc78c;
+}
+
+.about-text p {
+
+    color: #91a393;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    margin-bottom: 15px;
+}
+
+.about-panel {
+
+    padding: 35px;
+
+    border: 1px solid rgba(159,199,140,0.16);
+
+    background: rgba(255,255,255,0.025);
+}
+
+.about-stat {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.about-stat:last-child {
+    border-bottom: none;
+}
+
+.about-stat span:first-child {
+
+    color: #71816f;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.about-stat span:last-child {
+
+    color: #d7e5d2;
+
+    font-weight: 600;
+
+    font-size: 13px;
+
+    text-align: right;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
-    padding: 35px;
+
+    padding: 40px 20px;
 
     text-align: center;
 
@@ -508,66 +657,90 @@ footer {
 
     color: #657664;
 
-    font-size: 12px;
+    font-size: 11px;
 
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+
+    line-height: 1.8;
 }
 
-/* TABLET */
 
-@media (max-width:1000px) {
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .nav-links {
+        gap: 14px;
+    }
 
     .dino-grid {
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
     }
 
 }
 
-/* MOBILE */
-
-@media (max-width:650px) {
+@media (max-width: 600px) {
 
     nav {
         height: 65px;
+
         padding: 0 20px;
     }
 
     .logo {
-        font-size: 18px;
+        font-size: 16px;
     }
 
-    .nav-links {
+    .nav-links a {
+        font-size: 9px;
+
+        letter-spacing: 1px;
+    }
+
+    .nav-links a:nth-child(2) {
         display: none;
     }
 
     .hero {
-        min-height: 620px;
+        padding-top: 100px;
     }
 
-    .hero h1 {
-        font-size: 55px;
+    .hero-label {
+        letter-spacing: 3px;
     }
 
     .hero p {
         font-size: 14px;
     }
 
-    .dinosaur-section {
-        padding: 75px 15px;
-    }
-
     .dino-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
     }
 
-    .dino-card {
-        height: 470px;
+    .section {
+        padding: 80px 20px;
     }
 
-    .dino-content {
-        padding: 25px;
+    .quiz-section {
+        padding: 80px 20px;
+    }
+
+    .quiz-box {
+        padding: 50px 22px;
+    }
+
+    .about {
+        padding: 80px 20px;
+    }
+
+    .about-text h2 {
+        font-size: 35px;
     }
 
 }
@@ -576,27 +749,38 @@ footer {
 
 </head>
 
+
 <body>
 
-<!-- FALLING DINOS -->
 
-<div class="falling-dino" style="left:1%;animation-duration:8s;">
+<!-- =========================
+     FALLING DINOSAURS
+========================= -->
+
+<div class="falling-dino"
+     style="left:1%; animation-duration:8s;">
     🦖
 </div>
 
-<div class="falling-dino" style="left:5%;animation-duration:11s;animation-delay:3s;">
+<div class="falling-dino"
+     style="left:8%; animation-duration:11s; animation-delay:3s;">
     🦕
 </div>
 
-<div class="falling-dino" style="right:1%;animation-duration:9s;animation-delay:1s;">
+<div class="falling-dino"
+     style="right:1%; animation-duration:9s; animation-delay:1s;">
     🦖
 </div>
 
-<div class="falling-dino" style="right:5%;animation-duration:12s;animation-delay:4s;">
+<div class="falling-dino"
+     style="right:8%; animation-duration:12s; animation-delay:4s;">
     🦕
 </div>
 
-<!-- NAV -->
+
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -610,6 +794,10 @@ footer {
             EXPLORE
         </a>
 
+        <a href="#about">
+            ABOUT
+        </a>
+
         <a href="quiz.html">
             QUIZ
         </a>
@@ -618,1238 +806,446 @@ footer {
 
 </nav>
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
 
 <header class="hero">
 
     <div class="hero-content">
 
-        <div class="hero-small">
-            THE PREHISTORIC WORLD
+        <div class="hero-label">
+            WELCOME TO THE PREHISTORIC WORLD
         </div>
 
         <h1>
-            BEFORE
-            <span>HUMANITY.</span>
+            DINO <span>EXPLORER</span>
         </h1>
 
         <p>
-            Long before cities, technology and civilization,
-            giants ruled the Earth. Explore their world.
+            Step millions of years into the past and discover
+            the incredible creatures that once ruled our planet.
+            Explore dinosaurs, uncover fascinating facts,
+            and test your prehistoric knowledge.
         </p>
 
-        <a href="quiz.html" class="quiz-button">
-            🧠 ENTER THE DINO QUIZ
-        </a>
+        <div class="hero-buttons">
+
+            <a href="#dinosaurs"
+               class="button primary-button">
+                🦖 EXPLORE DINOSAURS
+            </a>
+
+            <a href="quiz.html"
+               class="button secondary-button">
+                🧠 TAKE THE QUIZ
+            </a>
+
+        </div>
 
     </div>
 
 </header>
 
-<!-- DINOSAURS -->
 
-<section id="dinosaurs" class="dinosaur-section">
+<!-- =========================
+     DINOSAURS
+========================= -->
 
-    <div class="section-heading">
+<section id="dinosaurs" class="section">
 
-        <h2>THE GIANTS</h2>
+    <div class="section-header">
 
-        <p>
-            SELECT A SPECIES TO ENTER ITS WORLD
+        <div class="section-label">
+            PREHISTORIC SPECIES
+        </div>
+
+        <h2 class="section-title">
+            Explore the Dinosaurs
+        </h2>
+
+        <p class="section-description">
+            Click on any dinosaur to discover its period,
+            diet, size, special features, and an amazing fact.
         </p>
 
     </div>
 
+
     <div class="dino-grid">
+
 
         <!-- T-REX -->
 
         <a href="dinosaurs.html?dino=trex"
            class="dino-card">
 
-            <img
-                class="dino-image"
-                src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tyrannosaurus_Rex_Holotype.jpg"
-                alt="Tyrannosaurus Rex">
+            <div class="dino-emoji">
+                🦖
+            </div>
 
-            <div class="dino-number">01</div>
+            <div class="dino-number">
+                SPECIES 01
+            </div>
 
-            <div class="dino-content">
+            <div class="dino-name">
+                Tyrannosaurus Rex
+            </div>
 
-                <div class="dino-label">
-                    CARNIVORE
-                </div>
-
-                <h3 class="dino-name">
-                    Tyrannosaurus Rex
-                </h3>
-
-                <div class="explore">
-                    EXPLORE →
-                </div>
-
+            <div class="dino-type">
+                Powerful jaws • Carnivore • Theropod
             </div>
 
         </a>
+
 
         <!-- TRICERATOPS -->
 
         <a href="dinosaurs.html?dino=triceratops"
            class="dino-card">
 
-            <img
-                class="dino-image"
-                src="https://upload.wikimedia.org/wikipedia/commons/4/44/Triceratops_BW.jpg"
-                alt="Triceratops">
+            <div class="dino-emoji">
+                🦏
+            </div>
 
-            <div class="dino-number">02</div>
+            <div class="dino-number">
+                SPECIES 02
+            </div>
 
-            <div class="dino-content">
+            <div class="dino-name">
+                Triceratops
+            </div>
 
-                <div class="dino-label">
-                    HERBIVORE
-                </div>
-
-                <h3 class="dino-name">
-                    Triceratops
-                </h3>
-
-                <div class="explore">
-                    EXPLORE →
-                </div>
-
+            <div class="dino-type">
+                Three horns • Herbivore • Ceratopsian
             </div>
 
         </a>
+
 
         <!-- VELOCIRAPTOR -->
 
         <a href="dinosaurs.html?dino=velociraptor"
            class="dino-card">
 
-            <img
-                class="dino-image"
-                src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Velociraptor_restoration.png"
-                alt="Velociraptor">
+            <div class="dino-emoji">
+                🦖
+            </div>
 
-            <div class="dino-number">03</div>
+            <div class="dino-number">
+                SPECIES 03
+            </div>
 
-            <div class="dino-content">
+            <div class="dino-name">
+                Velociraptor
+            </div>
 
-                <div class="dino-label">
-                    CARNIVORE
-                </div>
-
-                <h3 class="dino-name">
-                    Velociraptor
-                </h3>
-
-                <div class="explore">
-                    EXPLORE →
-                </div>
-
+            <div class="dino-type">
+                Curved claw • Carnivore • Dromaeosaur
             </div>
 
         </a>
+
 
         <!-- SPINOSAURUS -->
 
         <a href="dinosaurs.html?dino=spinosaurus"
            class="dino-card">
 
-            <img
-                class="dino-image"
-                src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Spinosaurus_aegyptiacus.png"
-                alt="Spinosaurus">
+            <div class="dino-emoji">
+                🦖
+            </div>
 
-            <div class="dino-number">04</div>
+            <div class="dino-number">
+                SPECIES 04
+            </div>
 
-            <div class="dino-content">
+            <div class="dino-name">
+                Spinosaurus
+            </div>
 
-                <div class="dino-label">
-                    CARNIVORE
-                </div>
-
-                <h3 class="dino-name">
-                    Spinosaurus
-                </h3>
-
-                <div class="explore">
-                    EXPLORE →
-                </div>
-
+            <div class="dino-type">
+                Large sail • Carnivore • Theropod
             </div>
 
         </a>
+
 
         <!-- STEGOSAURUS -->
 
         <a href="dinosaurs.html?dino=stegosaurus"
            class="dino-card">
 
-            <img
-                class="dino-image"
-                src="https://upload.wikimedia.org/wikipedia/commons/0/08/Stegosaurus_BW.jpg"
-                alt="Stegosaurus">
+            <div class="dino-emoji">
+                🦕
+            </div>
 
-            <div class="dino-number">05</div>
+            <div class="dino-number">
+                SPECIES 05
+            </div>
 
-            <div class="dino-content">
+            <div class="dino-name">
+                Stegosaurus
+            </div>
 
-                <div class="dino-label">
-                    HERBIVORE
-                </div>
-
-                <h3 class="dino-name">
-                    Stegosaurus
-                </h3>
-
-                <div class="explore">
-                    EXPLORE →
-                </div>
-
+            <div class="dino-type">
+                Back plates • Herbivore • Stegosaur
             </div>
 
         </a>
+
 
         <!-- BRACHIOSAURUS -->
 
         <a href="dinosaurs.html?dino=brachiosaurus"
            class="dino-card">
 
-            <img
-                class="dino-image"
-                src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Brachiosaurus_BW.jpg"
-                alt="Brachiosaurus">
+            <div class="dino-emoji">
+                🦕
+            </div>
 
-            <div class="dino-number">06</div>
+            <div class="dino-number">
+                SPECIES 06
+            </div>
 
-            <div class="dino-content">
+            <div class="dino-name">
+                Brachiosaurus
+            </div>
 
-                <div class="dino-label">
-                    HERBIVORE
-                </div>
-
-                <h3 class="dino-name">
-                    Brachiosaurus
-                </h3>
-
-                <div class="explore">
-                    EXPLORE →
-                </div>
-
+            <div class="dino-type">
+                Long neck • Herbivore • Sauropod
             </div>
 
         </a>
+
 
         <!-- ANKYLOSAURUS -->
 
         <a href="dinosaurs.html?dino=ankylosaurus"
            class="dino-card">
 
-            <img
-                class="dino-image"
-                src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Ankylosaurus_dinosaur.png"
-                alt="Ankylosaurus">
+            <div class="dino-emoji">
+                🦕
+            </div>
 
-            <div class="dino-number">07</div>
+            <div class="dino-number">
+                SPECIES 07
+            </div>
 
-            <div class="dino-content">
+            <div class="dino-name">
+                Ankylosaurus
+            </div>
 
-                <div class="dino-label">
-                    HERBIVORE
-                </div>
-
-                <h3 class="dino-name">
-                    Ankylosaurus
-                </h3>
-
-                <div class="explore">
-                    EXPLORE →
-                </div>
-
+            <div class="dino-type">
+                Tail club • Herbivore • Ankylosaur
             </div>
 
         </a>
+
 
         <!-- ALLOSAURUS -->
 
         <a href="dinosaurs.html?dino=allosaurus"
            class="dino-card">
 
-            <img
-                class="dino-image"
-                src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Allosaurus_BW.jpg"
-                alt="Allosaurus">
+            <div class="dino-emoji">
+                🦖
+            </div>
 
-            <div class="dino-number">08</div>
+            <div class="dino-number">
+                SPECIES 08
+            </div>
 
-            <div class="dino-content">
+            <div class="dino-name">
+                Allosaurus
+            </div>
 
-                <div class="dino-label">
-                    CARNIVORE
-                </div>
-
-                <h3 class="dino-name">
-                    Allosaurus
-                </h3>
-
-                <div class="explore">
-                    EXPLORE →
-                </div>
-
+            <div class="dino-type">
+                Sharp teeth • Carnivore • Theropod
             </div>
 
         </a>
+
 
         <!-- DIPLODOCUS -->
 
         <a href="dinosaurs.html?dino=diplodocus"
            class="dino-card">
 
-            <img
-                class="dino-image"
-                src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Diplodocus_carnegii.jpg"
-                alt="Diplodocus">
-
-            <div class="dino-number">09</div>
-
-            <div class="dino-content">
-
-                <div class="dino-label">
-                    HERBIVORE
-                </div>
-
-                <h3 class="dino-name">
-                    Diplodocus
-                </h3>
-
-                <div class="explore">
-                    EXPLORE →
-                </div>
-
+            <div class="dino-emoji">
+                🦕
             </div>
 
+            <div class="dino-number">
+                SPECIES 09
+            </div>
+
+            <div class="dino-name">
+                Diplodocus
+            </div>
+
+            <div class="dino-type">
+                Whip-like tail • Herbivore • Sauropod
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<section class="quiz-section">
+
+    <div class="quiz-box">
+
+        <div class="section-label">
+            TEST YOUR KNOWLEDGE
+        </div>
+
+        <h2>
+            Ready for the <span>Dino Quiz?</span>
+        </h2>
+
+        <p>
+            Think you know your T-Rex from your Triceratops?
+            Take the 15-question prehistoric challenge and
+            see how high you can score.
+        </p>
+
+        <a href="quiz.html"
+           class="button primary-button">
+            🧠 START THE QUIZ →
         </a>
 
     </div>
 
 </section>
 
-<!-- QUIZ -->
 
-<section class="quiz-section">
+<!-- =========================
+     ABOUT
+========================= -->
 
-    <h2>
-        THINK YOU KNOW DINOSAURS?
-    </h2>
+<section id="about" class="about">
 
-    <p>
-        Put your prehistoric knowledge to the test.
-    </p>
+    <div class="about-grid">
 
-    <a href="quiz.html" class="quiz-button">
-        🧠 START THE QUIZ
-    </a>
+        <div class="about-text">
+
+            <div class="section-label">
+                ABOUT DINO EXPLORER
+            </div>
+
+            <h2>
+                Travel Back <span>Millions of Years</span>
+            </h2>
+
+            <p>
+                Dinosaurs lived on Earth for more than
+                160 million years. From enormous
+                long-necked sauropods to powerful
+                meat-eating theropods, the prehistoric
+                world was full of incredible animals.
+            </p>
+
+            <p>
+                Dino Explorer lets you discover some of
+                the most famous dinosaurs and learn
+                interesting facts about their lives,
+                diets, sizes, and special features.
+            </p>
+
+        </div>
+
+
+        <div class="about-panel">
+
+            <div class="about-stat">
+
+                <span>
+                    Species
+                </span>
+
+                <span>
+                    9 Featured Dinosaurs
+                </span>
+
+            </div>
+
+
+            <div class="about-stat">
+
+                <span>
+                    Time Period
+                </span>
+
+                <span>
+                    Triassic – Cretaceous
+                </span>
+
+            </div>
+
+
+            <div class="about-stat">
+
+                <span>
+                    Quiz
+                </span>
+
+                <span>
+                    15 Questions
+                </span>
+
+            </div>
+
+
+            <div class="about-stat">
+
+                <span>
+                    Explore
+                </span>
+
+                <span>
+                    Facts & Information
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
     🦖 DINO EXPLORER
 
-    <br><br>
+    <br>
 
     THE PREHISTORIC WORLD AWAITS.
 
-</footer>
-
-</body>
-</html>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    background: #07110b;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-}
-
-/* NAV */
-
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 78px;
-    z-index: 100;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 5%;
-
-    background: rgba(5,15,9,0.75);
-    backdrop-filter: blur(14px);
-
-    border-bottom: 1px solid rgba(150,190,145,0.18);
-}
-
-.logo {
-    color: #dcebd4;
-    text-decoration: none;
-    font-family: 'Cinzel', serif;
-    font-size: 23px;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    color: #c6d7c0;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-.nav-links a:hover {
-    color: #b5d99e;
-}
-
-/* HERO */
-
-.hero {
-    height: 100vh;
-    min-height: 650px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
-    overflow: hidden;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            rgba(3,12,6,0.25),
-            rgba(3,12,6,0.85)
-        ),
-        url("https://images.unsplash.com/photo-1551073179-0be7b3d1a4f4?auto=format&fit=crop&w=2000&q=85");
-
-    background-size: cover;
-    background-position: center;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at center,
-            transparent 10%,
-            rgba(0,0,0,0.65) 100%
-        );
-}
-
-.hero-content {
-    position: relative;
-    z-index: 3;
-    max-width: 1000px;
-    padding: 30px;
-}
-
-.hero-small {
-    color: #b6d69e;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 6px;
-    margin-bottom: 25px;
-}
-
-.hero h1 {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(55px,9vw,120px);
-    line-height: .95;
-    margin: 0;
-    letter-spacing: 3px;
-}
-
-.hero h1 span {
-    display: block;
-    color: #a7cf8e;
-}
-
-.hero p {
-    max-width: 680px;
-    margin: 30px auto;
-    color: #d3ddd0;
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-.quiz-button {
-    display: inline-block;
-
-    padding: 17px 34px;
-
-    border: 1px solid #9fc78c;
-
-    color: white;
-    text-decoration: none;
-
-    font-weight: 600;
-    letter-spacing: 1px;
-
-    background: rgba(50,85,48,.55);
-    backdrop-filter: blur(8px);
-
-    transition: .35s;
-}
-
-.quiz-button:hover {
-    background: #8eb879;
-    color: #07110b;
-    transform: translateY(-4px);
-}
-
-/* DINOSAUR SECTION */
-
-.dinosaur-section {
-    padding: 100px 4%;
-    background: linear-gradient(#07110b,#0b1710);
-}
-
-.section-heading {
-    max-width: 1100px;
-    margin: 0 auto 55px;
-    text-align: center;
-}
-
-.section-heading h2 {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(38px,5vw,65px);
-    margin: 0 0 15px;
-    letter-spacing: 2px;
-    color: #dcebd4;
-}
-
-.section-heading p {
-    color: #829480;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
-
-/* GRID */
-
-.dino-grid {
-    max-width: 1450px;
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 18px;
-}
-
-/* CARD */
-
-.dino-card {
-    position: relative;
-
-    display: block;
-
-    height: 500px;
-
-    overflow: hidden;
-
-    text-decoration: none;
-    color: white;
-
-    background: #111;
-
-    border: 1px solid rgba(170,200,160,.15);
-
-    transition:
-        transform .5s ease,
-        border-color .5s ease;
-}
-
-.dino-card:hover {
-    transform: scale(1.025);
-    border-color: #9ec58b;
-    z-index: 5;
-}
-
-/* IMAGE */
-
-.dino-image {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    /*
-       IMPORTANT:
-       contain = SHOW THE WHOLE IMAGE
-       instead of cropping it.
-    */
-
-    object-fit: contain;
-
-    object-position: center;
-
-    background:
-        radial-gradient(
-            circle,
-            #263d2a,
-            #07110b
-        );
-
-    padding: 25px;
-
-    transition:
-        transform .8s ease,
-        filter .8s ease;
-}
-
-.dino-card:hover .dino-image {
-    transform: scale(1.04);
-    filter: brightness(1.08);
-}
-
-/* OVERLAY */
-
-.dino-card::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            transparent 25%,
-            rgba(3,12,6,.15) 45%,
-            rgba(3,12,6,.96) 100%
-        );
-
-    z-index: 1;
-
-    pointer-events: none;
-}
-
-/* NUMBER */
-
-.dino-number {
-    position: absolute;
-
-    top: 25px;
-    left: 25px;
-
-    z-index: 3;
-
-    color: rgba(255,255,255,.75);
-
-    font-family: 'Cinzel', serif;
-
-    font-size: 14px;
-
-    letter-spacing: 3px;
-}
-
-/* CONTENT */
-
-.dino-content {
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-
-    padding: 32px;
-
-    z-index: 3;
-}
-
-.dino-label {
-    color: #9fc78c;
-
-    font-size: 11px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 10px;
-}
-
-.dino-name {
-    font-family: 'Cinzel', serif;
-
-    font-size: clamp(25px,2.5vw,36px);
-
-    font-weight: 700;
-
-    margin: 0;
-
-    line-height: 1.1;
-}
-
-.explore {
-    display: inline-block;
-
-    margin-top: 15px;
-
-    color: #b9d6aa;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    opacity: 0;
-
-    transform: translateY(10px);
-
-    transition: .35s;
-}
-
-.dino-card:hover .explore {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* QUIZ */
-
-.quiz-section {
-    padding: 130px 20px;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle,
-            #193522,
-            #07110b 70%
-        );
-}
-
-.quiz-section h2 {
-    font-family: 'Cinzel', serif;
-
-    font-size: clamp(40px,5vw,65px);
-
-    margin: 0 0 15px;
-
-    color: #dcebd4;
-}
-
-.quiz-section p {
-    color: #8fa18e;
-    margin-bottom: 35px;
-}
-
-/* FALLING DINOS */
-
-.falling-dino {
-    position: fixed;
-
-    top: -70px;
-
-    font-size: 45px;
-
-    z-index: 90;
-
-    pointer-events: none;
-
-    opacity: .55;
-
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-
-    0% {
-        transform:
-            translateY(-80px)
-            rotate(0deg);
-    }
-
-    100% {
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-    }
-
-}
-
-/* FOOTER */
-
-footer {
-    padding: 35px;
-
-    text-align: center;
-
-    background: #040b06;
-
-    color: #657664;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-}
-
-/* TABLET */
-
-@media(max-width:1000px) {
-
-    .dino-grid {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-}
-
-/* MOBILE */
-
-@media(max-width:650px) {
-
-    nav {
-        height: 65px;
-        padding: 0 20px;
-    }
-
-    .logo {
-        font-size: 18px;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .hero {
-        min-height: 620px;
-    }
-
-    .hero h1 {
-        font-size: 55px;
-    }
-
-    .hero p {
-        font-size: 14px;
-    }
-
-    .dinosaur-section {
-        padding: 75px 15px;
-    }
-
-    .dino-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .dino-card {
-        height: 470px;
-    }
-
-    .dino-content {
-        padding: 25px;
-    }
-
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- FALLING DINOS -->
-
-<div class="falling-dino" style="left:1%;animation-duration:8s;">🦖</div>
-<div class="falling-dino" style="left:5%;animation-duration:11s;animation-delay:3s;">🦕</div>
-<div class="falling-dino" style="right:1%;animation-duration:9s;animation-delay:1s;">🦖</div>
-<div class="falling-dino" style="right:5%;animation-duration:12s;animation-delay:4s;">🦕</div>
-
-<!-- NAV -->
-
-<nav>
-
-<a href="index.html" class="logo">
-🦖 DINO EXPLORER
-</a>
-
-<div class="nav-links">
-
-<a href="#dinosaurs">EXPLORE</a>
-
-<a href="quiz.html">QUIZ</a>
-
-</div>
-
-</nav>
-
-<!-- HERO -->
-
-<header class="hero">
-
-<div class="hero-content">
-
-<div class="hero-small">
-THE PREHISTORIC WORLD
-</div>
-
-<h1>
-BEFORE
-<span>HUMANITY.</span>
-</h1>
-
-<p>
-Long before cities, technology and civilization,
-giants ruled the Earth. Explore their world.
-</p>
-
-<a href="quiz.html" class="quiz-button">
-🧠 ENTER THE DINO QUIZ
-</a>
-
-</div>
-
-</header>
-
-<!-- DINOSAURS -->
-
-<section id="dinosaurs" class="dinosaur-section">
-
-<div class="section-heading">
-
-<h2>
-THE GIANTS
-</h2>
-
-<p>
-SELECT A SPECIES TO ENTER ITS WORLD
-</p>
-
-</div>
-
-<div class="dino-grid">
-
-<!-- T REX -->
-
-<a href="dinosaurs.html?dino=trex" class="dino-card">
-
-<img
-class="dino-image"
-src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tyrannosaurus_rex_RTMP.jpg"
-alt="Tyrannosaurus Rex">
-
-<div class="dino-number">01</div>
-
-<div class="dino-content">
-
-<div class="dino-label">
-CARNIVORE
-</div>
-
-<h3 class="dino-name">
-Tyrannosaurus Rex
-</h3>
-
-<div class="explore">
-EXPLORE →
-</div>
-
-</div>
-
-</a>
-
-<!-- TRICERATOPS -->
-
-<a href="dinosaurs.html?dino=triceratops" class="dino-card">
-
-<img
-class="dino-image"
-src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Triceratops_side_view.jpg"
-alt="Triceratops">
-
-<div class="dino-number">02</div>
-
-<div class="dino-content">
-
-<div class="dino-label">
-HERBIVORE
-</div>
-
-<h3 class="dino-name">
-Triceratops
-</h3>
-
-<div class="explore">
-EXPLORE →
-</div>
-
-</div>
-
-</a>
-
-<!-- VELOCIRAPTOR -->
-
-<a href="dinosaurs.html?dino=velociraptor" class="dino-card">
-
-<img
-class="dino-image"
-src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Velociraptor_Restoration.png"
-alt="Velociraptor">
-
-<div class="dino-number">03</div>
-
-<div class="dino-content">
-
-<div class="dino-label">
-CARNIVORE
-</div>
-
-<h3 class="dino-name">
-Velociraptor
-</h3>
-
-<div class="explore">
-EXPLORE →
-</div>
-
-</div>
-
-</a>
-
-<!-- SPINOSAURUS -->
-
-<a href="dinosaurs.html?dino=spinosaurus" class="dino-card">
-
-<img
-class="dino-image"
-src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Spinosaurus_aegyptiacus.jpg"
-alt="Spinosaurus">
-
-<div class="dino-number">04</div>
-
-<div class="dino-content">
-
-<div class="dino-label">
-CARNIVORE
-</div>
-
-<h3 class="dino-name">
-Spinosaurus
-</h3>
-
-<div class="explore">
-EXPLORE →
-</div>
-
-</div>
-
-</a>
-
-<!-- STEGOSAURUS -->
-
-<a href="dinosaurs.html?dino=stegosaurus" class="dino-card">
-
-<img
-class="dino-image"
-src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Stegosaurus_BW.jpg"
-alt="Stegosaurus">
-
-<div class="dino-number">05</div>
-
-<div class="dino-content">
-
-<div class="dino-label">
-HERBIVORE
-</div>
-
-<h3 class="dino-name">
-Stegosaurus
-</h3>
-
-<div class="explore">
-EXPLORE →
-</div>
-
-</div>
-
-</a>
-
-<!-- BRACHIOSAURUS -->
-
-<a href="dinosaurs.html?dino=brachiosaurus" class="dino-card">
-
-<img
-class="dino-image"
-src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Brachiosaurus_BW.jpg"
-alt="Brachiosaurus">
-
-<div class="dino-number">06</div>
-
-<div class="dino-content">
-
-<div class="dino-label">
-HERBIVORE
-</div>
-
-<h3 class="dino-name">
-Brachiosaurus
-</h3>
-
-<div class="explore">
-EXPLORE →
-</div>
-
-</div>
-
-</a>
-
-<!-- ANKYLOSAURUS -->
-
-<a href="dinosaurs.html?dino=ankylosaurus" class="dino-card">
-
-<img
-class="dino-image"
-src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ankylosaurus_dinosaur.png"
-alt="Ankylosaurus">
-
-<div class="dino-number">07</div>
-
-<div class="dino-content">
-
-<div class="dino-label">
-HERBIVORE
-</div>
-
-<h3 class="dino-name">
-Ankylosaurus
-</h3>
-
-<div class="explore">
-EXPLORE →
-</div>
-
-</div>
-
-</a>
-
-<!-- ALLOSAURUS -->
-
-<a href="dinosaurs.html?dino=allosaurus" class="dino-card">
-
-<img
-class="dino-image"
-src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Allosaurus_BW.jpg"
-alt="Allosaurus">
-
-<div class="dino-number">08</div>
-
-<div class="dino-content">
-
-<div class="dino-label">
-CARNIVORE
-</div>
-
-<h3 class="dino-name">
-Allosaurus
-</h3>
-
-<div class="explore">
-EXPLORE →
-</div>
-
-</div>
-
-</a>
-
-<!-- DIPLODOCUS -->
-
-<a href="dinosaurs.html?dino=diplodocus" class="dino-card">
-
-<img
-class="dino-image"
-src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Diplodocus_carnegii.jpg"
-alt="Diplodocus">
-
-<div class="dino-number">09</div>
-
-<div class="dino-content">
-
-<div class="dino-label">
-HERBIVORE
-</div>
-
-<h3 class="dino-name">
-Diplodocus
-</h3>
-
-<div class="explore">
-EXPLORE →
-</div>
-
-</div>
-
-</a>
-
-</div>
-
-</section>
-
-<!-- QUIZ -->
-
-<section class="quiz-section">
-
-<h2>
-THINK YOU KNOW DINOSAURS?
-</h2>
-
-<p>
-Put your prehistoric knowledge to the test.
-</p>
-
-<a href="quiz.html" class="quiz-button">
-🧠 START THE QUIZ
-</a>
-
-</section>
-
-<footer>
-
-🦖 DINO EXPLORER
-
-<br><br>
-
-THE PREHISTORIC WORLD AWAITS.
+    <br>
+
+    <span>
+        Explore • Learn • Discover
+    </span>
 
 </footer>
 
+
 </body>
+
 </html>
